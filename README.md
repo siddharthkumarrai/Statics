@@ -6,6 +6,97 @@
 
 **Statistics** is the science of collecting, organizing, and analyzing data to make informed decisions and draw meaningful conclusions from information.
 
+## 🔍 Types of Statistics
+
+Statistics is divided into two main branches:
+
+### 1️⃣ Descriptive Statistics
+**Definition:** It consists of organizing and summarizing data
+
+**Components:**
+- **📊 Measures of Central Tendency:** Mean, Median, Mode
+- **📈 Measures of Dispersion:** Variance, Standard Deviation
+- **📋 Different types of Distribution of data**
+  - Examples: Histogram, PDF, PMF
+
+**Example:** Let's say there are 20 statistics classes at your college, and you have collected the heights of students in the class.
+
+Heights recorded: `[175cm, 180cm, 140cm, 140cm, 135cm, 160cm, 185cm, 190cm]`
+
+**Descriptive Question:** *"What is the average height of the entire classroom?"*
+
+```
+Calculation: (175+180+140+140+135+160+185+190) ÷ 8 = Average Height
+```
+
+### 2️⃣ Inferential Statistics  
+**Definition:** It consists of using data you have measured to form conclusions
+
+**Components:**
+- **🧪 Hypothesis Testing**
+  - Z-test, t-test
+  - H₀, H₁, p-value, significance value
+- **📊 Chi Square tests**
+
+**Inferential Question:** *"Are the heights of the students in classroom similar to what you expect in the entire college?"*
+
+This involves using your **sample data** (classroom) to make inferences about the **population data** (entire college).
+
+```mermaid
+graph LR
+    A[🔍 Sample<br/>Classroom Data] --> B[📊 Analysis] --> C[🎯 Population<br/>College Inference]
+    
+    style A fill:#fff3e0
+    style B fill:#e8f5e8  
+    style C fill:#fce4ec
+```
+
+## 🎯 Population vs Sample
+
+Understanding the relationship between population and sample is fundamental to statistics:
+
+### 🌍 Population
+**Definition:** The group you are interested in studying
+
+- Represents the **entire** group of interest
+- Usually large and difficult to study completely
+- Example: All students in the college
+
+### 📋 Sample  
+**Definition:** A subset of population
+
+- A **smaller, manageable** portion of the population
+- Used to make inferences about the population
+- Example: Students in one statistics classroom
+
+```mermaid
+graph TD
+    A[🌍 Population<br/>All College Students] --> B[📋 Sample<br/>One Classroom]
+    B --> C[📊 Statistical Analysis]
+    C --> D[🔍 Inferences about Population]
+    
+    style A fill:#ffebee
+    style B fill:#fff3e0
+    style C fill:#e8f5e8
+    style D fill:#fce4ec
+```
+
+### 🔄 The Statistical Inference Process
+
+```mermaid
+flowchart LR
+    A[🎯 Population<br/>Parameter] -.->|"We want to know"| B[❓ Unknown<br/>Population Truth]
+    C[📋 Sample<br/>Statistic] -->|"We calculate"| D[📊 Sample Result]
+    D -->|"We infer"| B
+    
+    style A fill:#ffcdd2
+    style C fill:#fff3e0
+    style D fill:#e8f5e8
+    style B fill:#fce4ec
+```
+
+**Key Point:** We use sample statistics to estimate population parameters!
+
 ## 📈 Key Concepts
 
 ### Data
@@ -115,6 +206,10 @@ graph LR
 📋 Data = Facts/Information  
 📈 Analysis = Finding Patterns
 💡 Goal = Better Decisions
+🌍 Population = Entire group of interest
+📋 Sample = Subset of population
+🔍 Descriptive = Organizing & summarizing data
+🎯 Inferential = Making conclusions from data
 ```
 
 ---
