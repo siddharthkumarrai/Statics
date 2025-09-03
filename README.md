@@ -10,6 +10,9 @@ Statistics is the science of collecting, organizing and analyzing data.
 Heights of students in a classroom: {135 cm, 180 cm, 190 cm, 160 cm, …}
 
 flowchart TD
+```mermaid
 A[Statistics] --> B[Data]
 B --> C[Example
 (Heights of students)]
+
+
