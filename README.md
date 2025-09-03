@@ -33,7 +33,7 @@ flowchart TD
     style E fill:#fce4ec
     style F fill:#f1f8e9
 ```
-
+ 
 ## 📋 Types of Data
 
 | Type | Description | Examples |
