@@ -42,9 +42,9 @@ This involves using your **sample data** (classroom) to make inferences about th
 graph LR
     A[🔍 Sample<br/>Classroom Data] --> B[📊 Analysis] --> C[🎯 Population<br/>College Inference]
 
-    style A fill:#fff3e0
-    style B fill:#e8f5e8  
-    style C fill:#fce4ec
+    style A fill:#fff3e0 color:#000000
+    style B fill:#e8f5e8 color:#000000
+    style C fill:#fce4ec color:#000000
 ```
 
 ## 🎯 Population vs Sample
