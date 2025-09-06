@@ -68,10 +68,10 @@ graph TD
     B --> C[📊 Statistical Analysis]
     C --> D[🔍 Inferences about Population]
 
-    style A fill:#ffebee color:#000000
-    style B fill:#fff3e0 color:#000000
-    style C fill:#e8f5e8 color:#000000
-    style D fill:#fce4ec color:#000000
+    style A fill:#ffebee,color:#000
+    style B fill:#fff3e0,color:#000
+    style C fill:#e8f5e8,color:#000
+    style D fill:#fce4ec,color:#000
 ```
 
 ### 🔄 The Statistical Inference Process
@@ -81,10 +81,10 @@ flowchart LR
     C[📋 Sample<br/>Statistic] -->|"We calculate"| D[📊 Sample Result]
     D -->|"We infer"| B
 
-    style A fill:#ffcdd2
-    style C fill:#fff3e0
-    style D fill:#e8f5e8
-    style B fill:#fce4ec
+    style A fill:#ffcdd2,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#e8f5e8,color:#000
+    style B fill:#fce4ec,color:#000
 ```
 
 **Key Point:** We use sample statistics to estimate population parameters!
@@ -108,12 +108,12 @@ flowchart TD
     D --> E[📊 Interpretation]
     E --> F[💡 Decision Making]
 
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#fff3e0
-    style D fill:#e8f5e8
-    style E fill:#fce4ec
-    style F fill:#f1f8e9
+    style A fill:#e1f5fe,color:#000
+    style B fill:#f3e5f5,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#e8f5e8,color:#000
+    style E fill:#fce4ec,color:#000
+    style F fill:#f1f8e9,color:#000
 ```
 
 ## 📋 Types of Data
@@ -130,13 +130,13 @@ graph TD
     C --> F[🏷️ Nominal<br/>No Order]
     C --> G[📊 Ordinal<br/>Has Rank]
 
-    style A fill:#e3f2fd
-    style B fill:#fff3e0
-    style C fill:#fce4ec
-    style D fill:#e8f5e8
-    style E fill:#e8f5e8
-    style F fill:#f3e5f5
-    style G fill:#f3e5f5
+    style A fill:#e3f2fd,color:#000
+    style B fill:#fff3e0,color:#000
+    style C fill:#fce4ec,color:#000
+    style D fill:#e8f5e8,color:#000
+    style E fill:#e8f5e8,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#f3e5f5,color:#000
 ```
 
 ### 🔢 Quantitative Data (Numerical)
@@ -235,8 +235,8 @@ graph LR
     E --> F[💭 Interpret]
     F --> G[📋 Report]
 
-    style A fill:#ffebee
-    style G fill:#e8f5e8
+    style A fill:#ffebee,color:#000
+    style G fill:#e8f5e8,color:#000
 ```
 
 ## 📖 Next Steps
