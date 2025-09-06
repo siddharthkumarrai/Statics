@@ -68,10 +68,10 @@ graph TD
     B --> C[📊 Statistical Analysis]
     C --> D[🔍 Inferences about Population]
 
-    style A fill:#ffebee
-    style B fill:#fff3e0
-    style C fill:#e8f5e8
-    style D fill:#fce4ec
+    style A fill:#ffebee color:#000000
+    style B fill:#fff3e0 color:#000000
+    style C fill:#e8f5e8 color:#000000
+    style D fill:#fce4ec color:#000000
 ```
 
 ### 🔄 The Statistical Inference Process
