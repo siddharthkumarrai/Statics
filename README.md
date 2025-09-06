@@ -119,108 +119,40 @@ flowchart TD
 ## 📋 Types of Data
 Data can be broadly categorized into two main types:
 
-```mermaid
-graph TD
-    subgraph "Types of Data"
-        subgraph "Header"
-            H1[DMC] 
-            H2[DC] 
-            H3[ISI] 
-            H4[BUI] 
-            H5[FWI] 
-            H6[Classes] 
-            H7[Region]
-        end
-        
-        subgraph "Row 1"
-            R1C1[3.4] 
-            R1C2[7.6] 
-            R1C3[1.3] 
-            R1C4[3.4] 
-            R1C5[0.5] 
-            R1C6[not fire] 
-            R1C7[0]
-        end
-        
-        subgraph "Row 2"
-            R2C1[4.1] 
-            R2C2[7.6] 
-            R2C3[1] 
-            R2C4[3.9] 
-            R2C5[0.4] 
-            R2C6[not fire] 
-            R2C7[0]
-        end
-        
-        subgraph "Row 3"
-            R3C1[2.5] 
-            R3C2[7.1] 
-            R3C3[0.3] 
-            R3C4[2.7] 
-            R3C5[0.1] 
-            R3C6[not fire] 
-            R3C7[0]
-        end
-        
-        subgraph "Row 4"
-            R4C1[1.3] 
-            R4C2[6.9] 
-            R4C3[0] 
-            R4C4[1.7] 
-            R4C5[0] 
-            R4C6[not fire] 
-            R4C7[0]
-        end
-        
-        subgraph "Row 5"
-            R5C1[3] 
-            R5C2[14.2] 
-            R5C3[1.2] 
-            R5C4[3.9] 
-            R5C5[0.5] 
-            R5C6[not fire] 
-            R5C7[0]
-        end
-        
-        subgraph "Row 6"
-            R6C1[5.8] 
-            R6C2[22.2] 
-            R6C3[3.1] 
-            R6C4[7] 
-            R6C5[2.5] 
-            R6C6[fire] 
-            R6C7[0]
-        end
-        
-        subgraph "Row 7"
-            R7C1[9.9] 
-            R7C2[30.5] 
-            R7C3[6.4] 
-            R7C4[10.9] 
-            R7C5[7.2] 
-            R7C6[fire] 
-            R7C7[0]
-        end
-        
-        subgraph "Row 8"
-            R8C1[12.1] 
-            R8C2[38.3] 
-            R8C3[5.6] 
-            R8C4[13.5] 
-            R8C5[7.1] 
-            R8C6[fire] 
-            R8C7[0]
-        end
-    end
-    
-    style H1 fill:#e1f5fe,color:#000
-    style H2 fill:#e1f5fe,color:#000
-    style H3 fill:#e1f5fe,color:#000
-    style H4 fill:#e1f5fe,color:#000
-    style H5 fill:#e1f5fe,color:#000
-    style H6 fill:#e1f5fe,color:#000
-    style H7 fill:#e1f5fe,color:#000
-```
+<div align="center">
+<h1>(3) Types of Data</h1>
+
+<table>
+<tr style="background-color: #f2f2f2;">
+<th>DMC</th><th>DC</th><th>ISI</th><th>BUI</th><th>FWI</th><th>Classes</th><th>Region</th>
+</tr>
+<tr>
+<td>3.4</td><td>7.6</td><td>1.3</td><td>3.4</td><td>0.5</td><td>not fire</td><td>0</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td>4.1</td><td>7.6</td><td>1</td><td>3.9</td><td>0.4</td><td>not fire</td><td>0</td>
+</tr>
+<tr>
+<td>2.5</td><td>7.1</td><td>0.3</td><td>2.7</td><td>0.1</td><td>not fire</td><td>0</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td>1.3</td><td>6.9</td><td>0</td><td>1.7</td><td>0</td><td>not fire</td><td>0</td>
+</tr>
+<tr>
+<td>3</td><td>14.2</td><td>1.2</td><td>3.9</td><td>0.5</td><td>not fire</td><td>0</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td>5.8</td><td>22.2</td><td>3.1</td><td>7</td><td>2.5</td><td>fire</td><td>0</td>
+</tr>
+<tr>
+<td>9.9</td><td>30.5</td><td>6.4</td><td>10.9</td><td>7.2</td><td>fire</td><td>0</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td>12.1</td><td>38.3</td><td>5.6</td><td>13.5</td><td>7.1</td><td>fire</td><td>0</td>
+</tr>
+</table>
+</div>
+
 
 ```mermaid
 graph TD
