@@ -116,43 +116,67 @@ flowchart TD
     style F fill:#f1f8e9,color:#000
 ```
 
+## 📏 Scales of Measurement
+Understanding the scale of measurement is crucial for choosing appropriate statistical methods. There are four main scales:
+
+### 1️⃣ Nominal Scale Data
+- **Definition:** Qualitative/Categorical data
+- **Characteristics:**
+  - Order does not matter
+  - Categories with no ranking
+  - Can only count frequencies and find mode
+- **Examples:**
+  - Favorite Color: Red (5) → 50%, Blue (3) → 30%, Orange (2) → 20%
+  - Gender: M, F
+  - Blood Type: A, B, AB, O
+
+### 2️⃣ Ordinal Scale Data  
+- **Definition:** Categorical data with meaningful order
+- **Characteristics:**
+  - Ranking is important
+  - Order matters
+  - Differences cannot be measured precisely
+- **Examples:**
+  - Rating Scale: 1 → Best, 2 → Good, 3 → Bad
+  - Education Level: High School < Bachelor's < Master's < PhD
+  - Customer Satisfaction: Poor < Fair < Good < Excellent
+
+### 3️⃣ Interval Scale Data
+- **Definition:** Numerical data with equal intervals
+- **Characteristics:**
+  - Order matters
+  - Differences can be measured
+  - **No true "0" starting point**
+  - Ratios cannot be calculated meaningfully
+- **Examples:**
+  - Temperature: -30°F, -15°F, 30°F, 60°F, 90°F, 120°F
+    - Difference: 60°F - 30°F = 30°F (meaningful)
+    - Ratio: 90°F ÷ 30°F = 3:1 (NOT meaningful - 90°F is not "3 times hotter")
+
+### 4️⃣ Ratio Scale Data
+- **Definition:** Numerical data with true zero point
+- **Characteristics:**
+  - Order matters ✓
+  - Differences are measurable ✓
+  - **Contains a true "0" starting point** ✓
+  - Ratios can be calculated meaningfully ✓
+- **Examples:**
+  - Student marks in a class: 0, 90, 60, 30, 35, 40, 50
+    - Mean = 30, 40, 50, 60, 35, 90
+    - Differences: 40 - 30 = 10 points
+    - Ratio: 90 ÷ 30 = 3:1 (90 is 3 times higher than 30)
+
+## 📊 Scale Comparison Table
+
+| **Scale** | **Order Matters** | **Measurable Differences** | **True Zero** | **Ratios Meaningful** | **Examples** |
+|-----------|-------------------|----------------------------|---------------|---------------------|--------------|
+| **Nominal** | ❌ | ❌ | ❌ | ❌ | Colors, Gender, Blood Type |
+| **Ordinal** | ✅ | ❌ | ❌ | ❌ | Ratings, Education Level |
+| **Interval** | ✅ | ✅ | ❌ | ❌ | Temperature (°F, °C) |
+| **Ratio** | ✅ | ✅ | ✅ | ✅ | Height, Weight, Age, Income |
+
 ## 📋 Types of Data
 Data can be broadly categorized into two main types:
-
-<div align="center">
-<h1>Types of Data</h1>
-
-<table>
-<tr style="background-color: #f2f2f2;">
-<th>DMC</th><th>DC</th><th>ISI</th><th>BUI</th><th>FWI</th><th>Classes</th><th>Region</th>
-</tr>
-<tr>
-<td>3.4</td><td>7.6</td><td>1.3</td><td>3.4</td><td>0.5</td><td>not fire</td><td>0</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td>4.1</td><td>7.6</td><td>1</td><td>3.9</td><td>0.4</td><td>not fire</td><td>0</td>
-</tr>
-<tr>
-<td>2.5</td><td>7.1</td><td>0.3</td><td>2.7</td><td>0.1</td><td>not fire</td><td>0</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td>1.3</td><td>6.9</td><td>0</td><td>1.7</td><td>0</td><td>not fire</td><td>0</td>
-</tr>
-<tr>
-<td>3</td><td>14.2</td><td>1.2</td><td>3.9</td><td>0.5</td><td>not fire</td><td>0</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td>5.8</td><td>22.2</td><td>3.1</td><td>7</td><td>2.5</td><td>fire</td><td>0</td>
-</tr>
-<tr>
-<td>9.9</td><td>30.5</td><td>6.4</td><td>10.9</td><td>7.2</td><td>fire</td><td>0</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td>12.1</td><td>38.3</td><td>5.6</td><td>13.5</td><td>7.1</td><td>fire</td><td>0</td>
-</tr>
-</table>
-</div>
-
 
 ```mermaid
 graph TD
@@ -191,7 +215,7 @@ graph TD
 - **Examples:**
   - Weight: 65.5 kg, 72.3 kg, 80.125 kg
   - Height: 165.2 cm, 175.8 cm, 180.25 cm
-  - Temperature: 25.7C, 32.4C, 18.9C
+  - Temperature: 25.7C, 32.4C, 18.9C
   - Speed: 60.5 km/h, 85.3 km/h
 
 ### 📝 Qualitative Data (Categorical)
@@ -216,12 +240,14 @@ graph TD
 
 ### 📊 Data Types Summary Table
 
-| **Data Type** | **Subtype** | **Description** | **Examples** | **Operations** |
-|---------------|-------------|-----------------|--------------|----------------|
-| **Quantitative** | Discrete | Countable whole numbers | Bank accounts, Children, Students | +, -, ×, ÷, Statistics |
-| **Quantitative** | Continuous | Any numerical value | Weight, Height, Temperature | +, -, ×, ÷, Statistics |
-| **Qualitative** | Nominal | Categories, no order | Gender, Blood group, Colors | Count, Mode |
-| **Qualitative** | Ordinal | Categories with order | Ratings, Education level | Count, Mode, Median |
+| **Data Type** | **Subtype** | **Description** | **Examples** | **Operations** | **Scale** |
+|---------------|-------------|-----------------|--------------|----------------|-----------|
+| **Quantitative** | Discrete | Countable whole numbers | Bank accounts, Children, Students | +, -, ×, ÷, Statistics | Ratio |
+| **Quantitative** | Continuous | Any numerical value | Weight, Height, Temperature* | +, -, ×, ÷, Statistics | Interval/Ratio |
+| **Qualitative** | Nominal | Categories, no order | Gender, Blood group, Colors | Count, Mode | Nominal |
+| **Qualitative** | Ordinal | Categories with order | Ratings, Education level | Count, Mode, Median | Ordinal |
+
+**Note:** Temperature in Celsius/Fahrenheit is Interval scale, while Kelvin is Ratio scale due to absolute zero.
 
 ## 📊 Data Visualization Examples
 
@@ -249,6 +275,7 @@ Statistics helps us:
 - ✅ Predict future outcomes
 - ✅ Test hypotheses
 - ✅ Reduce uncertainty
+- ✅ Choose appropriate analysis methods based on data scale
 
 ## 📚 Common Statistical Applications
 
@@ -299,6 +326,12 @@ graph LR
 📈 Continuous = Any value (1.5, 2.7, 3.14...)
 🏷️ Nominal = No order (Gender, Colors)
 📊 Ordinal = Has order (Ratings, Grades)
+
+📏 Scales of Measurement:
+🏷️ Nominal = Categories, no order (Gender, Colors)
+📊 Ordinal = Categories with order (Ratings, Education)  
+📏 Interval = Equal intervals, no true zero (Temperature °C/°F)
+📐 Ratio = True zero point, ratios meaningful (Height, Weight, Age)
 ```
 
 ---
