@@ -120,7 +120,7 @@ flowchart TD
 Data can be broadly categorized into two main types:
 
 <div align="center">
-<h1>(3) Types of Data</h1>
+<h1>Types of Data</h1>
 
 <table>
 <tr style="background-color: #f2f2f2;">
