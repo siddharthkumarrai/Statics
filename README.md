@@ -267,6 +267,284 @@ print(f"Mode: {mode_age[0]}")  # 21
 
 In this case, **median** gives the best representation of central tendency due to the outlier.
 
+## 📏 Measures of Dispersion (Spread of Data)
+
+While measures of central tendency tell us about the center of our data, **measures of dispersion** tell us how spread out or scattered the data points are from the center. Understanding dispersion is crucial because two datasets can have the same mean but very different spreads.
+
+### 📊 What is Dispersion?
+**Dispersion** refers to how much the data points deviate from the central value (mean). It helps us understand:
+- How consistent or variable our data is
+- The reliability of our central tendency measures
+- The range of values we can expect in our dataset
+
+### 📈 Visual Understanding of Dispersion
+
+```mermaid
+graph LR
+    A[Low Dispersion<br/>S² = 2.5] --> B[📊 Data clustered<br/>around center]
+    C[High Dispersion<br/>S² = 9.5] --> D[📊 Data spread out<br/>from center]
+    
+    style A fill:#e8f5e8,color:#000
+    style B fill:#e8f5e8,color:#000
+    style C fill:#ffebee,color:#000
+    style D fill:#ffebee,color:#000
+```
+
+Two datasets can have the same mean but different spreads:
+- **Dataset A:** {49, 50, 51} → Mean = 50, Low dispersion
+- **Dataset B:** {30, 50, 70} → Mean = 50, High dispersion
+
+### 1️⃣ Variance
+
+**Definition:** Variance measures the average of squared differences from the mean. It tells us how much the data points deviate from the mean on average.
+
+#### Population Variance (σ²)
+For a population with N values:
+```
+Population Variance (σ²) = Σ(Xi - μ)² / N
+
+Where:
+• Xi = Individual data points
+• μ = Population mean  
+• N = Population size
+```
+
+#### Sample Variance (S²)
+For a sample with n values:
+```
+Sample Variance (S²) = Σ(Xi - x̄)² / (n-1)
+
+Where:
+• Xi = Individual data points
+• x̄ = Sample mean
+• n = Sample size
+```
+
+#### 🤔 Why do we divide Sample Variance by (n-1)?
+This is called **Bessel's Correction** and it helps us create an **unbiased estimator** of the population variance. When we use a sample to estimate population parameters, dividing by (n-1) instead of n gives us a more accurate estimate.
+
+### 2️⃣ Standard Deviation
+
+**Definition:** Standard deviation is the square root of variance. It's expressed in the same units as the original data, making it easier to interpret.
+
+#### Population Standard Deviation (σ)
+```
+Population Standard Deviation (σ) = √(Variance) = √σ²
+```
+
+#### Sample Standard Deviation (S)
+```
+Sample Standard Deviation (S) = √(Sample Variance) = √S²
+```
+
+### 📊 Practical Example: Calculating Variance and Standard Deviation
+
+Let's work through a complete example:
+
+**Dataset:** Ages = {23, 43, 23, 56, 74, 32, 68, 98, 45, 32}
+
+**Step 1:** Calculate the mean
+```python
+import numpy as np
+
+ages = [23, 43, 23, 56, 74, 32, 68, 98, 45, 32]
+mean_age = np.mean(ages)
+print(f"Mean: {mean_age}")  # Output: 49.4
+```
+
+**Step 2:** Calculate variance
+```python
+# Population variance (if this is our entire population)
+population_variance = np.var(ages)  # Uses N in denominator
+print(f"Population Variance: {population_variance}")  # Output: 541.64
+
+# Sample variance (if this is a sample from larger population)  
+sample_variance = np.var(ages, ddof=1)  # Uses n-1 in denominator
+print(f"Sample Variance: {sample_variance}")  # Output: ~601.82
+```
+
+**Step 3:** Calculate standard deviation
+```python
+# Standard deviation
+population_std = np.std(ages)  # Population std
+sample_std = np.std(ages, ddof=1)  # Sample std
+
+print(f"Population Std: {population_std}")  # Output: ~23.27
+print(f"Sample Std: {sample_std}")  # Output: ~24.53
+```
+
+### 📊 Manual Calculation Example
+
+For the dataset: {1, 2, 3, 4, 5}
+
+**Step 1:** Find the mean
+```
+Mean (x̄) = (1+2+3+4+5)/5 = 15/5 = 3
+```
+
+**Step 2:** Calculate deviations from mean
+```
+(1-3)² = (-2)² = 4
+(2-3)² = (-1)² = 1  
+(3-3)² = (0)² = 0
+(4-3)² = (1)² = 1
+(5-3)² = (2)² = 4
+```
+
+**Step 3:** Sum of squared deviations
+```
+Σ(Xi - x̄)² = 4 + 1 + 0 + 1 + 4 = 10
+```
+
+**Step 4:** Calculate variance
+```
+Sample Variance (S²) = 10/(5-1) = 10/4 = 2.5
+```
+
+**Step 5:** Calculate standard deviation  
+```
+Sample Standard Deviation (S) = √2.5 = 1.58
+```
+
+### 📈 Working with DataFrames
+
+```python
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with sample data
+data = [[10, 12, 13], [34, 23, 45], [32, 34, 21]]
+df = pd.DataFrame(data, columns=["A", "B", "C"])
+
+print("Data:")
+print(df)
+
+# Calculate variance for each column
+variance_by_column = df.var()  # Sample variance (uses n-1)
+print(f"\nVariance by column:\n{variance_by_column}")
+
+# Calculate variance for each row
+variance_by_row = df.var(axis=1)  # Variance across columns for each row
+print(f"\nVariance by row:\n{variance_by_row}")
+
+# Calculate standard deviation
+std_by_column = df.std()
+print(f"\nStandard Deviation by column:\n{std_by_column}")
+```
+
+**Output:**
+```
+Data:
+    A   B   C
+0  10  12  13
+1  34  23  45
+2  32  34  21
+
+Variance by column:
+A    177.333333
+B    121.000000  
+C    277.333333
+
+Standard Deviation by column:
+A    13.316624
+B    11.000000
+C    16.653332
+```
+
+### 🎯 Interpreting Variance and Standard Deviation
+
+| **Value** | **Interpretation** | **Example** |
+|-----------|-------------------|-------------|
+| **Low Variance/Std Dev** | Data points are close to the mean | Test scores: 85, 87, 86, 88, 84 |
+| **High Variance/Std Dev** | Data points are spread out from the mean | Test scores: 60, 95, 70, 40, 85 |
+| **Zero Variance** | All data points are identical | Test scores: 80, 80, 80, 80, 80 |
+
+### 📊 Visualization of Dispersion
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Create sample data with different dispersions
+low_dispersion = [49, 50, 50, 50, 51]    # Low spread
+high_dispersion = [30, 40, 50, 60, 70]   # High spread
+
+# Create histogram to visualize
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+sns.histplot(low_dispersion, kde=True)
+plt.title(f'Low Dispersion\nStd = {np.std(low_dispersion, ddof=1):.2f}')
+
+plt.subplot(1, 2, 2)
+sns.histplot(high_dispersion, kde=True)
+plt.title(f'High Dispersion\nStd = {np.std(high_dispersion, ddof=1):.2f}')
+
+plt.tight_layout()
+plt.show()
+```
+
+### 🔍 Key Differences: Population vs Sample
+
+| **Aspect** | **Population** | **Sample** |
+|------------|----------------|------------|
+| **Variance Formula** | σ² = Σ(Xi-μ)²/N | S² = Σ(Xi-x̄)²/(n-1) |
+| **Std Dev Formula** | σ = √σ² | S = √S² |
+| **Denominator** | N (population size) | n-1 (degrees of freedom) |
+| **Purpose** | Describes entire population | Estimates population parameters |
+| **Symbol** | σ² (sigma squared), σ | S², S |
+
+### 💡 Practical Applications
+
+**1. Quality Control:**
+- Manufacturing: Monitor product consistency
+- Low variance = consistent quality
+- High variance = quality issues
+
+**2. Finance:**
+- Investment risk assessment
+- Low variance = stable returns  
+- High variance = volatile returns
+
+**3. Education:**
+- Student performance analysis
+- Low variance = consistent class performance
+- High variance = mixed ability levels
+
+**4. Healthcare:**
+- Treatment effectiveness
+- Low variance = predictable treatment outcomes
+- High variance = unpredictable results
+
+### 📚 Summary: Measures of Dispersion
+
+```
+📏 Measures of Dispersion = How spread out the data is
+
+🔢 Variance = Average of squared differences from mean
+   • Population: σ² = Σ(Xi-μ)²/N  
+   • Sample: S² = Σ(Xi-x̄)²/(n-1)
+
+📐 Standard Deviation = Square root of variance
+   • Population: σ = √σ²
+   • Sample: S = √S²
+
+🎯 Why Standard Deviation?
+   • Same units as original data
+   • Easier to interpret than variance
+   • Shows typical deviation from mean
+
+🔄 Bessel's Correction (n-1):
+   • Used in sample calculations
+   • Provides unbiased estimate
+   • Accounts for sampling variability
+
+📊 Interpretation:
+   • Low values = Data clustered near mean
+   • High values = Data spread out from mean  
+   • Zero = All data points identical
+```
+
 ## 📈 Key Concepts
 
 ### Data
@@ -482,9 +760,9 @@ graph LR
 ```
 
 ## 📖 Next Steps
-1. **Learn about measures of dispersion** (variance, standard deviation)
+1. **Learn about probability concepts**
 2. **Explore data visualization techniques** (charts, graphs)
-3. **Understand probability concepts**
+3. **Understand hypothesis testing**
 4. **Practice with real datasets**
 
 ---
