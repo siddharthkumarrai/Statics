@@ -89,6 +89,184 @@ flowchart LR
 
 **Key Point:** We use sample statistics to estimate population parameters!
 
+## 📊 Measures of Central Tendency
+
+Central tendency describes where the center of a dataset lies. There are three primary measures:
+
+### 1️⃣ Mean (Average)
+**Definition:** The arithmetic average of all values in a dataset
+
+#### Population Mean (μ)
+For a population with N values:
+```
+Population Mean (μ) = Σ Xi / N
+                    = (X₁ + X₂ + X₃ + ... + Xₙ) / N
+```
+
+#### Sample Mean (x̄)
+For a sample with n values:
+```
+Sample Mean (x̄) = Σ Xi / n
+                 = (X₁ + X₂ + X₃ + ... + Xₙ) / n
+```
+
+**Example:**
+Population: X = {1, 1, 2, 2, 3, 3, 4, 5, 5, 6}
+```
+Population Mean (μ) = (1+1+2+2+3+3+4+5+5+6) / 10 = 32 / 10 = 3.2
+```
+
+**Programming Implementation:**
+```python
+import numpy as np
+
+# Calculate mean using numpy
+age = [12, 21, 23, 45, 65, 43, 56, 45, 32, 67, 54, 34]
+mean_age = np.mean(age)
+print(f"Mean age: {mean_age}")  # Output: 41.41666666666667
+```
+
+### 2️⃣ Median
+**Definition:** The middle value when data is arranged in ascending or descending order
+
+#### Steps to Find Median:
+1. **Sort the data** in ascending order
+2. **Count the number of elements**
+3. **If count is odd:** Median = middle value
+4. **If count is even:** Median = average of two middle values
+
+**Examples:**
+
+**Case 1: Odd number of elements**
+```
+X = {4, 5, 2, 3, 2, 1}
+Sorted: {1, 2, 2, 3, 4, 5}
+Count = 6 (even)
+Median = (2 + 3) / 2 = 2.5
+```
+
+**Case 2: Even number of elements**  
+```
+X = {1, 2, 3, 4, 5, 100}
+Count = 6 (even)
+Middle positions: 3rd and 4th values = 3 and 4
+Median = (3 + 4) / 2 = 3.5
+```
+
+**Why Use Median?**
+Median is useful when **outliers are present** in the data because it's less affected by extreme values.
+
+**Comparison Example:**
+- Without outlier: X = {1, 2, 3, 4, 5} → Mean = 3, Median = 3
+- With outlier: X = {1, 2, 3, 4, 5, 100} → Mean ≈ 19.2, Median = 3.5
+
+The median (3.5) better represents the central tendency when outliers are present.
+
+**Programming Implementation:**
+```python
+import numpy as np
+
+# Calculate median using numpy
+age = [12, 21, 23, 45, 65, 43, 56, 45, 32, 67, 54, 34, 200]
+median_age = np.median(age)
+print(f"Median age: {median_age}")  # Output: 45.0
+```
+
+### 3️⃣ Mode
+**Definition:** The value(s) that appear most frequently in a dataset
+
+**Characteristics:**
+- **Most frequent value** in the dataset
+- A dataset can have:
+  - **No mode** (all values appear equally)
+  - **One mode** (unimodal)
+  - **Two modes** (bimodal)  
+  - **Multiple modes** (multimodal)
+
+**Example:**
+```
+Dataset: {2, 1, 1, 1, 4, 5, 7, 8, 9, 9, 10}
+
+Frequency count:
+1 appears 3 times
+9 appears 2 times  
+All others appear 1 time each
+
+Mode = 1 (highest frequency)
+```
+
+**Programming Implementation:**
+```python
+from scipy import stats
+
+# Calculate mode using scipy
+age = [12, 21, 23, 45, 65, 43, 56, 45, 32, 67, 54, 34, 200]
+mode_result = stats.mode(age)
+print(f"Mode: {mode_result}")  # Returns mode value and count
+```
+
+### 📊 Central Tendency Comparison
+
+| **Measure** | **Best Used When** | **Advantages** | **Disadvantages** | **Affected by Outliers?** |
+|-------------|-------------------|----------------|-------------------|---------------------------|
+| **Mean** | Normal distribution, no outliers | Uses all data points | Sensitive to outliers | Yes |
+| **Median** | Skewed data, outliers present | Resistant to outliers | Ignores extreme values | No |
+| **Mode** | Categorical data, finding most common | Shows most frequent value | May not exist or be unique | No |
+
+### 🎯 When to Use Each Measure
+
+```mermaid
+flowchart TD
+    A[📊 Choose Central Tendency] --> B{Data Type?}
+    
+    B -->|Numerical| C{Distribution Shape?}
+    B -->|Categorical| D[📍 Use Mode]
+    
+    C -->|Normal/Symmetric| E[📊 Use Mean]
+    C -->|Skewed| F[📊 Use Median]
+    C -->|Has Outliers| G[📊 Use Median]
+    
+    style A fill:#e3f2fd,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#e8f5e8,color:#000
+    style F fill:#fce4ec,color:#000
+    style G fill:#fce4ec,color:#000
+```
+
+### 📈 Practical Example: Complete Analysis
+
+Let's analyze a complete dataset:
+
+**Dataset:** Ages of students in a class
+```python
+ages = [18, 19, 20, 20, 21, 21, 21, 22, 23, 45]
+```
+
+**Calculations:**
+```python
+import numpy as np
+from scipy import stats
+
+# Mean
+mean_age = np.mean(ages)
+print(f"Mean: {mean_age}")  # 23.0
+
+# Median  
+median_age = np.median(ages)
+print(f"Median: {median_age}")  # 21.0
+
+# Mode
+mode_age = stats.mode(ages)
+print(f"Mode: {mode_age[0]}")  # 21
+```
+
+**Analysis:**
+- **Mean (23.0):** Pulled up by the outlier (45)
+- **Median (21.0):** Better represents the typical student age
+- **Mode (21):** Most common age in the class
+
+In this case, **median** gives the best representation of central tendency due to the outlier.
+
 ## 📈 Key Concepts
 
 ### Data
@@ -266,7 +444,9 @@ Student H: 172 cm
 ### Basic Statistics from Our Example:
 - **Count**: 8 students
 - **Range**: 135 cm - 190 cm (55 cm difference)
-- **Average**: ~165.6 cm
+- **Mean**: ~165.6 cm
+- **Median**: ~170 cm
+- **Mode**: No mode (all values unique)
 
 ## 🎯 Why Statistics Matters
 Statistics helps us:
@@ -302,7 +482,7 @@ graph LR
 ```
 
 ## 📖 Next Steps
-1. **Learn about measures of central tendency** (mean, median, mode)
+1. **Learn about measures of dispersion** (variance, standard deviation)
 2. **Explore data visualization techniques** (charts, graphs)
 3. **Understand probability concepts**
 4. **Practice with real datasets**
@@ -332,6 +512,11 @@ graph LR
 📊 Ordinal = Categories with order (Ratings, Education)  
 📏 Interval = Equal intervals, no true zero (Temperature °C/°F)
 📐 Ratio = True zero point, ratios meaningful (Height, Weight, Age)
+
+📊 Central Tendency:
+📊 Mean = Arithmetic average (Σx/n)
+📊 Median = Middle value when sorted
+📊 Mode = Most frequent value
 ```
 
 ---
