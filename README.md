@@ -89,6 +89,118 @@ flowchart LR
 
 **Key Point:** We use sample statistics to estimate population parameters!
 
+## 🎲 Random Variables
+
+A **Random Variable** is a process of mapping the output of a random process or experiments to a number.
+
+**Definition:** A random variable assigns numerical values to the outcomes of a random experiment or process.
+
+### 📝 Examples of Random Variables
+
+#### 🪙 Coin Tossing
+```
+X = { 0  if Head
+    { 1  if Tails
+```
+
+#### 🎲 Rolling a Dice
+The outcome when rolling a standard six-sided dice: X can take values {1, 2, 3, 4, 5, 6}
+
+#### 🌡️ Temperature Measurement
+Measuring the temperature of the next day - X represents the temperature value
+
+#### 🎯 Complex Random Variables
+**Y = Sum of rolling a dice 7 times**
+
+This can be used to calculate probabilities:
+- P(Y > 15) - Probability that sum is greater than 15
+- P(Y < 10) - Probability that sum is less than 10
+
+### 🔢 Types of Random Variables
+
+Random variables can be classified as:
+- **Discrete Random Variables:** Can only take specific, countable values (like dice outcomes: 1, 2, 3, 4, 5, 6)
+- **Continuous Random Variables:** Can take any value within a range (like temperature: 25.3°C, 25.31°C, etc.)
+
+## 📚 Set Theory Fundamentals
+
+Understanding set theory is crucial for probability and statistics. Here are the key set operations:
+
+### 🔍 Basic Set Concepts
+
+#### 📊 Sets
+**Set A:** {1, 2, 3, 4, 5, 6, 7, 8}
+**Set B:** {3, 4, 5, 6, 7}
+
+### 🔄 Set Operations
+
+#### 1️⃣ Intersection (A ∩ B)
+**Definition:** Elements that are common to both sets
+**Result:** A ∩ B = {3, 4, 5, 6, 7}
+
+**Visual Representation:** The overlapping region in a Venn diagram
+```
+    A     B
+   ╭───╮ ╭───╮
+  ╱     ╲╱     ╲
+ ╱   A   ╳  B   ╲
+╱        ╱╲      ╲
+╲       ╱  ╲     ╱
+ ╲     ╱ ∩  ╲   ╱
+  ╲___╱      ╲_╱
+```
+
+#### 2️⃣ Union (A ∪ B)
+**Definition:** All elements that belong to either set A or set B (or both)
+**Result:** A ∪ B = {1, 2, 3, 4, 5, 6, 7, 8}
+
+**Visual Representation:** The entire shaded area in both circles
+```
+    A     B
+   ╭═══╮ ╭═══╮
+  ║     ╲╱     ║
+ ║   A   ╳  B   ║
+║        ╱╲      ║
+╚═══════╱  ╲═════╝
+       ╱ ∪  ╲   
+      ╱      ╲ 
+```
+
+#### 3️⃣ Difference (A - B)
+**Definition:** Elements that are in set A but not in set B
+**Result:** A - B = {1, 2, 8}
+
+**Visual Representation:** The part of A that doesn't overlap with B
+```
+    A     B
+   ╭═══╮ ╭───╮
+  ║█████╲╱     ╲
+ ║███A███╳  B   ╲
+║████████╱╲      ╲
+╚═══════╱  ╲     ╱
+       ╱    ╲   ╱
+      ╱      ╲_╱
+```
+
+### 🔗 Set Relationships
+
+#### 4️⃣ Subset
+**A → B:** "A is a subset of B" means every element of A is also in B
+- **Example:** A → B = False (because 1, 2, 8 are in A but not in B)
+
+#### 5️⃣ Superset  
+**A → B:** "A is a superset of B" means A contains all elements of B
+- **Example:** B → A = True (because all elements of B {3,4,5,6,7} are in A)
+
+### 🎯 Set Theory Applications in Probability
+
+Set theory forms the foundation for probability concepts:
+- **Sample Space (S):** The set of all possible outcomes
+- **Events:** Subsets of the sample space
+- **Intersection:** Joint events (A AND B)
+- **Union:** Combined events (A OR B)
+- **Complement:** Events that don't occur
+
 ## 📊 Measures of Central Tendency
 
 Central tendency describes where the center of a dataset lies. There are three primary measures:
@@ -790,6 +902,18 @@ graph LR
 🔍 Descriptive = Organizing & summarizing data
 🎯 Inferential = Making conclusions from data
 
+🎲 Random Variable = Mapping random outcomes to numbers
+🪙 Examples: Coin toss (0,1), Dice roll (1-6), Temperature
+🔢 Discrete RV = Countable values (dice, coins)
+📈 Continuous RV = Any value in range (temperature, height)
+
+📚 Set Theory Basics:
+🔗 A ∩ B = Intersection (common elements)
+🔄 A ∪ B = Union (all elements from both sets)
+➖ A - B = Difference (elements in A but not B)
+⊆ A ⊆ B = Subset (A is contained in B)
+⊇ B ⊇ A = Superset (B contains A)
+
 🔢 Quantitative = Numerical data (Discrete + Continuous)
 📝 Qualitative = Categorical data (Nominal + Ordinal)
 🎯 Discrete = Countable numbers (1, 2, 3...)
@@ -826,4 +950,3 @@ graph LR
 ---
 
 *Remember: Good statistics start with good data! Always ensure your data is accurate, relevant, and properly collected.*
-|
