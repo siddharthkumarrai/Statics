@@ -1,5 +1,5 @@
 # Introduction to Statistics
-> *"Statistics is the grammar of science."* - Karl Pearson
+> *"Statistics is the grammar of science."* - Karl Pearson 
 
 ## 📊 What is Statistics?
 **Statistics** is the science of collecting, organizing, and analyzing data to make informed decisions and draw meaningful conclusions from information.
