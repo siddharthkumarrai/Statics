@@ -669,91 +669,392 @@ print(std_by_column)
    • Zero = All data points identical
 ```
 
-## 📈 Key Concepts
+## 📊 Histograms and Data Distribution
 
-### Data
-**Definition:** Facts or pieces of information that can be collected, measured, and analyzed.
+Histograms are one of the most fundamental tools in statistics for visualizing the distribution of data. They help us understand the shape, center, and spread of our dataset at a glance.
 
-**Example:** Heights of students in a classroom
+### 📊 What is a Histogram?
+
+**Definition:** A histogram is a graphical representation that shows the distribution of numerical data by dividing the data into bins (intervals) and displaying the frequency of data points in each bin.
+
+**Key Components:**
+- **X-axis:** Data values divided into bins (intervals)
+- **Y-axis:** Frequency (count) of data points in each bin
+- **Bars:** Height represents frequency, width represents bin size
+
+### 🔢 Creating Histograms: Bin Size Calculation
+
+From the lecture example with age data:
 ```
-{135 cm, 180 cm, 190 cm, 160 cm, 145 cm, 175 cm, 168 cm, 172 cm}
-```
-
-## 🔄 The Statistical Process
-```mermaid
-flowchart TD
-    A[📊 Statistics] --> B[📋 Data Collection]
-    B --> C[🗂️ Data Organization]
-    C --> D[🔍 Data Analysis]
-    D --> E[📊 Interpretation]
-    E --> F[💡 Decision Making]
-
-    style A fill:#e1f5fe,color:#000
-    style B fill:#f3e5f5,color:#000
-    style C fill:#fff3e0,color:#000
-    style D fill:#e8f5e8,color:#000
-    style E fill:#fce4ec,color:#000
-    style F fill:#f1f8e9,color:#000
+Ages = {10, 12, 19, 18, 24, 26, 30, 35, 36, 37, 42, 41, 42, 45, 50, 51}
 ```
 
-## 📏 Scales of Measurement
-Understanding the scale of measurement is crucial for choosing appropriate statistical methods. There are four main scales:
+#### 📏 Determining Bin Size
+There are different methods to determine optimal bin size:
 
-### 1️⃣ Nominal Scale Data
-- **Definition:** Qualitative/Categorical data
-- **Characteristics:**
-  - Order does not matter
-  - Categories with no ranking
-  - Can only count frequencies and find mode
-- **Examples:**
-  - Favorite Color: Red (5) → 50%, Blue (3) → 30%, Orange (2) → 20%
-  - Gender: M, F
-  - Blood Type: A, B, AB, O
+**Method 1: Simple Division**
+```
+Bin Size = (Max - Min) / Number of desired bins
+= (51 - 10) / 10 = 4.1 ≈ 5
+```
 
-### 2️⃣ Ordinal Scale Data  
-- **Definition:** Categorical data with meaningful order
-- **Characteristics:**
-  - Ranking is important
-  - Order matters
-  - Differences cannot be measured precisely
-- **Examples:**
-  - Rating Scale: 1 → Best, 2 → Good, 3 → Bad
-  - Education Level: High School < Bachelor's < Master's < PhD
-  - Customer Satisfaction: Poor < Fair < Good < Excellent
+**Method 2: Sturges' Rule**
+```
+Number of bins = ⌈log₂(n) + 1⌉
+Where n = number of data points
+```
 
-### 3️⃣ Interval Scale Data
-- **Definition:** Numerical data with equal intervals
-- **Characteristics:**
-  - Order matters
-  - Differences can be measured
-  - **No true "0" starting point**
-  - Ratios cannot be calculated meaningfully
-- **Examples:**
-  - Temperature: -30°F, -15°F, 30°F, 60°F, 90°F, 120°F
-    - Difference: 60°F - 30°F = 30°F (meaningful)
-    - Ratio: 90°F ÷ 30°F = 3:1 (NOT meaningful - 90°F is not "3 times hotter")
+**Method 3: Square Root Rule**
+```
+Number of bins = ⌈√n⌉
+```
 
-### 4️⃣ Ratio Scale Data
-- **Definition:** Numerical data with true zero point
-- **Characteristics:**
-  - Order matters ✓
-  - Differences are measurable ✓
-  - **Contains a true "0" starting point** ✓
-  - Ratios can be calculated meaningfully ✓
-- **Examples:**
-  - Student marks in a class: 0, 90, 60, 30, 35, 40, 50
-    - Mean = 30, 40, 50, 60, 35, 90
-    - Differences: 40 - 30 = 10 points
-    - Ratio: 90 ÷ 30 = 3:1 (90 is 3 times higher than 30)
+#### 📊 Practical Example from Lecture
+For the age dataset:
+- **Bin Size = 5** → Number of bins = 10
+- **Bin Size = 2.5** → Number of bins = 20
 
-## 📊 Scale Comparison Table
+### 📈 From Histogram to Probability Distribution
 
-| **Scale** | **Order Matters** | **Measurable Differences** | **True Zero** | **Ratios Meaningful** | **Examples** |
-|-----------|-------------------|----------------------------|---------------|---------------------|--------------|
-| **Nominal** | ❌ | ❌ | ❌ | ❌ | Colors, Gender, Blood Type |
-| **Ordinal** | ✅ | ❌ | ❌ | ❌ | Ratings, Education Level |
-| **Interval** | ✅ | ✅ | ❌ | ❌ | Temperature (°F, °C) |
-| **Ratio** | ✅ | ✅ | ✅ | ✅ | Height, Weight, Age, Income |
+#### 🔄 Converting Frequency to Probability
+When we have a histogram showing frequencies, we can convert it to a **probability distribution**:
+
+```
+P(x) = Frequency of bin / Total number of observations
+```
+
+**Example:**
+- If bin [20-25) has frequency = 4
+- Total observations = 16
+- Then P(20 ≤ x < 25) = 4/16 = 0.25 = 25%
+
+#### 📊 Probability Density Function (PDF)
+- **For continuous data:** The histogram approaches a smooth curve (PDF) as sample size increases and bin width decreases
+- **Area under the curve = 1** (total probability)
+- **Height = Probability density** (not probability itself)
+
+### 🔍 Distribution Shapes and Skewness
+
+Understanding the shape of your data distribution is crucial for selecting appropriate statistical methods and interpreting results.
+
+### 📊 Types of Distribution Shapes
+
+#### 1️⃣ **Symmetric Distribution (Normal/Gaussian)**
+
+**Characteristics:**
+- **Perfect symmetry** around the center
+- **Mean = Median = Mode** (all at the center)
+- **Bell-shaped curve** when data is normally distributed
+- **Equal spread** on both sides of the center
+
+```
+    Frequency
+        ↑
+        |     ╭─╮
+        |   ╭─╯ ╰─╮
+        |  ╱       ╲
+        | ╱         ╲
+        |╱___________╲
+        └──────────────→ Values
+              μ
+```
+
+**Box Plot Characteristics:**
+- Q₂ (median) is **exactly in the middle** of Q₁ and Q₃
+- **Q₃ - Q₂ ≈ Q₂ - Q₁** (equal distances)
+
+**Real-World Examples:**
+- Heights of people
+- IQ scores
+- Measurement errors
+- Blood pressure readings
+
+#### 2️⃣ **Right Skewed Distribution (Positive Skew)**
+
+**Characteristics:**
+- **Long tail extends to the right**
+- **Mean > Median > Mode** 
+- **Majority of data** concentrated on the left side
+- **Few extreme values** pull the mean to the right
+
+```
+    Frequency
+        ↑
+        |╭─╮
+        |█ ╰─╮
+        |█   ╰─╮
+        |█     ╰─╮
+        |█_______╰─────╮
+        └──────────────────→ Values
+         ↑  ↑     ↑
+       Mode Med  Mean
+```
+
+**Box Plot Characteristics:**
+- **Q₃ - Q₂ > Q₂ - Q₁** (right whisker longer)
+- **Median closer to Q₁** than to Q₃
+- **Potential outliers** on the right side
+
+**Real-World Examples:**
+- Income distribution (few very wealthy people)
+- House prices in a city
+- Response times (most fast, few very slow)
+- Age at death (most people live to old age)
+
+#### 3️⃣ **Left Skewed Distribution (Negative Skew)**
+
+**Characteristics:**
+- **Long tail extends to the left**
+- **Mean < Median < Mode**
+- **Majority of data** concentrated on the right side
+- **Few extreme values** pull the mean to the left
+
+```
+    Frequency
+        ↑
+        |        ╭─╮█
+        |      ╭─╯ █
+        |    ╭─╯   █
+        |  ╭─╯     █
+        |╭─_______█
+        └──────────────────→ Values
+         ↑     ↑  ↑
+       Mean   Med Mode
+```
+
+**Box Plot Characteristics:**
+- **Q₂ - Q₁ > Q₃ - Q₂** (left whisker longer)
+- **Median closer to Q₃** than to Q₁
+- **Potential outliers** on the left side
+
+**Real-World Examples:**
+- Test scores (most students do well, few fail)
+- Age at retirement (most retire at standard age, few retire very early)
+- Customer satisfaction ratings (most satisfied, few very unsatisfied)
+
+### 📊 Skewness and Central Tendency Relationships
+
+#### 📈 Summary of Relationships
+
+| **Distribution Type** | **Shape** | **Central Tendency Relationship** | **Tail Direction** |
+|----------------------|-----------|-------------------------------------|-------------------|
+| **Symmetric (Normal)** | Bell-shaped | **Mean = Median = Mode** | No tail |
+| **Right Skewed (Positive)** | Long right tail | **Mean > Median > Mode** | Right tail |
+| **Left Skewed (Negative)** | Long left tail | **Mean < Median < Mode** | Left tail |
+
+#### 🎯 Key Insight: 
+**The mean always gets "pulled" toward the tail direction due to extreme values, while the median remains more stable.**
+
+### 📦 Box Plots and Distribution Analysis
+
+Box plots (also called box-and-whisker plots) provide a visual summary of data distribution and help identify skewness.
+
+#### 📊 Box Plot Components
+
+```
+    Q₁        Q₂(Median)    Q₃
+     |            |         |
+  ┌──┴──┐    ┌───┴───┐    ┌┴──┐
+  │     │    │       │    │   │
+──┤     ├────┤   █   ├────┤   ├──
+  │     │    │       │    │   │
+  └─────┘    └───────┘    └───┘
+     ↑            ↑         ↑
+   Min         Median     Max
+(or whisker)              (or whisker)
+```
+
+**Components:**
+- **Q₁ (First Quartile):** 25% of data falls below this value
+- **Q₂ (Second Quartile/Median):** 50% of data falls below this value  
+- **Q₃ (Third Quartile):** 75% of data falls below this value
+- **IQR (Interquartile Range):** Q₃ - Q₁
+- **Whiskers:** Extend to min/max or 1.5×IQR from quartiles
+- **Outliers:** Points beyond the whiskers
+
+#### 🔍 Identifying Skewness from Box Plots
+
+**Symmetric Distribution:**
+- **Median line** in the **center** of the box
+- **Equal whisker lengths:** Q₃ - Q₂ ≈ Q₂ - Q₁
+- **Few or no outliers**
+
+**Right Skewed Distribution:**
+- **Median line** closer to **Q₁** (left side of box)
+- **Longer right whisker:** Q₃ - Q₂ > Q₂ - Q₁
+- **Outliers** more likely on the **right side**
+
+**Left Skewed Distribution:**
+- **Median line** closer to **Q₃** (right side of box)
+- **Longer left whisker:** Q₂ - Q₁ > Q₃ - Q₂
+- **Outliers** more likely on the **left side**
+
+### 📊 Practical Applications and Decision Making
+
+Understanding distribution shapes helps in:
+
+#### 1️⃣ **Choosing Appropriate Statistics**
+- **Symmetric data:** Use mean and standard deviation
+- **Skewed data:** Use median and IQR (more robust)
+
+#### 2️⃣ **Data Transformation**
+- **Right skewed:** Apply log transformation
+- **Left skewed:** Apply square or exponential transformation
+
+#### 3️⃣ **Outlier Detection**
+- **Box plots** help identify potential outliers
+- **Outliers** may indicate data errors or special cases
+
+#### 4️⃣ **Statistical Test Selection**
+- **Normal distribution:** Use parametric tests (t-test, ANOVA)
+- **Skewed distribution:** Use non-parametric tests (Mann-Whitney, Kruskal-Wallis)
+
+### 💻 Programming Implementation
+
+#### Creating Histograms and Analyzing Distribution:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+
+# Sample age data from lecture
+ages = [10, 12, 19, 18, 24, 26, 30, 35, 36, 37, 42, 41, 42, 45, 50, 51]
+
+# Create histogram
+plt.figure(figsize=(12, 8))
+
+# Subplot 1: Histogram with different bin sizes
+plt.subplot(2, 3, 1)
+plt.hist(ages, bins=5, alpha=0.7, color='skyblue', edgecolor='black')
+plt.title('Histogram - 5 bins')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+
+plt.subplot(2, 3, 2)
+plt.hist(ages, bins=10, alpha=0.7, color='lightgreen', edgecolor='black')
+plt.title('Histogram - 10 bins')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+
+# Subplot 3: Box plot
+plt.subplot(2, 3, 3)
+plt.boxplot(ages, vert=True)
+plt.title('Box Plot')
+plt.ylabel('Age')
+
+# Calculate statistics
+mean_age = np.mean(ages)
+median_age = np.median(ages)
+mode_result = stats.mode(ages)
+std_age = np.std(ages)
+skewness = stats.skew(ages)
+
+# Subplot 4: Statistics summary
+plt.subplot(2, 3, 4)
+plt.text(0.1, 0.8, f'Mean: {mean_age:.2f}', fontsize=12, transform=plt.gca().transAxes)
+plt.text(0.1, 0.7, f'Median: {median_age:.2f}', fontsize=12, transform=plt.gca().transAxes)
+plt.text(0.1, 0.6, f'Mode: {mode_result.mode[0]}', fontsize=12, transform=plt.gca().transAxes)
+plt.text(0.1, 0.5, f'Std Dev: {std_age:.2f}', fontsize=12, transform=plt.gca().transAxes)
+plt.text(0.1, 0.4, f'Skewness: {skewness:.2f}', fontsize=12, transform=plt.gca().transAxes)
+plt.text(0.1, 0.2, 'Interpretation:', fontsize=12, weight='bold', transform=plt.gca().transAxes)
+if skewness > 0.5:
+    plt.text(0.1, 0.1, 'Right Skewed', fontsize=12, color='red', transform=plt.gca().transAxes)
+elif skewness < -0.5:
+    plt.text(0.1, 0.1, 'Left Skewed', fontsize=12, color='blue', transform=plt.gca().transAxes)
+else:
+    plt.text(0.1, 0.1, 'Approximately Symmetric', fontsize=12, color='green', transform=plt.gca().transAxes)
+plt.axis('off')
+plt.title('Statistical Summary')
+
+plt.tight_layout()
+plt.show()
+```
+
+#### Creating Different Distribution Shapes:
+
+```python
+# Generate different distribution types
+np.random.seed(42)
+
+# Normal distribution
+normal_data = np.random.normal(50, 10, 1000)
+
+# Right skewed distribution  
+right_skewed = np.random.exponential(2, 1000)
+
+# Left skewed distribution
+left_skewed = 10 - np.random.exponential(2, 1000)
+
+# Create comparative plots
+fig, axes = plt.subplots(3, 2, figsize=(15, 12))
+
+# Normal distribution
+axes[0, 0].hist(normal_data, bins=30, alpha=0.7, color='skyblue', density=True)
+axes[0, 0].set_title('Normal Distribution\nMean ≈ Median ≈ Mode')
+axes[0, 0].axvline(np.mean(normal_data), color='red', linestyle='--', label=f'Mean: {np.mean(normal_data):.1f}')
+axes[0, 0].axvline(np.median(normal_data), color='green', linestyle='--', label=f'Median: {np.median(normal_data):.1f}')
+axes[0, 0].legend()
+
+axes[0, 1].boxplot(normal_data, vert=True)
+axes[0, 1].set_title('Box Plot - Symmetric')
+
+# Right skewed distribution
+axes[1, 0].hist(right_skewed, bins=30, alpha=0.7, color='orange', density=True)
+axes[1, 0].set_title('Right Skewed Distribution\nMean > Median > Mode')
+axes[1, 0].axvline(np.mean(right_skewed), color='red', linestyle='--', label=f'Mean: {np.mean(right_skewed):.1f}')
+axes[1, 0].axvline(np.median(right_skewed), color='green', linestyle='--', label=f'Median: {np.median(right_skewed):.1f}')
+axes[1, 0].legend()
+
+axes[1, 1].boxplot(right_skewed, vert=True)
+axes[1, 1].set_title('Box Plot - Right Skewed')
+
+# Left skewed distribution
+axes[2, 0].hist(left_skewed, bins=30, alpha=0.7, color='lightcoral', density=True)
+axes[2, 0].set_title('Left Skewed Distribution\nMean < Median < Mode')
+axes[2, 0].axvline(np.mean(left_skewed), color='red', linestyle='--', label=f'Mean: {np.mean(left_skewed):.1f}')
+axes[2, 0].axvline(np.median(left_skewed), color='green', linestyle='--', label=f'Median: {np.median(left_skewed):.1f}')
+axes[2, 0].legend()
+
+axes[2, 1].boxplot(left_skewed, vert=True)
+axes[2, 1].set_title('Box Plot - Left Skewed')
+
+plt.tight_layout()
+plt.show()
+```
+
+### 🎯 Key Takeaways for Histogram and Distribution Analysis
+
+```
+📊 Histograms show the shape and distribution of data
+📏 Bin size affects the appearance - experiment with different sizes
+📈 Distribution shape determines appropriate statistical methods:
+
+🔔 Normal/Symmetric Distribution:
+   • Mean = Median = Mode
+   • Use mean and standard deviation
+   • Apply parametric tests
+
+📊 Right Skewed (Positive Skew):
+   • Mean > Median > Mode  
+   • Use median and IQR
+   • Consider log transformation
+   • Apply non-parametric tests
+
+📊 Left Skewed (Negative Skew):
+   • Mean < Median < Mode
+   • Use median and IQR  
+   • Consider power transformation
+   • Apply non-parametric tests
+
+📦 Box plots help identify:
+   • Distribution shape and skewness
+   • Outliers and extreme values
+   • Quartile positions and spread
+
+🎯 Always visualize your data first before choosing statistical methods!
+```
 
 ## 📋 Types of Data
 Data can be broadly categorized into two main types:
@@ -828,6 +1129,92 @@ graph TD
 | **Qualitative** | Ordinal | Categories with order | Ratings, Education level | Count, Mode, Median | Ordinal |
 
 **Note:** Temperature in Celsius/Fahrenheit is Interval scale, while Kelvin is Ratio scale due to absolute zero.
+
+## 📏 Scales of Measurement
+Understanding the scale of measurement is crucial for choosing appropriate statistical methods. There are four main scales:
+
+### 1️⃣ Nominal Scale Data
+- **Definition:** Qualitative/Categorical data
+- **Characteristics:**
+  - Order does not matter
+  - Categories with no ranking
+  - Can only count frequencies and find mode
+- **Examples:**
+  - Favorite Color: Red (5) → 50%, Blue (3) → 30%, Orange (2) → 20%
+  - Gender: M, F
+  - Blood Type: A, B, AB, O
+
+### 2️⃣ Ordinal Scale Data  
+- **Definition:** Categorical data with meaningful order
+- **Characteristics:**
+  - Ranking is important
+  - Order matters
+  - Differences cannot be measured precisely
+- **Examples:**
+  - Rating Scale: 1 → Best, 2 → Good, 3 → Bad
+  - Education Level: High School < Bachelor's < Master's < PhD
+  - Customer Satisfaction: Poor < Fair < Good < Excellent
+
+### 3️⃣ Interval Scale Data
+- **Definition:** Numerical data with equal intervals
+- **Characteristics:**
+  - Order matters
+  - Differences can be measured
+  - **No true "0" starting point**
+  - Ratios cannot be calculated meaningfully
+- **Examples:**
+  - Temperature: -30°F, -15°F, 30°F, 60°F, 90°F, 120°F
+    - Difference: 60°F - 30°F = 30°F (meaningful)
+    - Ratio: 90°F ÷ 30°F = 3:1 (NOT meaningful - 90°F is not "3 times hotter")
+
+### 4️⃣ Ratio Scale Data
+- **Definition:** Numerical data with true zero point
+- **Characteristics:**
+  - Order matters ✓
+  - Differences are measurable ✓
+  - **Contains a true "0" starting point** ✓
+  - Ratios can be calculated meaningfully ✓
+- **Examples:**
+  - Student marks in a class: 0, 90, 60, 30, 35, 40, 50
+    - Mean = 30, 40, 50, 60, 35, 90
+    - Differences: 40 - 30 = 10 points
+    - Ratio: 90 ÷ 30 = 3:1 (90 is 3 times higher than 30)
+
+## 📊 Scale Comparison Table
+
+| **Scale** | **Order Matters** | **Measurable Differences** | **True Zero** | **Ratios Meaningful** | **Examples** |
+|-----------|-------------------|----------------------------|---------------|---------------------|--------------|
+| **Nominal** | ❌ | ❌ | ❌ | ❌ | Colors, Gender, Blood Type |
+| **Ordinal** | ✅ | ❌ | ❌ | ❌ | Ratings, Education Level |
+| **Interval** | ✅ | ✅ | ❌ | ❌ | Temperature (°F, °C) |
+| **Ratio** | ✅ | ✅ | ✅ | ✅ | Height, Weight, Age, Income |
+
+## 📈 Key Concepts
+
+### Data
+**Definition:** Facts or pieces of information that can be collected, measured, and analyzed.
+
+**Example:** Heights of students in a classroom
+```
+{135 cm, 180 cm, 190 cm, 160 cm, 145 cm, 175 cm, 168 cm, 172 cm}
+```
+
+## 🔄 The Statistical Process
+```mermaid
+flowchart TD
+    A[📊 Statistics] --> B[📋 Data Collection]
+    B --> C[🗂️ Data Organization]
+    C --> D[🔍 Data Analysis]
+    D --> E[📊 Interpretation]
+    E --> F[💡 Decision Making]
+
+    style A fill:#e1f5fe,color:#000
+    style B fill:#f3e5f5,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#e8f5e8,color:#000
+    style E fill:#fce4ec,color:#000
+    style F fill:#f1f8e9,color:#000
+```
 
 ## 📊 Data Visualization Examples
 
@@ -945,6 +1332,15 @@ graph LR
 • 68% of data within ±1σ of mean
 • 95% of data within ±2σ of mean  
 • 99.7% of data within ±3σ of mean
+
+📊 Histograms and Distribution:
+📊 Histogram = Visual representation of data distribution
+📏 Bin size affects appearance and interpretation
+🔔 Normal Distribution: Mean = Median = Mode
+📈 Right Skewed: Mean > Median > Mode (positive skew)
+📉 Left Skewed: Mean < Median < Mode (negative skew)
+📦 Box plots show quartiles, outliers, and skewness
+🎯 Always visualize data before choosing statistical methods
 ```
 
 ---
