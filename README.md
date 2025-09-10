@@ -337,119 +337,156 @@ Population Standard Deviation (σ) = √(Variance) = √σ²
 Sample Standard Deviation (S) = √(Sample Variance) = √S²
 ```
 
-### 📊 Practical Example: Calculating Variance and Standard Deviation
+### 📊 Sample Variance Practical Example
 
-Let's work through a complete example:
+Let's work through the example shown in the lecture:
 
-**Dataset:** Ages = {23, 43, 23, 56, 74, 32, 68, 98, 45, 32}
+**Dataset:** X = {1, 2, 3, 4, 5}
 
-**Step 1:** Calculate the mean
-```python
-import numpy as np
+#### Step-by-Step Calculation:
 
-ages = [23, 43, 23, 56, 74, 32, 68, 98, 45, 32]
-mean_age = np.mean(ages)
-print(f"Mean: {mean_age}")  # Output: 49.4
+**Step 1:** Calculate the mean (x̄)
+```
+x̄ = (1 + 2 + 3 + 4 + 5) / 5 = 15 / 5 = 3
 ```
 
-**Step 2:** Calculate variance
-```python
-# Population variance (if this is our entire population)
-population_variance = np.var(ages)  # Uses N in denominator
-print(f"Population Variance: {population_variance}")  # Output: 541.64
-
-# Sample variance (if this is a sample from larger population)  
-sample_variance = np.var(ages, ddof=1)  # Uses n-1 in denominator
-print(f"Sample Variance: {sample_variance}")  # Output: ~601.82
-```
-
-**Step 3:** Calculate standard deviation
-```python
-# Standard deviation
-population_std = np.std(ages)  # Population std
-sample_std = np.std(ages, ddof=1)  # Sample std
-
-print(f"Population Std: {population_std}")  # Output: ~23.27
-print(f"Sample Std: {sample_std}")  # Output: ~24.53
-```
-
-### 📊 Manual Calculation Example
-
-For the dataset: {1, 2, 3, 4, 5}
-
-**Step 1:** Find the mean
-```
-Mean (x̄) = (1+2+3+4+5)/5 = 15/5 = 3
-```
-
-**Step 2:** Calculate deviations from mean
+**Step 2:** Calculate deviations from mean and square them
 ```
 (1-3)² = (-2)² = 4
 (2-3)² = (-1)² = 1  
 (3-3)² = (0)² = 0
 (4-3)² = (1)² = 1
 (5-3)² = (2)² = 4
+
+Sum of squared deviations: 4 + 1 + 0 + 1 + 4 = 10
 ```
 
-**Step 3:** Sum of squared deviations
+**Step 3:** Apply Sample Variance Formula
 ```
-Σ(Xi - x̄)² = 4 + 1 + 0 + 1 + 4 = 10
-```
-
-**Step 4:** Calculate variance
-```
-Sample Variance (S²) = 10/(5-1) = 10/4 = 2.5
+Sample Variance (S²) = Σ(Xi - x̄)² / (n-1)
+                     = 10 / (5-1)
+                     = 10 / 4
+                     = 2.5
 ```
 
-**Step 5:** Calculate standard deviation  
+**Step 4:** Calculate Sample Standard Deviation
 ```
-Sample Standard Deviation (S) = √2.5 = 1.58
+Sample Standard Deviation (S) = √S² = √2.5 = 1.58
 ```
 
-### 📈 Working with DataFrames
+### 📊 Normal Distribution and Standard Deviation
+
+Understanding how data spreads in a normal distribution is crucial for interpreting standard deviation:
+
+#### 📈 The 68-95-99.7 Rule (Empirical Rule)
+
+In a normal distribution:
+- **68%** of data falls within **1 standard deviation** of the mean
+- **95%** of data falls within **2 standard deviations** of the mean  
+- **99.7%** of data falls within **3 standard deviations** of the mean
+
+**Visual Representation:**
+```
+       μ-3σ    μ-2σ    μ-1σ     μ      μ+1σ    μ+2σ    μ+3σ
+        |       |       |       |       |       |       |
+    0.1%|  2.1% | 13.6% | 34.1% | 34.1% | 13.6% |  2.1% |0.1%
+        |       |       |       |       |       |       |
+        |-------|-------|-------|-------|-------|-------|
+              68% of data (±1σ)
+                    95% of data (±2σ)  
+                          99.7% of data (±3σ)
+```
+
+#### Example with Normal Distribution:
+If test scores follow a normal distribution with:
+- **Mean (μ) = 75**  
+- **Standard Deviation (σ) = 10**
+
+Then:
+- **68%** of students scored between **65-85** (75 ± 10)
+- **95%** of students scored between **55-95** (75 ± 20)
+- **99.7%** of students scored between **45-105** (75 ± 30)
+
+### 📊 Practical Programming Example
+
+```python
+import numpy as np
+import pandas as pd
+
+# Dataset from the lecture example
+ages = [23, 43, 23, 56, 74, 32, 68, 98, 45, 32]
+
+# Calculate mean
+mean_age = np.mean(ages)
+print(f"Mean: {mean_age}")  # Output: 49.4
+
+# Calculate Sample Variance (using n-1)
+sample_variance = np.var(ages, ddof=1)  # ddof=1 uses n-1
+print(f"Sample Variance: {sample_variance}")  # Output: ~601.82
+
+# Calculate Population Variance (using n)
+population_variance = np.var(ages, ddof=0)  # ddof=0 uses n
+print(f"Population Variance: {population_variance}")  # Output: ~541.64
+
+# Calculate Standard Deviations
+sample_std = np.std(ages, ddof=1)
+population_std = np.std(ages, ddof=0)
+
+print(f"Sample Std Dev: {sample_std}")      # Output: ~24.53
+print(f"Population Std Dev: {population_std}")  # Output: ~23.27
+```
+
+### 📊 Working with DataFrames - Variance by Rows and Columns
+
+From the lecture, we can see how to calculate variance for different axes:
 
 ```python
 import pandas as pd
 import numpy as np
 
-# Create a DataFrame with sample data
-data = [[10, 12, 13], [34, 23, 45], [32, 34, 21]]
+# Create sample DataFrame (from lecture)
+data = [[10, 12, 13], 
+        [34, 23, 45], 
+        [32, 34, 21]]
 df = pd.DataFrame(data, columns=["A", "B", "C"])
 
-print("Data:")
+print("DataFrame:")
 print(df)
+#     A   B   C
+# 0  10  12  13
+# 1  34  23  45
+# 2  32  34  21
 
-# Calculate variance for each column
-variance_by_column = df.var()  # Sample variance (uses n-1)
-print(f"\nVariance by column:\n{variance_by_column}")
+# Calculate variance for each COLUMN (axis=0, default)
+variance_by_column = df.var()
+print(f"\nVariance by Column:")
+print(variance_by_column)
+# A    177.333333
+# B    121.000000
+# C    277.333333
 
-# Calculate variance for each row
-variance_by_row = df.var(axis=1)  # Variance across columns for each row
-print(f"\nVariance by row:\n{variance_by_row}")
+# Calculate variance for each ROW (axis=1)  
+variance_by_row = df.var(axis=1)
+print(f"\nVariance by Row:")
+print(variance_by_row)
+# 0      2.333333
+# 1    126.333333  
+# 2     42.333333
 
 # Calculate standard deviation
 std_by_column = df.std()
-print(f"\nStandard Deviation by column:\n{std_by_column}")
+print(f"\nStandard Deviation by Column:")
+print(std_by_column)
+# A    13.316624
+# B    11.000000
+# C    16.653332
 ```
 
-**Output:**
-```
-Data:
-    A   B   C
-0  10  12  13
-1  34  23  45
-2  32  34  21
-
-Variance by column:
-A    177.333333
-B    121.000000  
-C    277.333333
-
-Standard Deviation by column:
-A    13.316624
-B    11.000000
-C    16.653332
-```
+**Interpretation:**
+- **Column A variance (177.33):** High spread in column A values (10, 34, 32)
+- **Column B variance (121.00):** Moderate spread in column B values (12, 23, 34)
+- **Column C variance (277.33):** Highest spread in column C values (13, 45, 21)
+- **Row variances:** Show how much values vary within each row
 
 ### 🎯 Interpreting Variance and Standard Deviation
 
@@ -458,31 +495,6 @@ C    16.653332
 | **Low Variance/Std Dev** | Data points are close to the mean | Test scores: 85, 87, 86, 88, 84 |
 | **High Variance/Std Dev** | Data points are spread out from the mean | Test scores: 60, 95, 70, 40, 85 |
 | **Zero Variance** | All data points are identical | Test scores: 80, 80, 80, 80, 80 |
-
-### 📊 Visualization of Dispersion
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Create sample data with different dispersions
-low_dispersion = [49, 50, 50, 50, 51]    # Low spread
-high_dispersion = [30, 40, 50, 60, 70]   # High spread
-
-# Create histogram to visualize
-plt.figure(figsize=(12, 5))
-
-plt.subplot(1, 2, 1)
-sns.histplot(low_dispersion, kde=True)
-plt.title(f'Low Dispersion\nStd = {np.std(low_dispersion, ddof=1):.2f}')
-
-plt.subplot(1, 2, 2)
-sns.histplot(high_dispersion, kde=True)
-plt.title(f'High Dispersion\nStd = {np.std(high_dispersion, ddof=1):.2f}')
-
-plt.tight_layout()
-plt.show()
-```
 
 ### 🔍 Key Differences: Population vs Sample
 
@@ -795,8 +807,23 @@ graph LR
 📊 Mean = Arithmetic average (Σx/n)
 📊 Median = Middle value when sorted
 📊 Mode = Most frequent value
+
+📏 Measures of Dispersion:
+🔢 Variance = Average of squared differences from mean
+   • Population: σ² = Σ(Xi-μ)²/N  
+   • Sample: S² = Σ(Xi-x̄)²/(n-1)
+📐 Standard Deviation = Square root of variance
+   • Population: σ = √σ²
+   • Sample: S = √S²
+🎯 Bessel's Correction = Use (n-1) for unbiased sample estimates
+
+📈 Normal Distribution (68-95-99.7 Rule):
+• 68% of data within ±1σ of mean
+• 95% of data within ±2σ of mean  
+• 99.7% of data within ±3σ of mean
 ```
 
 ---
 
 *Remember: Good statistics start with good data! Always ensure your data is accurate, relevant, and properly collected.*
+|
