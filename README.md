@@ -1341,7 +1341,7 @@ graph LR
 📉 Left Skewed: Mean < Median < Mode (negative skew)
 📦 Box plots show quartiles, outliers, and skewness
 🎯 Always visualize data before choosing statistical methods
-```
+``` 
 
 ---
 
