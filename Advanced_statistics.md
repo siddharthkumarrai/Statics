@@ -18,10 +18,15 @@ graph TD
     
     F --> I[Properties: Non-decreasing, 0 to 1]
     
-    style A fill:#e1f5fe
-    style D fill:#fff3e0
-    style E fill:#f3e5f5
-    style F fill:#e8f5e8
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#f3e5f5,color:#000
+    style F fill:#e8f5e8,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
 ```
 
 ---
@@ -37,13 +42,18 @@ graph TD
 ```mermaid
 graph LR
     A[PDF Curve] --> B[Shaded Area]
-    B --> C[Probability P(X ≤ 155)]
+    B --> C[Probability P of X less than 155]
     
     D[Height Values] --> E[X-axis: 155, 165, etc.]
     F[Density Values] --> G[Y-axis: 0.1, 0.2, 0.3, 0.4]
     
-    style A fill:#f3e5f5
-    style C fill:#e8f5e8
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#e8f5e8,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
 ```
 
 ### Important Properties
@@ -63,20 +73,26 @@ graph LR
 
 ```mermaid
 graph TD
-    A[Fair Dice] --> B[Outcome 1: P = 1/6]
-    A --> C[Outcome 2: P = 1/6]
-    A --> D[Outcome 3: P = 1/6]
-    A --> E[Outcome 4: P = 1/6]
-    A --> F[Outcome 5: P = 1/6]
-    A --> G[Outcome 6: P = 1/6]
+    A[Fair Dice] --> B[Outcome 1: P equals 1/6]
+    A --> C[Outcome 2: P equals 1/6]
+    A --> D[Outcome 3: P equals 1/6]
+    A --> E[Outcome 4: P equals 1/6]
+    A --> F[Outcome 5: P equals 1/6]
+    A --> G[Outcome 6: P equals 1/6]
     
-    B --> H[P(X ≤ 4) = 1/6 + 1/6 + 1/6 + 1/6 = 4/6 = 2/3]
+    B --> H[P of X less than 4 equals 4/6 equals 2/3]
     C --> H
     D --> H
     E --> H
     
-    style A fill:#e1f5fe
-    style H fill:#e8f5e8
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#e8f5e8,color:#000
 ```
 
 ### Cumulative Calculation:
@@ -97,13 +113,17 @@ graph LR
     A[PDF Bell Curve] --> B[Integration/Summation]
     B --> C[CDF S-shaped Curve]
     
-    D[Key Relationship] --> E[PDF = Gradient of CDF]
-    E --> F[Where CDF is steep → PDF is high]
-    E --> G[Where CDF is flat → PDF is low]
+    D[Key Relationship] --> E[PDF equals Gradient of CDF]
+    E --> F[Where CDF is steep PDF is high]
+    E --> G[Where CDF is flat PDF is low]
     
-    style A fill:#f3e5f5
-    style C fill:#fff3e0
-    style E fill:#e8f5e8
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#e8f5e8,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
 ```
 
 ### Properties
@@ -120,22 +140,23 @@ graph TD
     A[Probability Distributions] --> B[Discrete Distributions]
     A --> C[Continuous Distributions]
     
-    B --> D[Bernoulli<br/>Binary: Success/Failure]
-    B --> E[Uniform<br/>All outcomes equally likely]
-    B --> F[Poisson<br/>Count of rare events]
-    B --> G[Binomial<br/>Number of successes in n trials]
+    B --> D[Bernoulli - Binary Success/Failure]
+    B --> E[Uniform - All outcomes equally likely]
+    B --> F[Poisson - Count of rare events]
+    B --> G[Binomial - Number of successes in n trials]
     
-    C --> H[Normal/Gaussian<br/>Bell-shaped curve]
-    C --> I[Log Normal<br/>Skewed distribution]
+    C --> H[Normal/Gaussian - Bell-shaped curve]
+    C --> I[Log Normal - Skewed distribution]
     
-    style B fill:#fff3e0
-    style C fill:#f3e5f5
-    style D fill:#e3f2fd
-    style E fill:#e3f2fd
-    style F fill:#e3f2fd
-    style G fill:#e3f2fd
-    style H fill:#fce4ec
-    style I fill:#fce4ec
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff3e0,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#e3f2fd,color:#000
+    style E fill:#e3f2fd,color:#000
+    style F fill:#e3f2fd,color:#000
+    style G fill:#e3f2fd,color:#000
+    style H fill:#fce4ec,color:#000
+    style I fill:#fce4ec,color:#000
 ```
 
 ---
@@ -147,18 +168,25 @@ flowchart TD
     A[PDF: Probability Density Function] --> B[Shows rate of change of probability]
     B --> C[Integration over interval]
     C --> D[CDF: Cumulative Distribution Function]
-    D --> E[Shows P(X ≤ x)]
+    D --> E[Shows P of X less than x]
     
-    F[Key Insight: PDF = d/dx CDF] --> G[Derivative of CDF gives PDF]
-    G --> H[Slope of CDF curve = PDF value]
+    F[Key Insight: PDF equals derivative of CDF] --> G[Derivative of CDF gives PDF]
+    G --> H[Slope of CDF curve equals PDF value]
     
-    I[Example: Height ~165] --> J[PDF peak at 165]
+    I[Example: Height around 165] --> J[PDF peak at 165]
     J --> K[CDF steepest at 165]
     
-    style A fill:#f3e5f5
-    style D fill:#fff3e0
-    style F fill:#e8f5e8
-    style I fill:#e1f5fe
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#e8f5e8,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#e1f5fe,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
 ```
 
 ---
@@ -172,18 +200,23 @@ graph TD
     A[Roll Dice] --> B[Possible Outcomes: 1,2,3,4,5,6]
     
     B --> C[PMF Calculation]
-    C --> D[P(1) = 1/6<br/>P(2) = 1/6<br/>P(3) = 1/6<br/>P(4) = 1/6<br/>P(5) = 1/6<br/>P(6) = 1/6]
+    C --> D[All outcomes have probability 1/6]
     
     B --> E[CDF Calculation]
-    E --> F[F(1) = 1/6<br/>F(2) = 2/6<br/>F(3) = 3/6<br/>F(4) = 4/6<br/>F(5) = 5/6<br/>F(6) = 6/6 = 1]
+    E --> F[Cumulative probabilities: 1/6, 2/6, 3/6, 4/6, 5/6, 1]
     
-    G[Question: P(X ≤ 4)] --> H[Sum: P(1)+P(2)+P(3)+P(4)]
-    H --> I[Answer: 4/6 = 2/3]
+    G[Question: P of X less than or equal to 4] --> H[Sum: P1 + P2 + P3 + P4]
+    H --> I[Answer: 4/6 equals 2/3]
     
-    style A fill:#e1f5fe
-    style C fill:#fff3e0
-    style E fill:#e8f5e8
-    style I fill:#c8e6c9
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#e8f5e8,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#c8e6c9,color:#000
 ```
 
 ---
@@ -210,10 +243,18 @@ flowchart TD
     J --> K[Bar chart for discrete]
     J --> L[Smooth curve for continuous]
     
-    style A fill:#e1f5fe
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
-    style I fill:#e8f5e8
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#e8f5e8,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
 ```
 
 ---
@@ -222,7 +263,7 @@ flowchart TD
 
 ```mermaid
 mindmap
-  root((Probability<br/>Distributions))
+  root((Probability Distributions))
     Random Variables
       Discrete
         PMF
@@ -241,11 +282,11 @@ mindmap
       Properties
         Non-decreasing
         0 to 1 range
-        P(X ≤ x)
+        P of X less than x
     Key Relationships
-      PDF = d/dx CDF
-      Area under PDF = Probability
-      Sum of PMF = Probability
+      PDF equals derivative of CDF
+      Area under PDF equals Probability
+      Sum of PMF equals Probability
       Integration vs Summation
 ```
 
@@ -371,7 +412,10 @@ graph LR
     
     F[Slope of CDF] --> A
     
-    style A fill:#f3e5f5
-    style B fill:#fff3e0
-    style D fill:#e8f5e8
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff3e0,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#e8f5e8,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
 ```
