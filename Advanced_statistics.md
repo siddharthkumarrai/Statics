@@ -902,6 +902,252 @@ The Normal Distribution is fundamental to statistics because:
 
 This distribution serves as the cornerstone for statistical inference and hypothesis testing in your coursework.
 ---
+# Uniform Distribution - Complete Analysis
+
+## Definition and Types
+
+The uniform distribution is a family of symmetric probability distributions where all outcomes in a given range are equally likely.
+
+### Two Types:
+1. **Continuous Uniform Distribution (PDF)**
+2. **Discrete Uniform Distribution (PMF)**
+
+## Continuous Uniform Distribution
+
+### Definition
+A continuous probability distribution where every value between two bounds has equal probability density.
+
+**Notation:** U(a,b)
+
+**Parameters:** 
+- **-∞ < a < b < ∞** (where a = minimum, b = maximum)
+
+### PDF Formula
+```
+PDF = { 1/(b-a)    for x ∈ [a,b]
+      { 0          otherwise
+```
+
+### CDF Formula
+```
+CDF = { 0          for x < a
+      { (x-a)/(b-a) for x ∈ [a,b]  
+      { 1          for x > b
+```
+
+```mermaid
+graph TD
+    A["Continuous Uniform U(a,b)"] --> B["Rectangular PDF"]
+    B --> C["Height = 1/(b-a)"]
+    B --> D["Width = b-a"]
+    B --> E["Area = 1"]
+    
+    F["Key Properties"] --> G["All intervals same length have same probability"]
+    F --> H["Symmetric around midpoint"]
+    F --> I["Mean = Median = (a+b)/2"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+```
+
+### Statistical Properties
+
+**Mean = (a + b)/2**
+
+**Median = (a + b)/2**
+
+**Variance = (b - a)²/12**
+
+**Standard Deviation = (b - a)/√12**
+
+### Example from Lecture
+**Problem:** Number of candies sold daily at a shop is uniformly distributed with maximum 40 and minimum 10.
+
+**Given:** U(10, 40)
+- a = 10, b = 40
+- Mean = (10 + 40)/2 = 25
+- Variance = (40 - 10)²/12 = 900/12 = 75
+
+**Probability Calculations:**
+
+1. **P(15 ≤ x ≤ 30)**
+   ```
+   P(15 ≤ x ≤ 30) = (x₂ - x₁) × 1/(b-a)
+                   = (30 - 15) × 1/30
+                   = 15 × 1/30 = 0.5 = 50%
+   ```
+
+2. **P(x > 20)**
+   ```
+   P(x > 20) = (40 - 20) × 1/30
+             = 20 × 1/30
+             = 0.667 = 66.7%
+   ```
+
+```mermaid
+flowchart TD
+    A["Uniform Distribution Example"] --> B["Candy Sales U(10,40)"]
+    B --> C["Daily sales between 10-40 candies"]
+    
+    D["Calculations"] --> E["Mean = 25 candies/day"]
+    D --> F["P(15 ≤ x ≤ 30) = 50%"]
+    D --> G["P(x > 20) = 66.7%"]
+    
+    H["Visual Representation"] --> I["Flat rectangular shape"]
+    H --> J["Height = 1/30"]
+    H --> K["Equal probability density everywhere"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Discrete Uniform Distribution
+
+### Definition
+Every outcome has equal probability in a finite set of discrete values.
+
+**Example:** Rolling a dice - outcomes {1, 2, 3, 4, 5, 6}
+
+**Notation:** U(a,b) where a,b are integers
+
+### Key Properties
+- **n = b - a + 1** (total number of outcomes)
+- **Parameters:** a,b with b ≥ a
+- **PMF = 1/n** for each outcome
+- **Mean = (a + b)/2**
+
+### Dice Example from Lecture
+**Rolling a dice:** {1, 2, 3, 4, 5, 6}
+- a = 1, b = 6
+- n = 6 - 1 + 1 = 6
+- Pr(1) = 1/6, Pr(2) = 1/6, ..., Pr(6) = 1/6
+- Mean = (1 + 6)/2 = 3.5
+
+```mermaid
+graph TD
+    A["Discrete Uniform Distribution"] --> B["Finite set of outcomes"]
+    B --> C["Each outcome equally likely"]
+    
+    D["Dice Example"] --> E["Outcomes: 1,2,3,4,5,6"]
+    D --> F["Each has probability 1/6"]
+    D --> G["Mean = 3.5"]
+    
+    H["General Formula"] --> I["PMF = 1/n"]
+    H --> J["n = b - a + 1"]
+    H --> K["Mean = (a+b)/2"]
+    
+    L["Key Insight"] --> M["Equal probability principle"]
+    L --> N["Finite vs infinite outcomes"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffecb3,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+```
+
+## Visual Characteristics
+
+### Continuous Uniform
+- **Shape:** Perfect rectangle
+- **Height:** 1/(b-a)
+- **Base:** (b-a)
+- **Area:** Always equals 1
+
+### Discrete Uniform  
+- **Shape:** Equal-height bars
+- **Height:** 1/n for each outcome
+- **Spacing:** Equal intervals
+- **Total Probability:** Sums to 1
+
+## Key Applications
+
+1. **Random number generation**
+2. **Modeling waiting times** (when no preferred time)
+3. **Quality control** (when all measurements equally likely)
+4. **Gaming and lottery systems**
+5. **Baseline models** in statistics
+
+## Important Notes
+
+**Continuous vs Discrete:**
+- **Continuous:** Infinite values in interval [a,b]
+- **Discrete:** Finite countable outcomes
+
+**Memory Property:**
+- Uniform distribution is "memoryless" in the sense that knowing you're in the distribution doesn't give information about specific location
+
+**Relationship to Other Distributions:**
+- **Beta(1,1)** = U(0,1) 
+- Uniform is a special case of Beta distribution
+- Can transform any uniform to U(0,1) using: Z = (X-a)/(b-a)
+
+## Summary
+
+```mermaid
+flowchart TD
+    A["Uniform Distribution Summary"] --> B["Equal Probability Principle"]
+    
+    C["Two Main Types"] --> D["Continuous U(a,b)"]
+    C --> E["Discrete U{1,2,...,n}"]
+    
+    D --> F["PDF = 1/(b-a)"]
+    D --> G["Rectangular shape"]
+    
+    E --> H["PMF = 1/n"]
+    E --> I["Equal-height bars"]
+    
+    J["Common Applications"] --> K["Random number generation"]
+    J --> L["Gaming systems"]
+    J --> M["Baseline statistical models"]
+    
+    N["Key Formulas"] --> O["Mean = (a+b)/2"]
+    N --> P["Variance = (b-a)²/12"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff3e0,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#ffecb3,color:#000
+    style O fill:#fff,color:#000
+    style P fill:#fff,color:#000
+```
+
+The uniform distribution serves as a fundamental building block in probability theory, representing scenarios where "fairness" or "equal likelihood" is the governing principle.
 ---
 ### Relationship Summary: Bernoulli → Binomial
 
