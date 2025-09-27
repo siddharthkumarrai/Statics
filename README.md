@@ -6,7 +6,7 @@
 **Statistics** is the science of collecting, organizing, and analyzing data to make informed decisions and draw meaningful conclusions from information.
 
 ### The Statistical Process
-```mermaid
+```mermaid 
 flowchart TD
     A[Question/Problem] --> B[Data Collection]
     B --> C[Data Organization]
