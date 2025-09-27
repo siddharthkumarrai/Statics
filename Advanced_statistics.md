@@ -851,19 +851,19 @@ P(μ-3σ ≤ X ≤ μ+3σ) ≈ 0.997 = 99.7%
 
 ```mermaid
 flowchart TD
-    A[Normal Distribution Applications] --> B[Natural Phenomena]
-    B --> C[Heights and Weights]
-    B --> D[Test Scores]
-    B --> E[Measurement Errors]
-    B --> F[Biological Measurements]
+    A["Normal Distribution Applications"] --> B["Natural Phenomena"]
+    B --> C["Heights and Weights"]
+    B --> D["Test Scores"]
+    B --> E["Measurement Errors"]
+    B --> F["Biological Measurements"]
     
-    G[Why Normal is Important] --> H[Central Limit Theorem]
-    G --> I[Many processes sum to normal]
-    G --> J[Mathematical convenience]
+    G["Why Normal is Important"] --> H["Central Limit Theorem"]
+    G --> I["Many processes sum to normal"]
+    G --> J["Mathematical convenience"]
     
-    K[Your Examples] --> L[Student heights in class]
-    K --> M[Student weights in class]
-    K --> N[IRIS dataset sepal width]
+    K["Your Examples"] --> L["Student heights in class"]
+    K --> M["Student weights in class"]
+    K --> N["IRIS dataset sepal width"]
     
     style A fill:#e1f5fe,color:#000
     style B fill:#ffecb3,color:#000
@@ -887,7 +887,6 @@ flowchart TD
 - **Purpose:** Check if data follows normal distribution
 - **Method:** Compare data quantiles to theoretical normal quantiles
 - **Interpretation:** Points on straight line = normally distributed data
-
 ---
 
 ## Summary
