@@ -711,7 +711,185 @@ flowchart TD
     style L fill:#fff,color:#000
     style M fill:#fff,color:#000
 ```
+---
 
+## Topic 10: Normal/Gaussian Distribution - Complete Analysis
+### The Most Important Continuous Distribution
+
+**Definition:** A continuous probability distribution for real-valued random variables, characterized by its bell-shaped curve.
+
+**From your lecture:** "In statistics, a normal distribution or Gaussian distribution is a type of continuous probability distribution for a real-valued random variable."
+
+### Key Visual Characteristics from Your Class
+- **Bell-shaped curve** (symmetric around the mean)
+- **μ ≈ median ≈ mode** (all three measures of central tendency are equal)
+- **Different curves** based on different μ and σ² parameters
+
+```mermaid
+graph TD
+    A[Normal Distribution N μ, σ²] --> B[Continuous Random Variable PDF]
+    B --> C[Bell-shaped Symmetric Curve]
+    
+    C --> D[μ: Mean location parameter]
+    C --> E[σ²: Variance spread parameter]
+    C --> F[All three equal: μ = median = mode]
+    
+    G[Visual Properties] --> H[Symmetric around mean]
+    G --> I[Tails extend to infinity]
+    G --> J[Area under curve equals 1]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+### Parameters and Notation
+**Notation:** N(μ, σ²) or N(μ, σ²)
+- **μ ∈ ℝ**: Mean (location parameter)
+- **σ² ∈ ℝ > 0**: Variance (spread parameter)  
+- **σ**: Standard deviation = √σ²
+- **x ∈ ℝ**: Support (all real numbers)
+
+### PDF Formula from Your Lecture
+**PDF = (1)/(σ√2π) × e^(-1/2 × ((x-μ)/σ)²)**
+
+```mermaid
+flowchart TD
+    A[Normal PDF Formula] --> B[1 over σ√2π times e to minus half times x-μ over σ squared]
+    
+    C[Formula Components] --> D[1/σ√2π: Normalization constant]
+    C --> E[e: Exponential base ≈ 2.718]
+    C --> F[(x-μ)/σ: Standardized distance]
+    
+    G[Key Insight] --> H[Larger σ: Wider, flatter curve]
+    G --> I[Smaller σ: Narrower, taller curve]
+    G --> J[μ shifts curve left/right]
+    
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#e1f5fe,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+### Statistical Properties from Your Class
+**Mean = μ = Average**
+**Variance = σ²**
+**Standard Deviation = σ = √Variance**
+
+### Empirical Rule of Normal Distribution from Your Lecture
+**The 68-95-99.7 Rule:**
+
+**From Image 4:** Your detailed breakdown of probability intervals:
+- **Pr(μ-σ ≤ X ≤ μ+σ) ≈ 68%**
+- **Pr(μ-2σ ≤ X ≤ μ+2σ) ≈ 95%**  
+- **Pr(μ-3σ ≤ X ≤ μ+3σ) ≈ 99.7%**
+
+```mermaid
+graph TD
+    A[Empirical Rule 68-95-99.7] --> B[1σ: 68% of data]
+    A --> C[2σ: 95% of data]
+    A --> D[3σ: 99.7% of data]
+    
+    E[Probability Breakdown] --> F[Within 1σ: About 2/3 of data]
+    E --> G[Within 2σ: Nearly all data]
+    E --> H[Within 3σ: Virtually all data]
+    
+    I[Practical Meaning] --> J[Most data near center]
+    I --> K[Very few extreme outliers]
+    I --> L[Predictable spread pattern]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+### Real-World Examples from Your Class
+1. **Weight of students in the class**
+2. **Height of students**  
+3. **IRIS Dataset** (sepal width)
+
+**From Image 6:** Applications mentioned:
+- Student physical measurements
+- Biological measurements (IRIS dataset)
+- Any naturally occurring continuous measurements
+
+### Standard Normal Distribution
+**Special Case:** N(0, 1) where μ = 0 and σ² = 1
+- **From Image 1:** The red curve represents the standard normal distribution
+- Used as reference for all normal distributions
+- Z-scores convert any normal to standard normal
+
+### Probability Calculations from Your Lecture
+**From Images 5-6:** Probability interval examples:
+
+```
+P(μ-σ ≤ X ≤ μ+σ) ≈ 0.68 = 68%
+P(μ-2σ ≤ X ≤ μ+2σ) ≈ 0.95 = 95%
+P(μ-3σ ≤ X ≤ μ+3σ) ≈ 0.997 = 99.7%
+```
+
+```mermaid
+flowchart TD
+    A[Normal Distribution Applications] --> B[Natural Phenomena]
+    B --> C[Heights and Weights]
+    B --> D[Test Scores]
+    B --> E[Measurement Errors]
+    B --> F[Biological Measurements]
+    
+    G[Why Normal is Important] --> H[Central Limit Theorem]
+    G --> I[Many processes sum to normal]
+    G --> J[Mathematical convenience]
+    
+    K[Your Examples] --> L[Student heights in class]
+    K --> M[Student weights in class]
+    K --> N[IRIS dataset sepal width]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#f3e5f5,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff3e0,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+```
+
+### Q-Q Plot Introduction from Your Class
+**From Image 6:** "Q-Q plot [Quantile Quantile Plot]"
+
+- **Purpose:** Check if data follows normal distribution
+- **Method:** Compare data quantiles to theoretical normal quantiles
+- **Interpretation:** Points on straight line = normally distributed data
+
+---
 ---
 ### Relationship Summary: Bernoulli → Binomial
 
