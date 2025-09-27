@@ -1455,17 +1455,332 @@ flowchart TD
 | **P(Z < z)** | Left tail probability | P(Z < 0.5) ≈ 0.691 |
 | **P(Z > z)** | Right tail probability | P(Z > 0.5) ≈ 0.309 |
 
+# Central Limit Theorem and Statistical Estimation - Complete Analysis
+
+## Central Limit Theorem (CLT)
+
+### Definition
+The Central Limit Theorem states that **the sampling distribution of the sample mean will always be normally distributed, as long as the sample size is large enough**. This holds regardless of whether the population has a normal, Poisson, binomial, or any other distribution.
+
+### Key Statement from Your Lecture
+> "The central limit theorem says that the sampling distribution of the mean will always be normally distributed, as long as the sample size is large enough. Regardless of whether the population has a normal, Poisson, binomial, or any other distribution, the sampling distribution of the mean will be normal."
+
+```mermaid
+graph TD
+    A["Central Limit Theorem"] --> B["Any Population Distribution"]
+    B --> C["Normal"]
+    B --> D["Poisson"]
+    B --> E["Binomial"]
+    B --> F["Skewed"]
+    B --> G["Uniform"]
+    
+    H["Large Sample Size n≥30"] --> I["Sample Means X̄"]
+    I --> J["Normally Distributed"]
+    
+    K["CLT Properties"] --> L["X̄ ~ N(μ, σ²/n)"]
+    K --> M["Mean of X̄ = μ"]
+    K --> N["Variance of X̄ = σ²/n"]
+    K --> O["Standard Error = σ/√n"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#f3e5f5,color:#000
+    style I fill:#c8e6c9,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#fff3e0,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+```
+
+## Sampling Process
+
+### From Your Lecture:
+**Population:** X ~ N(μ, σ²)
+
+**Sample Size:** n = 20
+
+**Multiple Samples:**
+- S₁ = {x₁, x₂, x₃, ..., x₂₀} → X̄₁
+- S₂ = {x₂, x₃, ..., x₂₀} → X̄₂
+- S₃ = {...} → X̄₃
+- ...
+- Sₘ = {...} → X̄ₘ
+
+**Collection of Sample Means:** X̄ = {X̄₁, X̄₂, X̄₃, ..., X̄ₘ}
+
+### Visual Transformation
+
+```mermaid
+flowchart TD
+    A["Population Distribution<br/>Any Shape<br/>X ~ (μ, σ²)"] --> B["Take Multiple Samples<br/>Size n ≥ 30"]
+    
+    B --> C["Calculate Sample Means<br/>X̄₁, X̄₂, X̄₃, ..."]
+    
+    C --> D["Distribution of Sample Means<br/>Normal Distribution<br/>X̄ ~ N(μ, σ²/n)"]
+    
+    E["Non-Gaussian Population"] --> F["→ Gaussian Sample Means"]
+    
+    G["CLT Magic"] --> H["Shape doesn't matter"]
+    G --> I["Sample size matters"]
+    G --> J["Larger n = More normal"]
+    
+    style A fill:#ffecb3,color:#000
+    style B fill:#f3e5f5,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#e1f5fe,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+## Case Studies from Lecture
+
+### Case 1: Normal Population
+**Population:** X ~ N(μ, σ²) *(bell-shaped)*
+**Result:** Sample means X̄ ~ N(μ, σ²/n) *(still bell-shaped, but narrower)*
+
+### Case 2: Non-Gaussian Population  
+**Population:** X ~ Non-Normal *(skewed, any shape)*
+**Sample Size:** n ≥ 30
+**Result:** Sample means X̄ ~ N(μ, σ²/n) *(becomes bell-shaped!)*
+
+**Key Insight:** The original distribution shape doesn't matter - CLT always produces normal distribution of sample means.
+
+## Statistical Estimation
+
+### What is an Estimate?
+
+From your lecture definition:
+> "Estimate: It is an observed numerical value used to estimate an unknown population parameter"
+
+```mermaid
+graph TD
+    A["Statistical Estimation"] --> B["Population Parameter<br/>(Unknown)"]
+    A --> C["Sample Statistic<br/>(Known)"]
+    
+    D["Population Parameters"] --> E["μ (population mean)"]
+    D --> F["σ² (population variance)"]
+    D --> G["p (population proportion)"]
+    
+    H["Sample Statistics"] --> I["X̄ (sample mean)"]
+    H --> J["s² (sample variance)"]
+    H --> K["p̂ (sample proportion)"]
+    
+    L["Estimation Process"] --> M["X̄ estimates μ"]
+    L --> N["s² estimates σ²"]
+    L --> O["p̂ estimates p"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+```
+
+## Types of Estimates
+
+### 1. Point Estimate
+**Definition:** Single numerical value used to estimate the unknown population parameter
+
+**Example:** Sample mean is a point estimate of population mean
+- **μ ← X̄** (population mean estimated by sample mean)
+
+**From your lecture:** "Sample mean is a point estimate of a population mean"
+
+### 2. Interval Estimate  
+**Definition:** Range of values used to estimate the unknown population parameters
+
+**Also called:** Confidence Intervals
+
+**Example:** [55 - 65] might be a 95% confidence interval for population mean
+
+**Visual representation:** Point estimate sits within an interval range
+
+```mermaid
+flowchart LR
+    A["Types of Estimates"] --> B["Point Estimate"]
+    A --> C["Interval Estimate"]
+    
+    B --> D["Single Value<br/>X̄ = 60"]
+    B --> E["Best guess"]
+    B --> F["No uncertainty measure"]
+    
+    C --> G["Range of Values<br/>[55, 65]"]
+    C --> H["Confidence level"]
+    C --> I["Accounts for uncertainty"]
+    
+    J["Example"] --> K["Point: X̄ = 60"]
+    J --> L["Interval: [55, 65]<br/>95% Confidence"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#c8e6c9,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff3e0,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Key Properties of Sample Mean Distribution
+
+### When Population is Normal: X ~ N(μ, σ²)
+- **Sample Mean:** X̄ ~ N(μ, σ²/n)
+- **Standard Error:** SE = σ/√n
+- **Shape:** Normal for any sample size
+
+### When Population is Non-Normal
+- **Sample Mean:** X̄ ~ N(μ, σ²/n) *(approximately, when n ≥ 30)*
+- **Standard Error:** SE = σ/√n  
+- **Shape:** Approaches normal as n increases
+
+### Important Formulas
+```
+E(X̄) = μ                    (Expected value of sample mean)
+Var(X̄) = σ²/n              (Variance of sample mean)
+SD(X̄) = σ/√n               (Standard deviation of sample mean)
+```
+
+## Practical Applications
+
+### 1. Quality Control
+- Monitor manufacturing processes
+- Detect when process goes out of control
+- Use sample means to estimate population mean
+
+### 2. Market Research
+- Estimate population preferences from sample surveys
+- Calculate confidence intervals for market share
+
+### 3. Medical Studies
+- Estimate treatment effects from clinical trials
+- Compare drug efficacy using sample statistics
+
+### 4. Educational Assessment
+- Estimate student population performance from sample tests
+- Compare school/district performance
+
+```mermaid
+graph TD
+    A["CLT Applications"] --> B["Quality Control"]
+    A --> C["Market Research"]
+    A --> D["Medical Studies"]
+    A --> E["Education"]
+    
+    B --> F["Process monitoring"]
+    B --> G["Defect rate estimation"]
+    
+    C --> H["Survey analysis"]
+    C --> I["Consumer preference"]
+    
+    D --> J["Clinical trials"]
+    D --> K["Drug effectiveness"]
+    
+    E --> L["Test score analysis"]
+    E --> M["Educational outcomes"]
+    
+    N["Why CLT Matters"] --> O["Makes inference possible"]
+    N --> P["Enables confidence intervals"]
+    N --> Q["Supports hypothesis testing"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#ffecb3,color:#000
+    style O fill:#fff,color:#000
+    style P fill:#fff,color:#000
+    style Q fill:#fff,color:#000
+```
+
+## Sample Size Considerations
+
+### Rule of Thumb: n ≥ 30
+- **n < 30:** CLT may not apply well (unless population is normal)
+- **n ≥ 30:** CLT works well for most populations
+- **n ≥ 100:** CLT works excellently for almost all populations
+
+### Effect of Sample Size on Standard Error
+- **Larger n → Smaller SE → More precise estimates**
+- **SE = σ/√n** decreases as n increases
+- **Sample mean gets closer to population mean**
+
+## Connection to Normal Distribution
+
+The CLT explains why the normal distribution is so important in statistics:
+
+1. **Foundation for Inference:** Most statistical procedures assume normally distributed sample statistics
+2. **Justifies Normal Approximation:** Even with non-normal populations, we can use normal distribution methods
+3. **Enables Probability Calculations:** We can calculate probabilities and create confidence intervals
+4. **Supports Hypothesis Testing:** Forms the basis for t-tests, z-tests, and other procedures
+
 ## Summary
 
-The Standard Normal Distribution and Z-scores provide a powerful framework for:
+```mermaid
+flowchart TD
+    A["Central Limit Theorem<br/>Key Concepts"] --> B["Any population shape"]
+    A --> C["Large sample size n≥30"]
+    A --> D["Sample means are normal"]
+    
+    E["Statistical Estimation"] --> F["Point estimates"]
+    E --> G["Interval estimates"]
+    E --> H["Population parameter inference"]
+    
+    I["Practical Impact"] --> J["Makes statistics possible"]
+    I --> K["Enables confidence intervals"]
+    I --> L["Supports hypothesis testing"]
+    I --> M["Justifies normal methods"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff3e0,color:#000
+    style I fill:#f3e5f5,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
 
-- **Standardizing** different normal distributions
-- **Comparing** data points from different scales  
-- **Calculating probabilities** using standard tables
-- **Identifying outliers** and unusual observations
-- **Making statistical inferences** about populations
+The Central Limit Theorem is one of the most important results in statistics because it allows us to make inferences about populations using sample data, regardless of the population's original distribution shape. Combined with estimation theory, it forms the foundation for virtually all statistical inference procedures.
 
-This standardization process is fundamental to statistical analysis and forms the basis for many advanced statistical procedures including hypothesis testing and confidence intervals.
 ### Relationship Summary: Bernoulli → Binomial
 
 | Distribution | Trials | Outcomes | PMF | Example |
