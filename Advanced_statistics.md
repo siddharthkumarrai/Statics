@@ -1781,6 +1781,321 @@ flowchart TD
 
 The Central Limit Theorem is one of the most important results in statistics because it allows us to make inferences about populations using sample data, regardless of the population's original distribution shape. Combined with estimation theory, it forms the foundation for virtually all statistical inference procedures.
 
+__
+# Hypothesis Testing - Complete Analysis
+
+## Definition and Core Concepts
+
+Hypothesis testing is a statistical method used to make inferences about population parameters based on sample data. It provides a systematic framework for testing claims or assumptions about populations using sample evidence.
+
+### Key Components:
+1. **Inferential Statistics**: Drawing conclusions or inferences about populations from sample data
+2. **Hypothesis Testing Mechanism**: A formal procedure to evaluate claims
+3. **Statistical Decision Making**: Accept or reject hypotheses based on evidence
+
+## Hypothesis Testing Framework
+
+### Definition
+A statistical procedure that uses sample data to evaluate the likelihood of a specific claim about a population parameter.
+
+**Process Flow:** Sample Data → Conclusions → Population Data
+
+```mermaid
+graph TD
+    A["Hypothesis Testing Process"] --> B["Sample Data Collection"]
+    B --> C["Statistical Analysis"]
+    C --> D["Population Inference"]
+    
+    E["Key Elements"] --> F["Null Hypothesis (H₀)"]
+    E --> G["Alternative Hypothesis (H₁)"]
+    E --> H["Test Statistic"]
+    E --> I["P-value"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#f3e5f5,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+```
+
+## Hypothesis Types
+
+### 1. Null Hypothesis (H₀)
+**Definition:** The assumption you are beginning with - typically states "no effect" or "no difference"
+
+**Characteristics:**
+- Default position or status quo
+- What we assume to be true initially
+- Contains equality (=, ≤, ≥)
+
+### 2. Alternative Hypothesis (H₁)
+**Definition:** The opposite of the null hypothesis - what we want to prove
+
+**Characteristics:**  
+- The claim we're testing for
+- Contains inequality (≠, <, >)
+- What we conclude if we reject H₀
+
+```mermaid
+flowchart TD
+    A["Court Case Example: Person Crime → Court"] --> B["Hypothesis Testing Analogy"]
+    
+    C["Null Hypothesis (H₀)"] --> D["The Person is not Guilty"]
+    C --> E["Assumption you are beginning with"]
+    
+    F["Alternative Hypothesis (H₁)"] --> G["The Person is guilty"]
+    F --> H["Opposite of Null Hypothesis"]
+    
+    I["Legal Principle"] --> J["Innocent until proven guilty"]
+    I --> K["Burden of proof on prosecution"]
+    
+    L["Statistical Principle"] --> M["Assume H₀ true until evidence suggests otherwise"]
+    L --> N["Burden of proof on alternative"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#ffab91,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff3e0,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff3e0,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+```
+
+## The Four Steps of Hypothesis Testing
+
+### Step 1: State the Hypotheses
+- **H₀ (Null):** Statement of no effect/difference
+- **H₁ (Alternative):** Statement of effect/difference
+
+### Step 2: Set Significance Level (α)
+- Common values: α = 0.05, 0.01, 0.10
+- Determines rejection regions
+
+### Step 3: Conduct Experiment
+- Collect data through proper sampling
+- Calculate test statistic
+- Determine p-value
+
+### Step 4: Make Decision
+- **Accept the Null Hypothesis**, or
+- **Reject the Null Hypothesis**
+
+## Practical Example from Screenshots
+
+### College Pass Rate Analysis
+
+**Scenario:** Colleges in District A have an average pass percentage of 85%. A new college opened in the district, and a sample of 100 students showed a pass percentage of 90% with a standard deviation of 4%.
+
+**Question:** Does this school have a different pass percentage?
+
+**Step 1: Hypotheses**
+- **H₀:** μ = 85% (School has same pass rate as district average)
+- **H₁:** μ ≠ 85% (School has different pass rate)
+
+**Step 2: Given Information**
+- Population mean (μ₀) = 85%
+- Sample mean (x̄) = 90%  
+- Sample size (n) = 100
+- Standard deviation (s) = 4%
+- Significance level: α = 0.05
+
+```mermaid
+graph TD
+    A["College Example Analysis"] --> B["District A Average = 85%"]
+    B --> C["New College Sample: n=100, x̄=90%, s=4%"]
+    
+    D["Hypothesis Setup"] --> E["H₀: μ = 85%"]
+    D --> F["H₁: μ ≠ 85%"]
+    
+    G["Test Details"] --> H["Two-tailed test"]
+    G --> I["α = 0.05"]
+    G --> J["Need to calculate test statistic"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+## P-Value Concept
+
+### Definition
+**P-value:** A number calculated from a statistical test that describes how likely you are to have found a particular set of observations if the null hypothesis were true.
+
+### Key Properties
+- Used in hypothesis testing to help decide whether to reject the null hypothesis
+- Probability of obtaining test results at least as extreme as observed, assuming H₀ is true
+- Lower p-values provide stronger evidence against H₀
+
+### P-Value Interpretation
+
+**From Screenshot Example: Coin Fairness Test**
+
+**Scenario:** Testing if a coin is fair or not
+- **H₀:** Coin is fair (P(H) = 0.5, P(T) = 0.5)
+- **H₁:** Coin is not fair
+
+**Experiment Results:**
+- Out of 100 tosses
+- P(H) = 0.6, P(T) = 0.4
+- This gives us P(H) = 0.7, P(T) = 0.3
+
+```mermaid
+flowchart TD
+    A["P-Value Visualization"] --> B["Normal Distribution Curve"]
+    
+    C["Critical Regions"] --> D["Left Rejection Region"]
+    C --> E["Acceptance Region (Fail to reject H₀)"]  
+    C --> F["Right Rejection Region"]
+    
+    G["Decision Rules"] --> H["If p-value < α: Reject H₀"]
+    G --> I["If p-value ≥ α: Fail to reject H₀"]
+    
+    J["Significance Level"] --> K["α = 0.05"]
+    J --> L["95% Confidence Level"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#ffab91,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Critical Regions and Decision Making
+
+### Rejection Regions
+Based on the normal distribution curve:
+- **Left tail:** Values significantly below expected
+- **Right tail:** Values significantly above expected
+- **Two-tailed test:** Both tails are rejection regions
+
+### Decision Process
+1. **Calculate test statistic**
+2. **Find corresponding p-value**
+3. **Compare with significance level (α)**
+4. **Make decision:**
+   - If p-value ≤ α: **Reject the null hypothesis**
+   - If p-value > α: **Fail to reject the null hypothesis**
+
+### Significance Levels
+- **α = 0.05:** 95% confidence level
+- **α = 0.01:** 99% confidence level  
+- **α = 0.10:** 90% confidence level
+
+## Key Statistical Concepts
+
+### Test Statistics
+- **Z-test:** When population standard deviation is known
+- **T-test:** When population standard deviation is unknown
+- **Chi-square test:** For categorical data
+- **F-test:** For comparing variances
+
+### Types of Errors
+- **Type I Error (α):** Rejecting true null hypothesis (False positive)
+- **Type II Error (β):** Accepting false null hypothesis (False negative)
+
+### Confidence Intervals
+- Range of values likely to contain population parameter
+- Related to significance level: CI = 1 - α
+- 95% CI corresponds to α = 0.05
+
+```mermaid
+graph TD
+    A["Hypothesis Testing Summary"] --> B["Two-Stage Process"]
+    
+    C["Stage 1: Setup"] --> D["Define H₀ and H₁"]
+    C --> E["Choose significance level α"]
+    C --> F["Select appropriate test"]
+    
+    G["Stage 2: Analysis"] --> H["Collect sample data"]
+    G --> I["Calculate test statistic"]
+    G --> J["Determine p-value"]
+    G --> K["Make statistical decision"]
+    
+    L["Final Outcomes"] --> M["Reject H₀: Accept H₁"]
+    L --> N["Fail to reject H₀: Insufficient evidence"]
+    
+    O["Real-world Applications"] --> P["Quality control"]
+    O --> Q["Medical research"]
+    O --> R["A/B testing"]
+    O --> S["Academic research"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#f3e5f5,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#c8e6c9,color:#000
+    style M fill:#ffab91,color:#000
+    style N fill:#fff3e0,color:#000
+    style O fill:#fff,color:#000
+    style P fill:#fff,color:#000
+    style Q fill:#fff,color:#000
+    style R fill:#fff,color:#000
+    style S fill:#fff,color:#000
+```
+
+## Practical Applications
+
+### Common Use Cases
+1. **Quality Control:** Testing if products meet specifications
+2. **Medical Research:** Evaluating treatment effectiveness  
+3. **Marketing:** A/B testing for campaign effectiveness
+4. **Education:** Comparing teaching methods
+5. **Economics:** Testing economic theories
+
+### Decision Framework
+- **Business Context:** Risk vs. benefit analysis
+- **Scientific Research:** Reproducibility and peer review
+- **Policy Making:** Evidence-based decisions
+- **Quality Assurance:** Process improvement
+
+## Important Reminders
+
+### Statistical vs Practical Significance
+- **Statistical significance:** Result unlikely due to chance
+- **Practical significance:** Result meaningful in real-world context
+- Large samples can detect tiny differences that may not matter practically
+
+### Assumptions and Limitations
+- **Sample representativeness:** Must represent population
+- **Distribution assumptions:** Many tests assume normality
+- **Independence:** Observations should be independent
+- **Sample size:** Adequate size needed for reliable results
+
+Hypothesis testing provides a rigorous framework for making data-driven decisions while acknowledging uncertainty. It's a fundamental tool that bridges the gap between sample observations and population-level conclusions, enabling informed decision-making across numerous fields and applications.
+__
+
 ### Relationship Summary: Bernoulli → Binomial
 
 | Distribution | Trials | Outcomes | PMF | Example |
