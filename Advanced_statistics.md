@@ -259,9 +259,10 @@ graph TD
 - For continuous variables like height
 - Most common in nature
 
-**2. Bernoulli Distribution (PMF)**
+**2. Bernoulli Distribution (PMF) - DETAILED ANALYSIS**
 - Binary outcomes only: Success/Failure, Yes/No, 1/0
 - Single trial with two possible outcomes
+- **From your lecture images:** Coin tossing example {H, T}
 
 **3. Uniform Distribution (PMF)**
 - All outcomes equally likely
@@ -281,6 +282,149 @@ graph TD
 
 ---
 
+## Topic 7: Bernoulli Distribution - Complete Analysis
+### From Images 1-6: Detailed Bernoulli Study
+
+**Definition:** Models any single experiment with yes-no question
+**From your lecture:** Coin tossing example {H, T}
+
+### Parameters (Image 2)
+- **0 ≤ p ≤ 1** (probability constraint)
+- **q = 1-p** (complement probability)
+- **k ∈ {0,1}** → 2 outcomes only
+
+```mermaid
+graph TD
+    A[Bernoulli Distribution] --> B[Single Trial]
+    B --> C[Two Outcomes Only]
+    
+    C --> D[Success k equals 1]
+    C --> E[Failure k equals 0]
+    
+    D --> F[Probability p]
+    E --> G[Probability q equals 1-p]
+    
+    H[Example: Coin Toss] --> I[Head: p equals 0.5]
+    H --> J[Tail: q equals 0.5]
+    
+    K[Parameter Constraint] --> L[0 less than or equal to p less than or equal to 1]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffcccb,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#f3e5f5,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff3e0,color:#000
+    style L fill:#fff,color:#000
+```
+
+### PMF Formula (Images 2-3)
+**PMF = p^k × (1-p)^(1-k)    k ∈ {0,1}**
+
+#### Case Analysis from Your Lecture:
+**If k = 1:** P(k=1) = p¹ × (1-p)⁰ = p
+**If k = 0:** P(k=0) = p⁰ × (1-p)¹ = (1-p) = q
+
+#### Simplified Form (Image 3):
+```
+PMF = { q = 1-p    if k = 0
+      { p          if k = 1
+```
+
+### Your Coin Toss Example (Image 1)
+```
+P(H) = 0.5 = p
+P(T) = 0.5 = 1-p = q
+```
+
+#### Different Probability Scenarios:
+- **P(x=0) = 0.7, P(x=1) = 0.3** (p = 0.3)
+- **P(x=0) = 0.4, P(x=1) = 0.6** (p = 0.6)  
+- **Whether the person will Pass/Fail**
+
+```mermaid
+flowchart TD
+    A[Bernoulli PMF Formula] --> B[p raised to k times 1-p raised to 1-k]
+    
+    C[Case k equals 1] --> D[p times 1 equals p]
+    E[Case k equals 0] --> F[1 times 1-p equals q]
+    
+    G[Your Examples] --> H[Fair Coin: p equals 0.5]
+    G --> I[Biased scenarios with different p values]
+    
+    J[Real Applications] --> K[Pass/Fail scenarios]
+    J --> L[Yes/No questions]
+    J --> M[Success/Failure events]
+    
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#ffcccb,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#ffecb3,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#e1f5fe,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+### Mean of Bernoulli Distribution (Image 4)
+**E(k) = Σ k × p(k)** from k=0 to 1
+
+**Calculation from your lecture:**
+```
+E(k) = 0×p(0) + 1×p(1)
+     = 0×(1-p) + 1×p  
+     = 0 + p
+     = p
+```
+
+**Therefore: Mean = p**
+
+### Median of Bernoulli Distribution (Image 5)
+**From your lecture:**
+```
+Median = { 0      if p < 1/2
+         { [0,1]  if p = 1/2  
+         { 1      if p > 1/2
+```
+
+### Variance and Standard Deviation (Image 6)
+**Variance = p × (1-p) = pq**
+**Standard Deviation = √(pq)**
+
+```mermaid
+graph LR
+    A[Bernoulli Parameters] --> B[Mean equals p]
+    A --> C[Variance equals p times 1-p]
+    A --> D[Standard Deviation equals square root of pq]
+    
+    E[Median Analysis] --> F[Depends on p value]
+    F --> G[0 if p less than half]
+    F --> H[Range 0 to 1 if p equals half]  
+    F --> I[1 if p greater than half]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+```
+
+---
+
 ## Programming Implementation
 
 ### Python Visualization Code
@@ -288,11 +432,11 @@ graph TD
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import norm, uniform
+from scipy.stats import norm, uniform, bernoulli
 
 # Recreating your lecture examples
 def create_lecture_visualizations():
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
+    fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3, 2, figsize=(15, 15))
     
     # 1. PDF Example (Image 1 recreation)
     x_height = np.linspace(140, 190, 1000)
@@ -355,6 +499,43 @@ def create_lecture_visualizations():
                 arrowprops=dict(arrowstyle='->', color='red'),
                 fontsize=10, color='red')
     
+    # 5. Bernoulli PMF (New from Images 1-6)
+    outcomes = [0, 1]
+    
+    # Three scenarios from your lecture
+    p_values = [0.3, 0.5, 0.7]
+    colors = ['red', 'blue', 'green']
+    
+    width = 0.25
+    for i, (p, color) in enumerate(zip(p_values, colors)):
+        probs = [1-p, p]
+        x_pos = [x + i*width for x in outcomes]
+        ax5.bar(x_pos, probs, width, alpha=0.7, color=color, 
+                label=f'p = {p}')
+    
+    ax5.set_title('Bernoulli PMF: Different p values (Your Images)')
+    ax5.set_xlabel('Outcome (0=Failure, 1=Success)')
+    ax5.set_ylabel('Probability')
+    ax5.set_xticks([x + width for x in outcomes])
+    ax5.set_xticklabels(['0', '1'])
+    ax5.legend()
+    ax5.grid(True, alpha=0.3)
+    
+    # 6. Bernoulli Statistics Visualization
+    p_range = np.linspace(0.01, 0.99, 100)
+    means = p_range
+    variances = p_range * (1 - p_range)
+    std_devs = np.sqrt(variances)
+    
+    ax6.plot(p_range, means, 'blue', linewidth=2, label='Mean = p')
+    ax6.plot(p_range, variances, 'red', linewidth=2, label='Variance = p(1-p)')
+    ax6.plot(p_range, std_devs, 'green', linewidth=2, label='Std Dev = √[p(1-p)]')
+    ax6.set_title('Bernoulli Distribution Statistics')
+    ax6.set_xlabel('Parameter p')
+    ax6.set_ylabel('Value')
+    ax6.legend()
+    ax6.grid(True, alpha=0.3)
+    
     plt.tight_layout()
     plt.show()
 
@@ -391,9 +572,111 @@ def verify_lecture_calculations():
     print(f"   At x=165: PDF = {norm.pdf(165, 165, 10):.4f} (peak)")
     print(f"   At x=175: PDF = {norm.pdf(175, 165, 10):.4f}")
     print(f"   → PDF is highest at 165, where CDF is steepest")
+    
+    # Bernoulli calculations from new images
+    print(f"\n4. BERNOULLI DISTRIBUTION CALCULATIONS")
+    
+    # Coin toss example (p = 0.5)
+    p = 0.5
+    print(f"   FAIR COIN (p = {p}):")
+    print(f"   P(H) = P(k=1) = p = {p}")
+    print(f"   P(T) = P(k=0) = 1-p = {1-p}")
+    print(f"   Mean = p = {p}")
+    print(f"   Variance = p(1-p) = {p*(1-p)}")
+    print(f"   Std Dev = √[p(1-p)] = {np.sqrt(p*(1-p)):.3f}")
+    
+    # Different p values from your examples
+    print(f"\n   BIASED SCENARIOS:")
+    p_values = [0.3, 0.6, 0.7]
+    for p in p_values:
+        print(f"   p = {p}: P(0) = {1-p}, P(1) = {p}, Mean = {p}, Var = {p*(1-p):.3f}")
+    
+    # Median calculation
+    print(f"\n   MEDIAN CALCULATION:")
+    test_p = [0.3, 0.5, 0.8]
+    for p in test_p:
+        if p < 0.5:
+            median = 0
+        elif p == 0.5:
+            median = "[0,1]"
+        else:
+            median = 1
+        print(f"   p = {p}: Median = {median}")
 
 # Run the functions
 if __name__ == "__main__":
     create_lecture_visualizations()
     verify_lecture_calculations()
 ```
+
+---
+
+## Key Relationships Summary
+
+```mermaid
+mindmap
+  root((Probability Distributions))
+    PDF Continuous
+      Bell shaped curves
+      Area equals probability
+      Examples
+        Height
+        Weight
+        Temperature
+    PMF Discrete  
+      Bar charts
+      Sum equals probability
+      Examples
+        Dice
+        Coins
+        Counting
+    CDF Both Types
+      Always increasing
+      Range 0 to 1
+      Shows cumulative probability
+    Critical Relationship
+      PDF equals gradient of CDF
+      Integration vs Summation
+      Slope interpretation
+```
+
+---
+
+## Summary Table
+
+| Concept | Type | Function | Key Property | Example from Lecture | New Bernoulli Details |
+|---------|------|----------|-------------|----------------------|----------------------|
+| **PDF** | Continuous | f(x) | Area = Probability | Height ~N(165,10²) | Not applicable |
+| **PMF** | Discrete | P(X=x) | Sum = 1 | Dice: P(i) = 1/6 | **Bernoulli: P(k) = p^k(1-p)^(1-k)** |
+| **CDF** | Both | F(x) = P(X≤x) | Non-decreasing, 0→1 | F(155)≈0.25, F(165)≈0.5 | **Bernoulli CDF: Step function** |
+
+### Bernoulli Distribution Summary
+**From your new lecture images:**
+- **Parameters:** 0 ≤ p ≤ 1, q = 1-p, k ∈ {0,1}
+- **PMF:** Simplified as {q if k=0, p if k=1}
+- **Mean:** E(k) = p
+- **Median:** 0 if p<1/2, [0,1] if p=1/2, 1 if p>1/2
+- **Variance:** p(1-p) = pq
+- **Applications:** Coin toss, Pass/Fail, Any yes-no question
+
+### Critical Formula from Your Lecture
+**"Probability Density = Gradient of Cumulative Curve"**
+
+```mermaid
+graph LR
+    A[PDF or PMF] -->|Integration or Summation| B[CDF]
+    B -->|Differentiation| A
+    
+    C[Area under PDF] --> D[Probability]
+    E[Sum of PMF values] --> D
+    F[Slope of CDF] --> A
+    
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff3e0,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+```
+
+This relationship is the foundation of probability theory: the derivative of the CDF gives the PDF, and integration of the PDF gives the CDF.
