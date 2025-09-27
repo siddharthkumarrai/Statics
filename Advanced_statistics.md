@@ -1149,6 +1149,323 @@ flowchart TD
 
 The uniform distribution serves as a fundamental building block in probability theory, representing scenarios where "fairness" or "equal likelihood" is the governing principle.
 ---
+## Topic 11:Standard Normal Distribution and Z-Score - Complete Analysis
+
+## What is Standard Normal Distribution?
+
+The Standard Normal Distribution is a **special case** of the normal distribution with specific parameters:
+
+**Notation:** N(0,1) or Z ~ N(0,1)
+
+**Parameters:**
+- **μ = 0** (mean = 0)
+- **σ = 1** (standard deviation = 1)
+- **σ² = 1** (variance = 1)
+
+```mermaid
+graph TD
+    A["Standard Normal Distribution"] --> B["Special Case: N(0,1)"]
+    B --> C["Mean μ = 0"]
+    B --> D["Standard Deviation σ = 1"]
+    B --> E["Variance σ² = 1"]
+    
+    F["Key Properties"] --> G["Bell-shaped curve centered at 0"]
+    F --> H["Symmetric around mean"]
+    F --> I["Area under curve = 1"]
+    F --> J["Range: -∞ to +∞"]
+    
+    K["Standard Scale"] --> L["Values typically range -3 to +3"]
+    K --> M["68% within ±1"]
+    K --> N["95% within ±2"]
+    K --> O["99.7% within ±3"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#f3e5f5,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#ffecb3,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+```
+
+## Z-Score: The Standardization Process
+
+### Definition
+A **Z-score** measures how many standard deviations a data point is away from the mean.
+
+### Z-Score Formula
+```
+Z = (Xi - μ) / σ
+```
+
+Where:
+- **Xi** = individual data point
+- **μ** = population mean  
+- **σ** = population standard deviation
+
+### Interpretation
+- **Z = 0**: Data point equals the mean
+- **Z > 0**: Data point is above the mean
+- **Z < 0**: Data point is below the mean
+- **|Z| = 1**: Data point is 1 standard deviation from mean
+- **|Z| = 2**: Data point is 2 standard deviations from mean
+
+```mermaid
+flowchart TD
+    A["Z-Score Transformation"] --> B["Any Normal Distribution"]
+    B --> C["N(μ, σ²)"]
+    
+    D["Standardization Process"] --> E["Z = (X - μ)/σ"]
+    
+    F["Result"] --> G["Standard Normal N(0,1)"]
+    
+    H["Example Transformation"] --> I["X: {1,2,3,4,5} with μ=3, σ≈1.414"]
+    I --> J["Z-scores: {-1.41, -0.71, 0, 0.71, 1.41}"]
+    
+    K["Benefits"] --> L["Easy probability calculations"]
+    K --> M["Compare different distributions"]
+    K --> N["Use standard normal tables"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#c8e6c9,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#ffecb3,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+```
+
+## Worked Examples from Your Lecture
+
+### Example 1: Basic Z-Score Calculation
+**Given:** Data set X = {1, 2, 3, 4, 5}
+- **μ = 3**
+- **σ ≈ 1.414 ≈ 1** (approximated in lecture)
+
+**Z-Score Calculations:**
+- For X₁ = 1: Z = (1-3)/1 = -2
+- For X₂ = 2: Z = (2-3)/1 = -1  
+- For X₃ = 3: Z = (3-3)/1 = 0
+- For X₄ = 4: Z = (4-3)/1 = 1
+- For X₅ = 5: Z = (5-3)/1 = 2
+
+### Example 2: Standard Deviation Distance
+**Question:** How many standard deviations is 4.5 away from the mean?
+
+**Given:** μ = 4, σ = 1, Xi = 4.5
+
+**Solution:**
+```
+Z_score = (4.5 - 4)/1 = 0.5
+```
+**Answer:** 4.5 is **0.5 standard deviations** above the mean.
+
+### Example 3: Probability Calculation
+**Question:** What percentage of data is falling above 4.5?
+
+**Given:** μ = 4, σ = 1
+
+**Step 1:** Calculate Z-score
+```
+Z_score = (4.5 - 4)/1 = 0.5
+```
+
+**Step 2:** Find area under curve (Z > 0.5)
+From standard normal table: **P(Z > 0.5) ≈ 0.3085 = 30.85%**
+
+**Answer:** Approximately **30.85%** of data falls above 4.5.
+
+### Example 4: Below Threshold Calculation
+**Question:** What percentage of data is falling below 2.5?
+
+**Given:** μ = 4, σ = 1
+
+**Step 1:** Calculate Z-score
+```
+Z_score = (2.5 - 4)/1 = -1.5
+```
+
+**Step 2:** Find area under curve (Z < -1.5)
+**Answer:** This requires standard normal table lookup.
+
+```mermaid
+graph TD
+    A["Lecture Examples Summary"] --> B["Dataset: {1,2,3,4,5}"]
+    
+    C["Basic Calculations"] --> D["μ = 3, σ ≈ 1"]
+    C --> E["Z-scores: {-2,-1,0,1,2}"]
+    
+    F["Distance Example"] --> G["4.5 from mean μ=4"]
+    F --> H["Z = 0.5 std dev above"]
+    
+    I["Probability Questions"] --> J["P(X > 4.5) ≈ 30.85%"]
+    I --> K["P(X < 2.5) = P(Z < -1.5)"]
+    
+    L["Key Learning"] --> M["Z-score standardizes any normal"]
+    L --> N["Enables probability calculations"]
+    L --> O["Compares different scales"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#ffecb3,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#fff3e0,color:#000
+    style L fill:#f3e5f5,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+```
+
+## Visual Representation
+
+The transformation process converts any normal distribution to the standard normal:
+
+```mermaid
+graph LR
+    A["Original Distribution<br/>N(μ=3, σ²≈2)<br/>X: {1,2,3,4,5}"] --> B["Z-Score Formula<br/>Z = (X-μ)/σ"]
+    B --> C["Standard Normal<br/>N(0,1)<br/>Z: {-2,-1,0,1,2}"]
+    
+    D["Benefits of Standardization"] --> E["Universal comparison"]
+    D --> F["Standard probability tables"]
+    D --> G["Simplified calculations"]
+    
+    style A fill:#ffecb3,color:#000
+    style B fill:#f3e5f5,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#e1f5fe,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+```
+
+## Properties of Z-Scores
+
+### Important Characteristics:
+1. **Mean of Z-scores = 0**
+2. **Standard deviation of Z-scores = 1**
+3. **Shape preserved**: Bell curve remains bell curve
+4. **Relative positions maintained**: Order of data points unchanged
+
+### Standard Normal Probabilities:
+- **P(Z < 0) = 0.5** (50% below mean)
+- **P(Z > 0) = 0.5** (50% above mean)  
+- **P(-1 < Z < 1) ≈ 0.68** (68% within 1 std dev)
+- **P(-2 < Z < 2) ≈ 0.95** (95% within 2 std dev)
+- **P(-3 < Z < 3) ≈ 0.997** (99.7% within 3 std dev)
+
+## Practical Applications
+
+### 1. **Quality Control**
+- Identify defective products (typically |Z| > 2)
+- Monitor process variations
+
+### 2. **Academic Performance**  
+- Compare test scores across different exams
+- Standardize grades from different classes
+
+### 3. **Medical Diagnostics**
+- Compare patient measurements to population norms
+- Identify outliers in medical data
+
+### 4. **Finance**
+- Risk assessment using standardized returns
+- Portfolio performance comparison
+
+```mermaid
+flowchart TD
+    A["Z-Score Applications"] --> B["Quality Control"]
+    A --> C["Education"]  
+    A --> D["Healthcare"]
+    A --> E["Finance"]
+    
+    B --> F["Defect identification"]
+    B --> G["Process monitoring"]
+    
+    C --> H["Grade standardization"]
+    C --> I["Performance comparison"]
+    
+    D --> J["Medical diagnostics"]
+    D --> K["Population comparisons"]
+    
+    E --> L["Risk assessment"]
+    E --> M["Portfolio analysis"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Step-by-Step Problem Solving Process
+
+### For any Z-score problem:
+
+1. **Identify given information**
+   - Original distribution parameters (μ, σ)
+   - Data point(s) of interest (Xi)
+
+2. **Apply Z-score formula**
+   - Z = (Xi - μ) / σ
+
+3. **Interpret the result**
+   - Positive Z: above mean
+   - Negative Z: below mean  
+   - Magnitude: distance from mean
+
+4. **For probability questions**
+   - Use standard normal table
+   - Apply appropriate probability rules
+
+## Key Formulas Summary
+
+| Formula | Purpose | Example |
+|---------|---------|---------|
+| **Z = (X - μ)/σ** | Standardization | Z = (4.5-4)/1 = 0.5 |
+| **X = μ + Z×σ** | Reverse calculation | X = 4 + 0.5×1 = 4.5 |
+| **P(Z < z)** | Left tail probability | P(Z < 0.5) ≈ 0.691 |
+| **P(Z > z)** | Right tail probability | P(Z > 0.5) ≈ 0.309 |
+
+## Summary
+
+The Standard Normal Distribution and Z-scores provide a powerful framework for:
+
+- **Standardizing** different normal distributions
+- **Comparing** data points from different scales  
+- **Calculating probabilities** using standard tables
+- **Identifying outliers** and unusual observations
+- **Making statistical inferences** about populations
+
+This standardization process is fundamental to statistical analysis and forms the basis for many advanced statistical procedures including hypothesis testing and confidence intervals.
 ### Relationship Summary: Bernoulli → Binomial
 
 | Distribution | Trials | Outcomes | PMF | Example |
