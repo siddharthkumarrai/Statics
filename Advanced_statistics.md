@@ -4,7 +4,7 @@
 
 ```mermaid
 graph TD
-    A[Random Variables] --> B[Discrete]
+    A[Random Variables] --> B[Discrete] 
     A --> C[Continuous]
     
     B --> D[PMF - Probability Mass Function]
