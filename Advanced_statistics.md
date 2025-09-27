@@ -712,13 +712,12 @@ flowchart TD
     style M fill:#fff,color:#000
 ```
 ---
-
 ## Topic 10: Normal/Gaussian Distribution - Complete Analysis
 ### The Most Important Continuous Distribution
 
 **Definition:** A continuous probability distribution for real-valued random variables, characterized by its bell-shaped curve.
 
-**In statistics, a normal distribution or Gaussian distribution is a type of continuous probability distribution for a real-valued random variable.** 
+**From your lecture:** "In statistics, a normal distribution or Gaussian distribution is a type of continuous probability distribution for a real-valued random variable."
 
 ### Key Visual Characteristics from Your Class
 - **Bell-shaped curve** (symmetric around the mean)
@@ -762,15 +761,15 @@ graph TD
 
 ```mermaid
 flowchart TD
-    A[Normal PDF Formula] --> B[1 over σ√2π times e to minus half times x-μ over σ squared]
+    A[Normal PDF Formula] --> B["1 over σ√2π times e to minus half times (x-μ) over σ squared"]
     
-    C[Formula Components] --> D[1/σ√2π: Normalization constant]
-    C --> E[e: Exponential base ≈ 2.718]
-    C --> F[(x-μ)/σ: Standardized distance]
+    C[Formula Components] --> D["1/σ√2π: Normalization constant"]
+    C --> E["e: Exponential base ≈ 2.718"]
+    C --> F["(x-μ)/σ: Standardized distance"]
     
-    G[Key Insight] --> H[Larger σ: Wider, flatter curve]
-    G --> I[Smaller σ: Narrower, taller curve]
-    G --> J[μ shifts curve left/right]
+    G[Key Insight] --> H["Larger σ: Wider, flatter curve"]
+    G --> I["Smaller σ: Narrower, taller curve"]
+    G --> J["μ shifts curve left/right"]
     
     style A fill:#f3e5f5,color:#000
     style B fill:#fff,color:#000
@@ -889,6 +888,19 @@ flowchart TD
 - **Method:** Compare data quantiles to theoretical normal quantiles
 - **Interpretation:** Points on straight line = normally distributed data
 
+---
+
+## Summary
+
+The Normal Distribution is fundamental to statistics because:
+
+1. **Mathematical Properties**: Completely defined by two parameters (μ, σ²)
+2. **Empirical Rule**: Provides predictable data distribution patterns
+3. **Real-World Applications**: Models many natural phenomena
+4. **Statistical Foundation**: Basis for many statistical tests and procedures
+5. **Central Limit Theorem**: Many sample means approach normal distribution
+
+This distribution serves as the cornerstone for statistical inference and hypothesis testing in your coursework.
 ---
 ---
 ### Relationship Summary: Bernoulli → Binomial
