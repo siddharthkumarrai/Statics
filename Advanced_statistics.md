@@ -726,16 +726,16 @@ flowchart TD
 
 ```mermaid
 graph TD
-    A[Normal Distribution N μ, σ²] --> B[Continuous Random Variable PDF]
-    B --> C[Bell-shaped Symmetric Curve]
+    A["Normal Distribution N μ, σ²"] --> B["Continuous Random Variable PDF"]
+    B --> C["Bell-shaped Symmetric Curve"]
     
-    C --> D[μ: Mean location parameter]
-    C --> E[σ²: Variance spread parameter]
-    C --> F[All three equal: μ = median = mode]
+    C --> D["μ: Mean location parameter"]
+    C --> E["σ²: Variance spread parameter"]
+    C --> F["All three equal: μ = median = mode"]
     
-    G[Visual Properties] --> H[Symmetric around mean]
-    G --> I[Tails extend to infinity]
-    G --> J[Area under curve equals 1]
+    G["Visual Properties"] --> H["Symmetric around mean"]
+    G --> I["Tails extend to infinity"]
+    G --> J["Area under curve equals 1"]
     
     style A fill:#e1f5fe,color:#000
     style B fill:#fff,color:#000
@@ -798,17 +798,17 @@ flowchart TD
 
 ```mermaid
 graph TD
-    A[Empirical Rule 68-95-99.7] --> B[1σ: 68% of data]
-    A --> C[2σ: 95% of data]
-    A --> D[3σ: 99.7% of data]
+    A["Empirical Rule 68-95-99.7"] --> B["1σ: 68% of data"]
+    A --> C["2σ: 95% of data"]
+    A --> D["3σ: 99.7% of data"]
     
-    E[Probability Breakdown] --> F[Within 1σ: About 2/3 of data]
-    E --> G[Within 2σ: Nearly all data]
-    E --> H[Within 3σ: Virtually all data]
+    E["Probability Breakdown"] --> F["Within 1σ: About 2/3 of data"]
+    E --> G["Within 2σ: Nearly all data"]
+    E --> H["Within 3σ: Virtually all data"]
     
-    I[Practical Meaning] --> J[Most data near center]
-    I --> K[Very few extreme outliers]
-    I --> L[Predictable spread pattern]
+    I["Practical Meaning"] --> J["Most data near center"]
+    I --> K["Very few extreme outliers"]
+    I --> L["Predictable spread pattern"]
     
     style A fill:#e1f5fe,color:#000
     style B fill:#c8e6c9,color:#000
@@ -887,6 +887,7 @@ flowchart TD
 - **Purpose:** Check if data follows normal distribution
 - **Method:** Compare data quantiles to theoretical normal quantiles
 - **Interpretation:** Points on straight line = normally distributed data
+
 ---
 
 ## Summary
