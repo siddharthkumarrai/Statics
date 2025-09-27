@@ -1,36 +1,5 @@
 # Probability Distributions - Core Concepts
 
-## Overview: Types of Random Variables and Their Functions
-
-```mermaid
-graph TD
-    A[Random Variables] --> B[Discrete]
-    A --> C[Continuous]
-    
-    B --> D[PMF - Probability Mass Function]
-    C --> E[PDF - Probability Density Function]
-    
-    B --> F[CDF - Cumulative Distribution Function]
-    C --> F
-    
-    D --> G[Examples: Dice, Coin Flip, Binomial]
-    E --> H[Examples: Height, Weight, Normal Distribution]
-    
-    F --> I[Properties: Non-decreasing, 0 to 1]
-    
-    style A fill:#e1f5fe,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#fff,color:#000
-    style D fill:#fff3e0,color:#000
-    style E fill:#f3e5f5,color:#000
-    style F fill:#e8f5e8,color:#000
-    style G fill:#fff,color:#000
-    style H fill:#fff,color:#000
-    style I fill:#fff,color:#000
-```
-
----
-
 ## Topic 1: Probability Density Function (PDF)
 ### For Continuous Random Variables
 
@@ -39,22 +8,11 @@ graph TD
 ### Key Formula
 **P(X ≤ 155) = Area under the curve**
 
-```mermaid
-graph LR
-    A[PDF Curve] --> B[Shaded Area]
-    B --> C[Probability P of X less than 155]
-    
-    D[Height Values] --> E[X-axis: 155, 165, etc.]
-    F[Density Values] --> G[Y-axis: 0.1, 0.2, 0.3, 0.4]
-    
-    style A fill:#f3e5f5,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#e8f5e8,color:#000
-    style D fill:#fff,color:#000
-    style E fill:#fff,color:#000
-    style F fill:#fff,color:#000
-    style G fill:#fff,color:#000
-```
+### Visual Understanding
+- Bell-shaped curve (normal distribution)
+- X-axis: Height values (155, 165, etc.)
+- Y-axis: Probability Density (0.1, 0.2, 0.3, 0.4)
+- The shaded area represents probability
 
 ### Important Properties
 - f(x) ≥ 0 for all x
@@ -70,29 +28,13 @@ graph LR
 **Example from your lecture:** Rolling a dice {1, 2, 3, 4, 5, 6}
 
 ### Key Calculations from your image:
-
-```mermaid
-graph TD
-    A[Fair Dice] --> B[Outcome 1: P equals 1/6]
-    A --> C[Outcome 2: P equals 1/6]
-    A --> D[Outcome 3: P equals 1/6]
-    A --> E[Outcome 4: P equals 1/6]
-    A --> F[Outcome 5: P equals 1/6]
-    A --> G[Outcome 6: P equals 1/6]
-    
-    B --> H[P of X less than 4 equals 4/6 equals 2/3]
-    C --> H
-    D --> H
-    E --> H
-    
-    style A fill:#e1f5fe,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#fff,color:#000
-    style D fill:#fff,color:#000
-    style E fill:#fff,color:#000
-    style F fill:#fff,color:#000
-    style G fill:#fff,color:#000
-    style H fill:#e8f5e8,color:#000
+```
+P(1) = 1/6
+P(2) = 1/6  
+P(3) = 1/6
+P(4) = 1/6
+P(5) = 1/6
+P(6) = 1/6
 ```
 
 ### Cumulative Calculation:
@@ -101,6 +43,12 @@ graph TD
 = 1/6 + 1/6 + 1/6 + 1/6 = 4/6 = 2/3
 ```
 
+### Visual Representation
+- Bar chart with equal height bars (uniform distribution)
+- Each bar height = 1/6
+- X-axis: Outcomes (1, 2, 3, 4, 5, 6)
+- Y-axis: Probability
+
 ---
 
 ## Topic 3: Cumulative Distribution Function (CDF)
@@ -108,23 +56,16 @@ graph TD
 
 **Definition:** F(x) = P(X ≤ x)
 
-```mermaid
-graph LR
-    A[PDF Bell Curve] --> B[Integration/Summation]
-    B --> C[CDF S-shaped Curve]
-    
-    D[Key Relationship] --> E[PDF equals Gradient of CDF]
-    E --> F[Where CDF is steep PDF is high]
-    E --> G[Where CDF is flat PDF is low]
-    
-    style A fill:#f3e5f5,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#fff3e0,color:#000
-    style D fill:#fff,color:#000
-    style E fill:#e8f5e8,color:#000
-    style F fill:#fff,color:#000
-    style G fill:#fff,color:#000
-```
+### From your lecture image:
+- Left side: PDF (bell curve)  
+- Right side: CDF (S-shaped curve)
+- CDF shows cumulative probability from 0 to 1
+
+### Key Points from your diagram:
+- At height 155: F(155) ≈ 0.25 
+- At height 165: F(165) ≈ 0.5
+- The curve shows gradient (slope)
+- **Probability Density = Gradient of Cumulative Curve**
 
 ### Properties
 - F(x) is non-decreasing
@@ -133,162 +74,87 @@ graph LR
 
 ---
 
-## Topic 4: Distribution Types Overview
+## Topic 4: Discrete Random Variable - Detailed Example
 
-```mermaid
-graph TD
-    A[Probability Distributions] --> B[Discrete Distributions]
-    A --> C[Continuous Distributions]
-    
-    B --> D[Bernoulli - Binary Success/Failure]
-    B --> E[Uniform - All outcomes equally likely]
-    B --> F[Poisson - Count of rare events]
-    B --> G[Binomial - Number of successes in n trials]
-    
-    C --> H[Normal/Gaussian - Bell-shaped curve]
-    C --> I[Log Normal - Skewed distribution]
-    
-    style A fill:#e1f5fe,color:#000
-    style B fill:#fff3e0,color:#000
-    style C fill:#f3e5f5,color:#000
-    style D fill:#e3f2fd,color:#000
-    style E fill:#e3f2fd,color:#000
-    style F fill:#e3f2fd,color:#000
-    style G fill:#e3f2fd,color:#000
-    style H fill:#fce4ec,color:#000
-    style I fill:#fce4ec,color:#000
+### Rolling a Dice - Complete Analysis
+
+**Outcomes:** {1, 2, 3, 4, 5, 6}
+**Each outcome probability:** P(i) = 1/6
+
+### PMF (Left chart in your image):
+- Uniform distribution
+- All bars have equal height = 1/6
+- Shows individual probabilities
+
+### CDF (Right chart in your image):
+- Step function increasing from 1/6 to 6/6 = 1
+- Shows cumulative probabilities
+
+### Key Calculations from your image:
+```
+P(X ≤ 2) = P(X=1) + P(X=2) = 1/6 + 1/6 = 2/6 = 1/3
+
+P(X ≤ 6) = 1 (certainty)
 ```
 
 ---
 
-## Topic 5: PDF to CDF Relationship
+## Topic 5: Distribution of Continuous Random Variable
 
-```mermaid
-flowchart TD
-    A[PDF: Probability Density Function] --> B[Shows rate of change of probability]
-    B --> C[Integration over interval]
-    C --> D[CDF: Cumulative Distribution Function]
-    D --> E[Shows P of X less than x]
-    
-    F[Key Insight: PDF equals derivative of CDF] --> G[Derivative of CDF gives PDF]
-    G --> H[Slope of CDF curve equals PDF value]
-    
-    I[Example: Height around 165] --> J[PDF peak at 165]
-    J --> K[CDF steepest at 165]
-    
-    style A fill:#f3e5f5,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#fff,color:#000
-    style D fill:#fff3e0,color:#000
-    style E fill:#fff,color:#000
-    style F fill:#e8f5e8,color:#000
-    style G fill:#fff,color:#000
-    style H fill:#fff,color:#000
-    style I fill:#e1f5fe,color:#000
-    style J fill:#fff,color:#000
-    style K fill:#fff,color:#000
-```
+### From your latest image showing PDF details:
+
+**Height Example:** Range appears to be 140-180 (approximately)
+
+### PDF Characteristics:
+- Smooth bell-shaped curve
+- Peak around 165 (mean)
+- Density values: 0.01, 0.02, 0.03, 0.04 on Y-axis
+- Shaded area represents specific probability
+
+### CDF Characteristics:  
+- Smooth S-shaped curve
+- Starts at 0, ends at 1
+- Steepest where PDF is highest
+- Shows cumulative probabilities
+
+### Key Insight from your lecture:
+**"Probability Density = Gradient of Cumulative Curve"**
+
+This means:
+- Where CDF is steep → PDF is high
+- Where CDF is flat → PDF is low
+- The slope of CDF at any point = PDF value at that point
 
 ---
 
-## Topic 6: Discrete Random Variable - Complete Analysis
+## Topic 6: Types of Probability Distribution (Overview)
 
-### Rolling a Dice - Step by Step
+### From your lecture slide:
 
-```mermaid
-graph TD
-    A[Roll Dice] --> B[Possible Outcomes: 1,2,3,4,5,6]
-    
-    B --> C[PMF Calculation]
-    C --> D[All outcomes have probability 1/6]
-    
-    B --> E[CDF Calculation]
-    E --> F[Cumulative probabilities: 1/6, 2/6, 3/6, 4/6, 5/6, 1]
-    
-    G[Question: P of X less than or equal to 4] --> H[Sum: P1 + P2 + P3 + P4]
-    H --> I[Answer: 4/6 equals 2/3]
-    
-    style A fill:#e1f5fe,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#fff3e0,color:#000
-    style D fill:#fff,color:#000
-    style E fill:#e8f5e8,color:#000
-    style F fill:#fff,color:#000
-    style G fill:#fff,color:#000
-    style H fill:#fff,color:#000
-    style I fill:#c8e6c9,color:#000
-```
+**1. Normal/Gaussian Distribution (PDF)**
+- Bell-shaped curve shown
+- For continuous variables
+- Most common in nature
 
----
+**2. Bernoulli Distribution (PMF)**  
+- Binary outcomes only
+- Success/Failure, Yes/No, 1/0
 
-## Programming Implementation Flow
+**3. Uniform Distribution (PMF)**
+- All outcomes equally likely
+- Like fair dice example
 
-```mermaid
-flowchart TD
-    A[Start: Choose Distribution Type] --> B{Discrete or Continuous?}
-    
-    B -->|Discrete| C[Use PMF]
-    B -->|Continuous| D[Use PDF]
-    
-    C --> E[Calculate individual probabilities]
-    D --> F[Calculate density values]
-    
-    E --> G[Sum for cumulative: CDF]
-    F --> H[Integrate for cumulative: CDF]
-    
-    G --> I[Verify: CDF should reach 1]
-    H --> I
-    
-    I --> J[Plot results]
-    J --> K[Bar chart for discrete]
-    J --> L[Smooth curve for continuous]
-    
-    style A fill:#e1f5fe,color:#000
-    style B fill:#fff,color:#000
-    style C fill:#fff3e0,color:#000
-    style D fill:#f3e5f5,color:#000
-    style E fill:#fff,color:#000
-    style F fill:#fff,color:#000
-    style G fill:#fff,color:#000
-    style H fill:#fff,color:#000
-    style I fill:#e8f5e8,color:#000
-    style J fill:#fff,color:#000
-    style K fill:#fff,color:#000
-    style L fill:#fff,color:#000
-```
+**4. Poisson Distribution (PMF)**
+- Count of events in fixed time
+- Rare events
 
----
+**5. Log Normal Distribution (PDF)**
+- Skewed continuous distribution
+- Often used in economics
 
-## Key Relationships Summary
-
-```mermaid
-mindmap
-  root((Probability Distributions))
-    Random Variables
-      Discrete
-        PMF
-        Examples
-          Dice
-          Coins
-          Binomial
-      Continuous  
-        PDF
-        Examples
-          Height
-          Weight
-          Normal
-    Cumulative Functions
-      CDF for both types
-      Properties
-        Non-decreasing
-        0 to 1 range
-        P of X less than x
-    Key Relationships
-      PDF equals derivative of CDF
-      Area under PDF equals Probability
-      Sum of PMF equals Probability
-      Integration vs Summation
-```
+**6. Binomial Distribution (PMF)**
+- Number of successes in n trials
+- Extension of Bernoulli
 
 ---
 
@@ -401,21 +267,3 @@ print(f"P(Height ≤ 165) ≈ {prob_165:.2f} (matches your ~0.50)")
 
 **Key Relationship:**
 Probability Density = Gradient of Cumulative Curve
-
-```mermaid
-graph LR
-    A[PDF/PMF] -->|Integration/Summation| B[CDF]
-    B -->|Differentiation| A
-    
-    C[Area under PDF] --> D[Probability]
-    E[Sum of PMF values] --> D
-    
-    F[Slope of CDF] --> A
-    
-    style A fill:#f3e5f5,color:#000
-    style B fill:#fff3e0,color:#000
-    style C fill:#fff,color:#000
-    style D fill:#e8f5e8,color:#000
-    style E fill:#fff,color:#000
-    style F fill:#fff,color:#000
-```
