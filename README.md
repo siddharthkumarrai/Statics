@@ -1,72 +1,58 @@
 # Introduction to Statistics
 > *"Statistics is the grammar of science."* - Karl Pearson 
 
-## 📊 What is Statistics?
+## Chapter 1: What is Statistics?
+
 **Statistics** is the science of collecting, organizing, and analyzing data to make informed decisions and draw meaningful conclusions from information.
 
-## 🔍 Types of Statistics
+### The Statistical Process
+```mermaid
+flowchart TD
+    A[Question/Problem] --> B[Data Collection]
+    B --> C[Data Organization]
+    C --> D[Data Analysis]
+    D --> E[Interpretation]
+    E --> F[Decision Making]
+
+    style A fill:#e1f5fe,color:#000
+    style B fill:#f3e5f5,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#e8f5e8,color:#000
+    style E fill:#fce4ec,color:#000
+    style F fill:#f1f8e9,color:#000
+```
+
+### Branches of Statistics
+
 Statistics is divided into two main branches:
 
-### 1️⃣ Descriptive Statistics
-**Definition:** It consists of organizing and summarizing data
+#### Descriptive Statistics
+**Definition:** Organizing and summarizing data to describe what happened
 
 **Components:**
-- **📊 Measures of Central Tendency:** Mean, Median, Mode
-- **📈 Measures of Dispersion:** Variance, Standard Deviation
-- **📋 Different types of Distribution of data**
-  - Examples: Histogram, PDF, PMF
+- Measures of Central Tendency (Mean, Median, Mode)
+- Measures of Dispersion (Variance, Standard Deviation)
+- Data visualization (Histograms, Charts)
 
-**Example:** Let's say there are 20 statistics classes at your college, and you have collected the heights of students in the class.
+**Example Question:** *"What is the average height of students in this classroom?"*
 
-Heights recorded: `[175cm, 180cm, 140cm, 140cm, 135cm, 160cm, 185cm, 190cm]`
-
-**Descriptive Question:** *"What is the average height of the entire classroom?"*
-```
-Calculation: (175+180+140+140+135+160+185+190) / 8 = Average Height
-```
-
-### 2️⃣ Inferential Statistics  
-**Definition:** It consists of using data you have measured to form conclusions
+#### Inferential Statistics  
+**Definition:** Using sample data to make conclusions about populations
 
 **Components:**
-- **🧪 Hypothesis Testing**
-  - Z-test, t-test
-  - H₀, H₁, p-value, significance value
-- **📊 Chi Square tests**
+- Hypothesis Testing (Z-test, t-test)
+- Confidence intervals
+- Statistical significance
 
-**Inferential Question:** *"Are the heights of the students in classroom similar to what you expect in the entire college?"*
+**Example Question:** *"Are the heights of students in this classroom representative of the entire college?"*
 
-This involves using your **sample data** (classroom) to make inferences about the **population data** (entire college).
-
-```mermaid
-graph LR
-    A[🔍 Sample<br/>Classroom Data] --> B[📊 Analysis] --> C[🎯 Population<br/>College Inference]
-    style A fill:#fff3e0,color:#000
-    style B fill:#e8f5e8,color:#000
-    style C fill:#fce4ec,color:#000
-
-```
-
-## 🎯 Population vs Sample
-Understanding the relationship between population and sample is fundamental to statistics:
-
-### 🌍 Population
-**Definition:** The group you are interested in studying
-- Represents the **entire** group of interest
-- Usually large and difficult to study completely
-- Example: All students in the college
-
-### 📋 Sample  
-**Definition:** A subset of population
-- A **smaller, manageable** portion of the population
-- Used to make inferences about the population
-- Example: Students in one statistics classroom
+### Population vs Sample
 
 ```mermaid
 graph TD
-    A[🌍 Population<br/>All College Students] --> B[📋 Sample<br/>One Classroom]
-    B --> C[📊 Statistical Analysis]
-    C --> D[🔍 Inferences about Population]
+    A[Population<br/>All College Students] --> B[Sample<br/>One Classroom]
+    B --> C[Statistical Analysis]
+    C --> D[Inferences about Population]
 
     style A fill:#ffebee,color:#000
     style B fill:#fff3e0,color:#000
@@ -74,434 +60,192 @@ graph TD
     style D fill:#fce4ec,color:#000
 ```
 
-### 🔄 The Statistical Inference Process
+**Population:** The complete group you want to study
+- Usually large and difficult to study entirely
+- Parameters are typically unknown
+
+**Sample:** A subset of the population
+- Smaller, manageable portion
+- Used to estimate population parameters
+- Statistics calculated from samples
+
+**Key Insight:** We use sample statistics to estimate population parameters!
+
+---
+
+## Chapter 2: Types of Data and Measurement Scales
+
+Understanding your data type is crucial for choosing appropriate statistical methods.
+
+### Data Classification
+
 ```mermaid
-flowchart LR
-    A[🎯 Population<br/>Parameter] -.->|"We want to know"| B[❓ Unknown<br/>Population Truth]
-    C[📋 Sample<br/>Statistic] -->|"We calculate"| D[📊 Sample Result]
-    D -->|"We infer"| B
+graph TD
+    A[DATA] --> B[Quantitative<br/>Numerical]
+    A --> C[Qualitative<br/>Categorical]
 
-    style A fill:#ffcdd2,color:#000
-    style C fill:#fff3e0,color:#000
+    B --> D[Discrete<br/>Countable]
+    B --> E[Continuous<br/>Measurable]
+
+    C --> F[Nominal<br/>No Order]
+    C --> G[Ordinal<br/>Ranked]
+
+    style A fill:#e3f2fd,color:#000
+    style B fill:#fff3e0,color:#000
+    style C fill:#fce4ec,color:#000
     style D fill:#e8f5e8,color:#000
-    style B fill:#fce4ec,color:#000
+    style E fill:#e8f5e8,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#f3e5f5,color:#000
 ```
 
-**Key Point:** We use sample statistics to estimate population parameters!
+### Quantitative Data (Numerical)
+Can perform mathematical operations (+, -, ×, ÷)
 
-## 🎲 Random Variables
+**Discrete Data:** Countable whole numbers
+- Examples: Number of children (0, 1, 2, 3), Bank accounts, Students in class
 
-A **Random Variable** is a process of mapping the output of a random process or experiments to a number.
+**Continuous Data:** Any numerical value within a range
+- Examples: Height (165.2 cm), Weight (72.3 kg), Temperature (25.7°C)
 
-**Definition:** A random variable assigns numerical values to the outcomes of a random experiment or process.
+### Qualitative Data (Categorical)
+Represents categories or characteristics
 
-### 📝 Examples of Random Variables
+**Nominal Data:** Categories with no natural order
+- Examples: Gender (M, F), Blood type (A, B, AB, O), Colors
 
-#### 🪙 Coin Tossing
-```
-X = { 0  if Head
-    { 1  if Tails
-```
+**Ordinal Data:** Categories with meaningful order
+- Examples: Education level (High School < Bachelor's < Master's), Ratings (Poor < Good < Excellent)
 
-#### 🎲 Rolling a Dice
-The outcome when rolling a standard six-sided dice: X can take values {1, 2, 3, 4, 5, 6}
+### Scales of Measurement
 
-#### 🌡️ Temperature Measurement
-Measuring the temperature of the next day - X represents the temperature value
+| Scale | Order Matters | Equal Intervals | True Zero | Examples | Operations |
+|-------|---------------|----------------|-----------|----------|------------|
+| **Nominal** | No | No | No | Gender, Colors | Count, Mode |
+| **Ordinal** | Yes | No | No | Ratings, Education | Count, Mode, Median |
+| **Interval** | Yes | Yes | No | Temperature (°C, °F) | All except ratios |
+| **Ratio** | Yes | Yes | Yes | Height, Weight, Age | All operations |
 
-#### 🎯 Complex Random Variables
-**Y = Sum of rolling a dice 7 times**
+**Key Difference:** Interval vs Ratio
+- **Interval:** 60°F is not "twice as hot" as 30°F (no meaningful ratios)
+- **Ratio:** A person weighing 80kg is twice as heavy as someone weighing 40kg (meaningful ratios)
 
-This can be used to calculate probabilities:
-- P(Y > 15) - Probability that sum is greater than 15
-- P(Y < 10) - Probability that sum is less than 10
+---
 
-### 🔢 Types of Random Variables
+## Chapter 3: Measures of Central Tendency
 
-Random variables can be classified as:
-- **Discrete Random Variables:** Can only take specific, countable values (like dice outcomes: 1, 2, 3, 4, 5, 6)
-- **Continuous Random Variables:** Can take any value within a range (like temperature: 25.3°C, 25.31°C, etc.)
+Central tendency describes the center or typical value of a dataset.
 
-## 📚 Set Theory Fundamentals
+### Mean (Average)
 
-Understanding set theory is crucial for probability and statistics. Here are the key set operations:
-
-### 🔍 Basic Set Concepts
-
-#### 📊 Sets
-**Set A:** {1, 2, 3, 4, 5, 6, 7, 8}
-**Set B:** {3, 4, 5, 6, 7}
-
-### 🔄 Set Operations
-
-#### 1️⃣ Intersection (A ∩ B)
-**Definition:** Elements that are common to both sets
-**Result:** A ∩ B = {3, 4, 5, 6, 7}
-
-**Visual Representation:** The overlapping region in a Venn diagram
-```
-    A     B
-   ╭───╮ ╭───╮
-  ╱     ╲╱     ╲
- ╱   A   ╳  B   ╲
-╱        ╱╲      ╲
-╲       ╱  ╲     ╱
- ╲     ╱ ∩  ╲   ╱
-  ╲___╱      ╲_╱
-```
-
-#### 2️⃣ Union (A ∪ B)
-**Definition:** All elements that belong to either set A or set B (or both)
-**Result:** A ∪ B = {1, 2, 3, 4, 5, 6, 7, 8}
-
-**Visual Representation:** The entire shaded area in both circles
-```
-    A     B
-   ╭═══╮ ╭═══╮
-  ║     ╲╱     ║
- ║   A   ╳  B   ║
-║        ╱╲      ║
-╚═══════╱  ╲═════╝
-       ╱ ∪  ╲   
-      ╱      ╲ 
-```
-
-#### 3️⃣ Difference (A - B)
-**Definition:** Elements that are in set A but not in set B
-**Result:** A - B = {1, 2, 8}
-
-**Visual Representation:** The part of A that doesn't overlap with B
-```
-    A     B
-   ╭═══╮ ╭───╮
-  ║█████╲╱     ╲
- ║███A███╳  B   ╲
-║████████╱╲      ╲
-╚═══════╱  ╲     ╱
-       ╱    ╲   ╱
-      ╱      ╲_╱
-```
-
-### 🔗 Set Relationships
-
-#### 4️⃣ Subset
-**A → B:** "A is a subset of B" means every element of A is also in B
-- **Example:** A → B = False (because 1, 2, 8 are in A but not in B)
-
-#### 5️⃣ Superset  
-**A → B:** "A is a superset of B" means A contains all elements of B
-- **Example:** B → A = True (because all elements of B {3,4,5,6,7} are in A)
-
-### 🎯 Set Theory Applications in Probability
-
-Set theory forms the foundation for probability concepts:
-- **Sample Space (S):** The set of all possible outcomes
-- **Events:** Subsets of the sample space
-- **Intersection:** Joint events (A AND B)
-- **Union:** Combined events (A OR B)
-- **Complement:** Events that don't occur
-
-## 📊 Measures of Central Tendency
-
-Central tendency describes where the center of a dataset lies. There are three primary measures:
-
-### 1️⃣ Mean (Average)
-**Definition:** The arithmetic average of all values in a dataset
-
-#### Population Mean (μ)
-For a population with N values:
-```
-Population Mean (μ) = Σ Xi / N
-                    = (X₁ + X₂ + X₃ + ... + Xₙ) / N
-```
-
-#### Sample Mean (x̄)
-For a sample with n values:
-```
-Sample Mean (x̄) = Σ Xi / n
-                 = (X₁ + X₂ + X₃ + ... + Xₙ) / n
-```
-
-**Example:**
-Population: X = {1, 1, 2, 2, 3, 3, 4, 5, 5, 6}
-```
-Population Mean (μ) = (1+1+2+2+3+3+4+5+5+6) / 10 = 32 / 10 = 3.2
-```
-
-**Programming Implementation:**
-```python
-import numpy as np
-
-# Calculate mean using numpy
-age = [12, 21, 23, 45, 65, 43, 56, 45, 32, 67, 54, 34]
-mean_age = np.mean(age)
-print(f"Mean age: {mean_age}")  # Output: 41.41666666666667
-```
-
-### 2️⃣ Median
-**Definition:** The middle value when data is arranged in ascending or descending order
-
-#### Steps to Find Median:
-1. **Sort the data** in ascending order
-2. **Count the number of elements**
-3. **If count is odd:** Median = middle value
-4. **If count is even:** Median = average of two middle values
-
-**Examples:**
-
-**Case 1: Odd number of elements**
-```
-X = {4, 5, 2, 3, 2, 1}
-Sorted: {1, 2, 2, 3, 4, 5}
-Count = 6 (even)
-Median = (2 + 3) / 2 = 2.5
-```
-
-**Case 2: Even number of elements**  
-```
-X = {1, 2, 3, 4, 5, 100}
-Count = 6 (even)
-Middle positions: 3rd and 4th values = 3 and 4
-Median = (3 + 4) / 2 = 3.5
-```
-
-**Why Use Median?**
-Median is useful when **outliers are present** in the data because it's less affected by extreme values.
-
-**Comparison Example:**
-- Without outlier: X = {1, 2, 3, 4, 5} → Mean = 3, Median = 3
-- With outlier: X = {1, 2, 3, 4, 5, 100} → Mean ≈ 19.2, Median = 3.5
-
-The median (3.5) better represents the central tendency when outliers are present.
-
-**Programming Implementation:**
-```python
-import numpy as np
-
-# Calculate median using numpy
-age = [12, 21, 23, 45, 65, 43, 56, 45, 32, 67, 54, 34, 200]
-median_age = np.median(age)
-print(f"Median age: {median_age}")  # Output: 45.0
-```
-
-### 3️⃣ Mode
-**Definition:** The value(s) that appear most frequently in a dataset
-
-**Characteristics:**
-- **Most frequent value** in the dataset
-- A dataset can have:
-  - **No mode** (all values appear equally)
-  - **One mode** (unimodal)
-  - **Two modes** (bimodal)  
-  - **Multiple modes** (multimodal)
+**Population Mean:** μ = Σ Xi / N
+**Sample Mean:** x̄ = Σ Xi / n
 
 **Example:**
 ```
-Dataset: {2, 1, 1, 1, 4, 5, 7, 8, 9, 9, 10}
-
-Frequency count:
-1 appears 3 times
-9 appears 2 times  
-All others appear 1 time each
-
-Mode = 1 (highest frequency)
+Ages: [18, 19, 20, 21, 22]
+Mean = (18 + 19 + 20 + 21 + 22) ÷ 5 = 20 years
 ```
 
-**Programming Implementation:**
-```python
-from scipy import stats
+### Median
+The middle value when data is arranged in order
 
-# Calculate mode using scipy
-age = [12, 21, 23, 45, 65, 43, 56, 45, 32, 67, 54, 34, 200]
-mode_result = stats.mode(age)
-print(f"Mode: {mode_result}")  # Returns mode value and count
+**Process:**
+1. Sort the data
+2. If odd number of values: take middle value
+3. If even number of values: average of two middle values
+
+**Example:**
+```
+Ages: [18, 19, 20, 21, 22] → Median = 20
+Ages: [18, 19, 20, 21] → Median = (19 + 20) ÷ 2 = 19.5
 ```
 
-### 📊 Central Tendency Comparison
+### Mode
+The most frequently occurring value
 
-| **Measure** | **Best Used When** | **Advantages** | **Disadvantages** | **Affected by Outliers?** |
-|-------------|-------------------|----------------|-------------------|---------------------------|
-| **Mean** | Normal distribution, no outliers | Uses all data points | Sensitive to outliers | Yes |
-| **Median** | Skewed data, outliers present | Resistant to outliers | Ignores extreme values | No |
-| **Mode** | Categorical data, finding most common | Shows most frequent value | May not exist or be unique | No |
+**Example:**
+```
+Ages: [18, 19, 19, 20, 21] → Mode = 19
+```
 
-### 🎯 When to Use Each Measure
+### Choosing the Right Measure
 
 ```mermaid
 flowchart TD
-    A[📊 Choose Central Tendency] --> B{Data Type?}
+    A[Choose Central Tendency] --> B{Data Type?}
     
     B -->|Numerical| C{Distribution Shape?}
-    B -->|Categorical| D[📍 Use Mode]
+    B -->|Categorical| D[Use Mode]
     
-    C -->|Normal/Symmetric| E[📊 Use Mean]
-    C -->|Skewed| F[📊 Use Median]
-    C -->|Has Outliers| G[📊 Use Median]
+    C -->|Normal/Symmetric| E[Use Mean]
+    C -->|Skewed/Outliers| F[Use Median]
     
     style A fill:#e3f2fd,color:#000
     style D fill:#fff3e0,color:#000
     style E fill:#e8f5e8,color:#000
     style F fill:#fce4ec,color:#000
-    style G fill:#fce4ec,color:#000
 ```
 
-### 📈 Practical Example: Complete Analysis
+**Impact of Outliers:**
+- Dataset without outlier: [20, 21, 22, 23, 24] → Mean = 22, Median = 22
+- Dataset with outlier: [20, 21, 22, 23, 80] → Mean = 33.2, Median = 22
 
-Let's analyze a complete dataset:
+The median better represents typical values when outliers are present.
 
-**Dataset:** Ages of students in a class
-```python
-ages = [18, 19, 20, 20, 21, 21, 21, 22, 23, 45]
-```
+---
 
-**Calculations:**
-```python
-import numpy as np
-from scipy import stats
+## Chapter 4: Measures of Dispersion
 
-# Mean
-mean_age = np.mean(ages)
-print(f"Mean: {mean_age}")  # 23.0
+Dispersion measures how spread out data points are from the center.
 
-# Median  
-median_age = np.median(ages)
-print(f"Median: {median_age}")  # 21.0
-
-# Mode
-mode_age = stats.mode(ages)
-print(f"Mode: {mode_age[0]}")  # 21
-```
-
-**Analysis:**
-- **Mean (23.0):** Pulled up by the outlier (45)
-- **Median (21.0):** Better represents the typical student age
-- **Mode (21):** Most common age in the class
-
-In this case, **median** gives the best representation of central tendency due to the outlier.
-
-## 📏 Measures of Dispersion (Spread of Data)
-
-While measures of central tendency tell us about the center of our data, **measures of dispersion** tell us how spread out or scattered the data points are from the center. Understanding dispersion is crucial because two datasets can have the same mean but very different spreads.
-
-### 📊 What is Dispersion?
-**Dispersion** refers to how much the data points deviate from the central value (mean). It helps us understand:
-- How consistent or variable our data is
-- The reliability of our central tendency measures
-- The range of values we can expect in our dataset
-
-### 📈 Visual Understanding of Dispersion
-
-```mermaid
-graph LR
-    A[Low Dispersion<br/>S² = 2.5] --> B[📊 Data clustered<br/>around center]
-    C[High Dispersion<br/>S² = 9.5] --> D[📊 Data spread out<br/>from center]
-    
-    style A fill:#e8f5e8,color:#000
-    style B fill:#e8f5e8,color:#000
-    style C fill:#ffebee,color:#000
-    style D fill:#ffebee,color:#000
-```
-
+### Why Measure Dispersion?
 Two datasets can have the same mean but different spreads:
-- **Dataset A:** {49, 50, 51} → Mean = 50, Low dispersion
-- **Dataset B:** {30, 50, 70} → Mean = 50, High dispersion
+- Dataset A: [49, 50, 51] → Mean = 50, Low dispersion
+- Dataset B: [30, 50, 70] → Mean = 50, High dispersion
 
-### 1️⃣ Variance
+### Variance
 
-**Definition:** Variance measures the average of squared differences from the mean. It tells us how much the data points deviate from the mean on average.
+**Population Variance:** σ² = Σ(Xi - μ)² / N
+**Sample Variance:** S² = Σ(Xi - x̄)² / (n-1)
 
-#### Population Variance (σ²)
-For a population with N values:
+**Why (n-1) for samples?** Bessel's Correction provides an unbiased estimator of population variance.
+
+### Standard Deviation
+
+**Population:** σ = √σ²
+**Sample:** S = √S²
+
+Standard deviation is preferred because it's in the same units as the original data.
+
+### Practical Example
+
+**Dataset:** X = [1, 2, 3, 4, 5]
+
+**Step 1:** Calculate mean
+x̄ = (1 + 2 + 3 + 4 + 5) ÷ 5 = 3
+
+**Step 2:** Calculate squared deviations
 ```
-Population Variance (σ²) = Σ(Xi - μ)² / N
-
-Where:
-• Xi = Individual data points
-• μ = Population mean  
-• N = Population size
-```
-
-#### Sample Variance (S²)
-For a sample with n values:
-```
-Sample Variance (S²) = Σ(Xi - x̄)² / (n-1)
-
-Where:
-• Xi = Individual data points
-• x̄ = Sample mean
-• n = Sample size
-```
-
-#### 🤔 Why do we divide Sample Variance by (n-1)?
-This is called **Bessel's Correction** and it helps us create an **unbiased estimator** of the population variance. When we use a sample to estimate population parameters, dividing by (n-1) instead of n gives us a more accurate estimate.
-
-### 2️⃣ Standard Deviation
-
-**Definition:** Standard deviation is the square root of variance. It's expressed in the same units as the original data, making it easier to interpret.
-
-#### Population Standard Deviation (σ)
-```
-Population Standard Deviation (σ) = √(Variance) = √σ²
+(1-3)² = 4
+(2-3)² = 1  
+(3-3)² = 0
+(4-3)² = 1
+(5-3)² = 4
+Sum = 10
 ```
 
-#### Sample Standard Deviation (S)
+**Step 3:** Calculate variance and standard deviation
 ```
-Sample Standard Deviation (S) = √(Sample Variance) = √S²
-```
-
-### 📊 Sample Variance Practical Example
-
-Let's work through the example shown in the lecture:
-
-**Dataset:** X = {1, 2, 3, 4, 5}
-
-#### Step-by-Step Calculation:
-
-**Step 1:** Calculate the mean (x̄)
-```
-x̄ = (1 + 2 + 3 + 4 + 5) / 5 = 15 / 5 = 3
+Sample Variance: S² = 10 ÷ (5-1) = 2.5
+Sample Standard Deviation: S = √2.5 = 1.58
 ```
 
-**Step 2:** Calculate deviations from mean and square them
-```
-(1-3)² = (-2)² = 4
-(2-3)² = (-1)² = 1  
-(3-3)² = (0)² = 0
-(4-3)² = (1)² = 1
-(5-3)² = (2)² = 4
-
-Sum of squared deviations: 4 + 1 + 0 + 1 + 4 = 10
-```
-
-**Step 3:** Apply Sample Variance Formula
-```
-Sample Variance (S²) = Σ(Xi - x̄)² / (n-1)
-                     = 10 / (5-1)
-                     = 10 / 4
-                     = 2.5
-```
-
-**Step 4:** Calculate Sample Standard Deviation
-```
-Sample Standard Deviation (S) = √S² = √2.5 = 1.58
-```
-
-### 📊 Normal Distribution and Standard Deviation
-
-Understanding how data spreads in a normal distribution is crucial for interpreting standard deviation:
-
-#### 📈 The 68-95-99.7 Rule (Empirical Rule)
-
-In a normal distribution:
-- **68%** of data falls within **1 standard deviation** of the mean
-- **95%** of data falls within **2 standard deviations** of the mean  
-- **99.7%** of data falls within **3 standard deviations** of the mean
-
-**Visual Representation:**
+### The 68-95-99.7 Rule (Normal Distribution)
 ```
        μ-3σ    μ-2σ    μ-1σ     μ      μ+1σ    μ+2σ    μ+3σ
         |       |       |       |       |       |       |
-    0.1%|  2.1% | 13.6% | 34.1% | 34.1% | 13.6% |  2.1% |0.1%
+      0.1%    2.1%   13.6%   34.1%   34.1%   13.6%    2.1%   0.1%
         |       |       |       |       |       |       |
         |-------|-------|-------|-------|-------|-------|
               68% of data (±1σ)
@@ -509,244 +253,29 @@ In a normal distribution:
                           99.7% of data (±3σ)
 ```
 
-#### Example with Normal Distribution:
-If test scores follow a normal distribution with:
-- **Mean (μ) = 75**  
-- **Standard Deviation (σ) = 10**
+---
 
-Then:
-- **68%** of students scored between **65-85** (75 ± 10)
-- **95%** of students scored between **55-95** (75 ± 20)
-- **99.7%** of students scored between **45-105** (75 ± 30)
+## Chapter 5: Data Visualization and Distribution Shapes
 
-### 📊 Practical Programming Example
+### Histograms
 
-```python
-import numpy as np
-import pandas as pd
-
-# Dataset from the lecture example
-ages = [23, 43, 23, 56, 74, 32, 68, 98, 45, 32]
-
-# Calculate mean
-mean_age = np.mean(ages)
-print(f"Mean: {mean_age}")  # Output: 49.4
-
-# Calculate Sample Variance (using n-1)
-sample_variance = np.var(ages, ddof=1)  # ddof=1 uses n-1
-print(f"Sample Variance: {sample_variance}")  # Output: ~601.82
-
-# Calculate Population Variance (using n)
-population_variance = np.var(ages, ddof=0)  # ddof=0 uses n
-print(f"Population Variance: {population_variance}")  # Output: ~541.64
-
-# Calculate Standard Deviations
-sample_std = np.std(ages, ddof=1)
-population_std = np.std(ages, ddof=0)
-
-print(f"Sample Std Dev: {sample_std}")      # Output: ~24.53
-print(f"Population Std Dev: {population_std}")  # Output: ~23.27
-```
-
-### 📊 Working with DataFrames - Variance by Rows and Columns
-
-From the lecture, we can see how to calculate variance for different axes:
-
-```python
-import pandas as pd
-import numpy as np
-
-# Create sample DataFrame (from lecture)
-data = [[10, 12, 13], 
-        [34, 23, 45], 
-        [32, 34, 21]]
-df = pd.DataFrame(data, columns=["A", "B", "C"])
-
-print("DataFrame:")
-print(df)
-#     A   B   C
-# 0  10  12  13
-# 1  34  23  45
-# 2  32  34  21
-
-# Calculate variance for each COLUMN (axis=0, default)
-variance_by_column = df.var()
-print(f"\nVariance by Column:")
-print(variance_by_column)
-# A    177.333333
-# B    121.000000
-# C    277.333333
-
-# Calculate variance for each ROW (axis=1)  
-variance_by_row = df.var(axis=1)
-print(f"\nVariance by Row:")
-print(variance_by_row)
-# 0      2.333333
-# 1    126.333333  
-# 2     42.333333
-
-# Calculate standard deviation
-std_by_column = df.std()
-print(f"\nStandard Deviation by Column:")
-print(std_by_column)
-# A    13.316624
-# B    11.000000
-# C    16.653332
-```
-
-**Interpretation:**
-- **Column A variance (177.33):** High spread in column A values (10, 34, 32)
-- **Column B variance (121.00):** Moderate spread in column B values (12, 23, 34)
-- **Column C variance (277.33):** Highest spread in column C values (13, 45, 21)
-- **Row variances:** Show how much values vary within each row
-
-### 🎯 Interpreting Variance and Standard Deviation
-
-| **Value** | **Interpretation** | **Example** |
-|-----------|-------------------|-------------|
-| **Low Variance/Std Dev** | Data points are close to the mean | Test scores: 85, 87, 86, 88, 84 |
-| **High Variance/Std Dev** | Data points are spread out from the mean | Test scores: 60, 95, 70, 40, 85 |
-| **Zero Variance** | All data points are identical | Test scores: 80, 80, 80, 80, 80 |
-
-### 🔍 Key Differences: Population vs Sample
-
-| **Aspect** | **Population** | **Sample** |
-|------------|----------------|------------|
-| **Variance Formula** | σ² = Σ(Xi-μ)²/N | S² = Σ(Xi-x̄)²/(n-1) |
-| **Std Dev Formula** | σ = √σ² | S = √S² |
-| **Denominator** | N (population size) | n-1 (degrees of freedom) |
-| **Purpose** | Describes entire population | Estimates population parameters |
-| **Symbol** | σ² (sigma squared), σ | S², S |
-
-### 💡 Practical Applications
-
-**1. Quality Control:**
-- Manufacturing: Monitor product consistency
-- Low variance = consistent quality
-- High variance = quality issues
-
-**2. Finance:**
-- Investment risk assessment
-- Low variance = stable returns  
-- High variance = volatile returns
-
-**3. Education:**
-- Student performance analysis
-- Low variance = consistent class performance
-- High variance = mixed ability levels
-
-**4. Healthcare:**
-- Treatment effectiveness
-- Low variance = predictable treatment outcomes
-- High variance = unpredictable results
-
-### 📚 Summary: Measures of Dispersion
-
-```
-📏 Measures of Dispersion = How spread out the data is
-
-🔢 Variance = Average of squared differences from mean
-   • Population: σ² = Σ(Xi-μ)²/N  
-   • Sample: S² = Σ(Xi-x̄)²/(n-1)
-
-📐 Standard Deviation = Square root of variance
-   • Population: σ = √σ²
-   • Sample: S = √S²
-
-🎯 Why Standard Deviation?
-   • Same units as original data
-   • Easier to interpret than variance
-   • Shows typical deviation from mean
-
-🔄 Bessel's Correction (n-1):
-   • Used in sample calculations
-   • Provides unbiased estimate
-   • Accounts for sampling variability
-
-📊 Interpretation:
-   • Low values = Data clustered near mean
-   • High values = Data spread out from mean  
-   • Zero = All data points identical
-```
-
-## 📊 Histograms and Data Distribution
-
-Histograms are one of the most fundamental tools in statistics for visualizing the distribution of data. They help us understand the shape, center, and spread of our dataset at a glance.
-
-### 📊 What is a Histogram?
-
-**Definition:** A histogram is a graphical representation that shows the distribution of numerical data by dividing the data into bins (intervals) and displaying the frequency of data points in each bin.
+**Definition:** Graphical representation showing the frequency distribution of numerical data
 
 **Key Components:**
-- **X-axis:** Data values divided into bins (intervals)
-- **Y-axis:** Frequency (count) of data points in each bin
-- **Bars:** Height represents frequency, width represents bin size
+- X-axis: Data values divided into bins
+- Y-axis: Frequency or count
+- Bars: Height represents frequency
 
-### 🔢 Creating Histograms: Bin Size Calculation
+**Choosing Bin Size:**
+- Too few bins: Lose detail
+- Too many bins: Too much noise
+- Rule of thumb: √n bins where n = sample size
 
-From the lecture example with age data:
-```
-Ages = {10, 12, 19, 18, 24, 26, 30, 35, 36, 37, 42, 41, 42, 45, 50, 51}
-```
+### Distribution Shapes
 
-#### 📏 Determining Bin Size
-There are different methods to determine optimal bin size:
+Understanding distribution shape guides statistical method selection:
 
-**Method 1: Simple Division**
-```
-Bin Size = (Max - Min) / Number of desired bins
-= (51 - 10) / 10 = 4.1 ≈ 5
-```
-
-**Method 2: Sturges' Rule**
-```
-Number of bins = ⌈log₂(n) + 1⌉
-Where n = number of data points
-```
-
-**Method 3: Square Root Rule**
-```
-Number of bins = ⌈√n⌉
-```
-
-#### 📊 Practical Example from Lecture
-For the age dataset:
-- **Bin Size = 5** → Number of bins = 10
-- **Bin Size = 2.5** → Number of bins = 20
-
-### 📈 From Histogram to Probability Distribution
-
-#### 🔄 Converting Frequency to Probability
-When we have a histogram showing frequencies, we can convert it to a **probability distribution**:
-
-```
-P(x) = Frequency of bin / Total number of observations
-```
-
-**Example:**
-- If bin [20-25) has frequency = 4
-- Total observations = 16
-- Then P(20 ≤ x < 25) = 4/16 = 0.25 = 25%
-
-#### 📊 Probability Density Function (PDF)
-- **For continuous data:** The histogram approaches a smooth curve (PDF) as sample size increases and bin width decreases
-- **Area under the curve = 1** (total probability)
-- **Height = Probability density** (not probability itself)
-
-### 🔍 Distribution Shapes and Skewness
-
-Understanding the shape of your data distribution is crucial for selecting appropriate statistical methods and interpreting results.
-
-### 📊 Types of Distribution Shapes
-
-#### 1️⃣ **Symmetric Distribution (Normal/Gaussian)**
-
-**Characteristics:**
-- **Perfect symmetry** around the center
-- **Mean = Median = Mode** (all at the center)
-- **Bell-shaped curve** when data is normally distributed
-- **Equal spread** on both sides of the center
-
+#### Symmetric Distribution (Normal)
 ```
     Frequency
         ↑
@@ -756,100 +285,49 @@ Understanding the shape of your data distribution is crucial for selecting appro
         | ╱         ╲
         |╱___________╲
         └──────────────→ Values
-              μ
 ```
-
-**Box Plot Characteristics:**
-- Q₂ (median) is **exactly in the middle** of Q₁ and Q₃
-- **Q₃ - Q₂ ≈ Q₂ - Q₁** (equal distances)
-
-**Real-World Examples:**
-- Heights of people
-- IQ scores
-- Measurement errors
-- Blood pressure readings
-
-#### 2️⃣ **Right Skewed Distribution (Positive Skew)**
-
 **Characteristics:**
-- **Long tail extends to the right**
-- **Mean > Median > Mode** 
-- **Majority of data** concentrated on the left side
-- **Few extreme values** pull the mean to the right
+- Mean = Median = Mode
+- Bell-shaped curve
+- Equal spread on both sides
 
+#### Right Skewed (Positive Skew)
 ```
     Frequency
         ↑
         |╭─╮
         |█ ╰─╮
         |█   ╰─╮
-        |█     ╰─╮
-        |█_______╰─────╮
+        |█     ╰─────╮
         └──────────────────→ Values
          ↑  ↑     ↑
        Mode Med  Mean
 ```
-
-**Box Plot Characteristics:**
-- **Q₃ - Q₂ > Q₂ - Q₁** (right whisker longer)
-- **Median closer to Q₁** than to Q₃
-- **Potential outliers** on the right side
-
-**Real-World Examples:**
-- Income distribution (few very wealthy people)
-- House prices in a city
-- Response times (most fast, few very slow)
-- Age at death (most people live to old age)
-
-#### 3️⃣ **Left Skewed Distribution (Negative Skew)**
-
 **Characteristics:**
-- **Long tail extends to the left**
-- **Mean < Median < Mode**
-- **Majority of data** concentrated on the right side
-- **Few extreme values** pull the mean to the left
+- Mean > Median > Mode
+- Long tail extends right
+- Examples: Income, house prices
 
+#### Left Skewed (Negative Skew)
 ```
     Frequency
         ↑
         |        ╭─╮█
         |      ╭─╯ █
         |    ╭─╯   █
-        |  ╭─╯     █
         |╭─_______█
         └──────────────────→ Values
          ↑     ↑  ↑
        Mean   Med Mode
 ```
+**Characteristics:**
+- Mean < Median < Mode
+- Long tail extends left
+- Examples: Test scores (most students do well)
 
-**Box Plot Characteristics:**
-- **Q₂ - Q₁ > Q₃ - Q₂** (left whisker longer)
-- **Median closer to Q₃** than to Q₁
-- **Potential outliers** on the left side
+### Box Plots
 
-**Real-World Examples:**
-- Test scores (most students do well, few fail)
-- Age at retirement (most retire at standard age, few retire very early)
-- Customer satisfaction ratings (most satisfied, few very unsatisfied)
-
-### 📊 Skewness and Central Tendency Relationships
-
-#### 📈 Summary of Relationships
-
-| **Distribution Type** | **Shape** | **Central Tendency Relationship** | **Tail Direction** |
-|----------------------|-----------|-------------------------------------|-------------------|
-| **Symmetric (Normal)** | Bell-shaped | **Mean = Median = Mode** | No tail |
-| **Right Skewed (Positive)** | Long right tail | **Mean > Median > Mode** | Right tail |
-| **Left Skewed (Negative)** | Long left tail | **Mean < Median < Mode** | Left tail |
-
-#### 🎯 Key Insight: 
-**The mean always gets "pulled" toward the tail direction due to extreme values, while the median remains more stable.**
-
-### 📦 Box Plots and Distribution Analysis
-
-Box plots (also called box-and-whisker plots) provide a visual summary of data distribution and help identify skewness.
-
-#### 📊 Box Plot Components
+Box plots visually summarize distribution and identify outliers:
 
 ```
     Q₁        Q₂(Median)    Q₃
@@ -861,946 +339,245 @@ Box plots (also called box-and-whisker plots) provide a visual summary of data d
   └─────┘    └───────┘    └───┘
      ↑            ↑         ↑
    Min         Median     Max
-(or whisker)              (or whisker)
 ```
 
 **Components:**
-- **Q₁ (First Quartile):** 25% of data falls below this value
-- **Q₂ (Second Quartile/Median):** 50% of data falls below this value  
-- **Q₃ (Third Quartile):** 75% of data falls below this value
-- **IQR (Interquartile Range):** Q₃ - Q₁
-- **Whiskers:** Extend to min/max or 1.5×IQR from quartiles
-- **Outliers:** Points beyond the whiskers
+- Q₁: First quartile (25th percentile)
+- Q₂: Median (50th percentile)
+- Q₃: Third quartile (75th percentile)
+- IQR: Interquartile Range (Q₃ - Q₁)
+- Whiskers: Extend to min/max or 1.5×IQR
+- Outliers: Points beyond whiskers
 
-#### 🔍 Identifying Skewness from Box Plots
+---
 
-**Symmetric Distribution:**
-- **Median line** in the **center** of the box
-- **Equal whisker lengths:** Q₃ - Q₂ ≈ Q₂ - Q₁
-- **Few or no outliers**
+## Chapter 6: Relationships Between Variables
 
-**Right Skewed Distribution:**
-- **Median line** closer to **Q₁** (left side of box)
-- **Longer right whisker:** Q₃ - Q₂ > Q₂ - Q₁
-- **Outliers** more likely on the **right side**
+### Random Variables
 
-**Left Skewed Distribution:**
-- **Median line** closer to **Q₃** (right side of box)
-- **Longer left whisker:** Q₂ - Q₁ > Q₃ - Q₂
-- **Outliers** more likely on the **left side**
+**Definition:** A function that assigns numerical values to outcomes of random experiments
 
-### 📊 Practical Applications and Decision Making
+**Examples:**
+- Coin toss: X = {0 for Head, 1 for Tail}
+- Dice roll: X = {1, 2, 3, 4, 5, 6}
+- Temperature: X = any real number
 
-Understanding distribution shapes helps in:
+**Types:**
+- **Discrete:** Countable values (dice, coins)
+- **Continuous:** Any value in a range (temperature, height)
 
-#### 1️⃣ **Choosing Appropriate Statistics**
-- **Symmetric data:** Use mean and standard deviation
-- **Skewed data:** Use median and IQR (more robust)
+### Covariance
 
-#### 2️⃣ **Data Transformation**
-- **Right skewed:** Apply log transformation
-- **Left skewed:** Apply square or exponential transformation
+**Definition:** Measures how two variables change together
 
-#### 3️⃣ **Outlier Detection**
-- **Box plots** help identify potential outliers
-- **Outliers** may indicate data errors or special cases
+**Formula:** Cov(X,Y) = Σ(Xi - x̄)(Yi - ȳ) / (n-1)
 
-#### 4️⃣ **Statistical Test Selection**
-- **Normal distribution:** Use parametric tests (t-test, ANOVA)
-- **Skewed distribution:** Use non-parametric tests (Mann-Whitney, Kruskal-Wallis)
+**Interpretation:**
+- Positive covariance: Variables tend to increase together
+- Negative covariance: One increases while other decreases
+- Zero covariance: No linear relationship
 
-### 💻 Programming Implementation
+**Limitation:** No standardized scale makes comparison difficult
 
-#### Creating Histograms and Analyzing Distribution:
+### Correlation
+
+**Definition:** Standardized measure of linear relationship between variables
+
+**Pearson Correlation:** ρ = Cov(X,Y) / (σx × σy)
+
+**Range:** -1 to +1
+
+| Correlation | Strength | Interpretation |
+|-------------|----------|----------------|
+| ±0.9 to ±1.0 | Very Strong | Almost perfect relationship |
+| ±0.7 to ±0.9 | Strong | Strong relationship |
+| ±0.5 to ±0.7 | Moderate | Moderate relationship |
+| ±0.3 to ±0.5 | Weak | Weak relationship |
+| 0 to ±0.3 | Very Weak | Little to no relationship |
+
+### Spearman Rank Correlation
+
+Used for:
+- Non-linear relationships
+- Ordinal data
+- Data with outliers
+
+**Process:** Convert data to ranks, then calculate correlation using ranks
+
+### Key Differences
+
+| Method | Best For | Advantages | Limitations |
+|--------|----------|------------|-------------|
+| **Covariance** | Initial exploration | Shows direction | Hard to interpret scale |
+| **Pearson** | Linear relationships | Standardized scale | Assumes linearity |
+| **Spearman** | Non-linear/ordinal | Works with ranks | Less precise |
+
+**Important:** Correlation does not imply causation!
+
+---
+
+## Chapter 7: Set Theory Fundamentals (Mathematical Foundation)
+
+Set theory provides the mathematical foundation for probability and statistics.
+
+### Basic Set Operations
+
+**Given:** Set A = {1, 2, 3, 4, 5, 6, 7, 8}, Set B = {3, 4, 5, 6, 7}
+
+#### Intersection (A ∩ B)
+Elements common to both sets
+**Result:** A ∩ B = {3, 4, 5, 6, 7}
+
+#### Union (A ∪ B)
+All elements from either set
+**Result:** A ∪ B = {1, 2, 3, 4, 5, 6, 7, 8}
+
+#### Difference (A - B)
+Elements in A but not in B
+**Result:** A - B = {1, 2, 8}
+
+#### Subset and Superset
+- A ⊆ B: Every element of A is in B
+- B ⊇ A: B contains all elements of A
+
+### Applications in Statistics
+- **Sample Space:** Set of all possible outcomes
+- **Events:** Subsets of sample space
+- **Probability:** Based on set relationships
+
+---
+
+## Programming Examples
+
+### Descriptive Statistics in Python
 
 ```python
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
 
-# Sample age data from lecture
-ages = [10, 12, 19, 18, 24, 26, 30, 35, 36, 37, 42, 41, 42, 45, 50, 51]
+# Sample dataset
+data = [23, 43, 23, 56, 74, 32, 68, 98, 45, 32]
 
-# Create histogram
-plt.figure(figsize=(12, 8))
+# Central tendency
+mean_val = np.mean(data)
+median_val = np.median(data)
+mode_val = stats.mode(data)
 
-# Subplot 1: Histogram with different bin sizes
-plt.subplot(2, 3, 1)
-plt.hist(ages, bins=5, alpha=0.7, color='skyblue', edgecolor='black')
-plt.title('Histogram - 5 bins')
-plt.xlabel('Age')
-plt.ylabel('Frequency')
+print(f"Mean: {mean_val}")
+print(f"Median: {median_val}")
+print(f"Mode: {mode_val.mode[0]}")
 
-plt.subplot(2, 3, 2)
-plt.hist(ages, bins=10, alpha=0.7, color='lightgreen', edgecolor='black')
-plt.title('Histogram - 10 bins')
-plt.xlabel('Age')
-plt.ylabel('Frequency')
+# Dispersion
+variance_sample = np.var(data, ddof=1)  # Sample variance
+std_sample = np.std(data, ddof=1)       # Sample std dev
 
-# Subplot 3: Box plot
-plt.subplot(2, 3, 3)
-plt.boxplot(ages, vert=True)
-plt.title('Box Plot')
-plt.ylabel('Age')
-
-# Calculate statistics
-mean_age = np.mean(ages)
-median_age = np.median(ages)
-mode_result = stats.mode(ages)
-std_age = np.std(ages)
-skewness = stats.skew(ages)
-
-# Subplot 4: Statistics summary
-plt.subplot(2, 3, 4)
-plt.text(0.1, 0.8, f'Mean: {mean_age:.2f}', fontsize=12, transform=plt.gca().transAxes)
-plt.text(0.1, 0.7, f'Median: {median_age:.2f}', fontsize=12, transform=plt.gca().transAxes)
-plt.text(0.1, 0.6, f'Mode: {mode_result.mode[0]}', fontsize=12, transform=plt.gca().transAxes)
-plt.text(0.1, 0.5, f'Std Dev: {std_age:.2f}', fontsize=12, transform=plt.gca().transAxes)
-plt.text(0.1, 0.4, f'Skewness: {skewness:.2f}', fontsize=12, transform=plt.gca().transAxes)
-plt.text(0.1, 0.2, 'Interpretation:', fontsize=12, weight='bold', transform=plt.gca().transAxes)
-if skewness > 0.5:
-    plt.text(0.1, 0.1, 'Right Skewed', fontsize=12, color='red', transform=plt.gca().transAxes)
-elif skewness < -0.5:
-    plt.text(0.1, 0.1, 'Left Skewed', fontsize=12, color='blue', transform=plt.gca().transAxes)
-else:
-    plt.text(0.1, 0.1, 'Approximately Symmetric', fontsize=12, color='green', transform=plt.gca().transAxes)
-plt.axis('off')
-plt.title('Statistical Summary')
-
-plt.tight_layout()
-plt.show()
+print(f"Sample Variance: {variance_sample}")
+print(f"Sample Std Dev: {std_sample}")
 ```
 
-#### Creating Different Distribution Shapes:
+### Correlation Analysis
 
 ```python
-# Generate different distribution types
-np.random.seed(42)
-
-# Normal distribution
-normal_data = np.random.normal(50, 10, 1000)
-
-# Right skewed distribution  
-right_skewed = np.random.exponential(2, 1000)
-
-# Left skewed distribution
-left_skewed = 10 - np.random.exponential(2, 1000)
-
-# Create comparative plots
-fig, axes = plt.subplots(3, 2, figsize=(15, 12))
-
-# Normal distribution
-axes[0, 0].hist(normal_data, bins=30, alpha=0.7, color='skyblue', density=True)
-axes[0, 0].set_title('Normal Distribution\nMean ≈ Median ≈ Mode')
-axes[0, 0].axvline(np.mean(normal_data), color='red', linestyle='--', label=f'Mean: {np.mean(normal_data):.1f}')
-axes[0, 0].axvline(np.median(normal_data), color='green', linestyle='--', label=f'Median: {np.median(normal_data):.1f}')
-axes[0, 0].legend()
-
-axes[0, 1].boxplot(normal_data, vert=True)
-axes[0, 1].set_title('Box Plot - Symmetric')
-
-# Right skewed distribution
-axes[1, 0].hist(right_skewed, bins=30, alpha=0.7, color='orange', density=True)
-axes[1, 0].set_title('Right Skewed Distribution\nMean > Median > Mode')
-axes[1, 0].axvline(np.mean(right_skewed), color='red', linestyle='--', label=f'Mean: {np.mean(right_skewed):.1f}')
-axes[1, 0].axvline(np.median(right_skewed), color='green', linestyle='--', label=f'Median: {np.median(right_skewed):.1f}')
-axes[1, 0].legend()
-
-axes[1, 1].boxplot(right_skewed, vert=True)
-axes[1, 1].set_title('Box Plot - Right Skewed')
-
-# Left skewed distribution
-axes[2, 0].hist(left_skewed, bins=30, alpha=0.7, color='lightcoral', density=True)
-axes[2, 0].set_title('Left Skewed Distribution\nMean < Median < Mode')
-axes[2, 0].axvline(np.mean(left_skewed), color='red', linestyle='--', label=f'Mean: {np.mean(left_skewed):.1f}')
-axes[2, 0].axvline(np.median(left_skewed), color='green', linestyle='--', label=f'Median: {np.median(left_skewed):.1f}')
-axes[2, 0].legend()
-
-axes[2, 1].boxplot(left_skewed, vert=True)
-axes[2, 1].set_title('Box Plot - Left Skewed')
-
-plt.tight_layout()
-plt.show()
-```
-
-### 🎯 Key Takeaways for Histogram and Distribution Analysis
-
-```
-📊 Histograms show the shape and distribution of data
-📏 Bin size affects the appearance - experiment with different sizes
-📈 Distribution shape determines appropriate statistical methods:
-
-🔔 Normal/Symmetric Distribution:
-   • Mean = Median = Mode
-   • Use mean and standard deviation
-   • Apply parametric tests
-
-📊 Right Skewed (Positive Skew):
-   • Mean > Median > Mode  
-   • Use median and IQR
-   • Consider log transformation
-   • Apply non-parametric tests
-
-📊 Left Skewed (Negative Skew):
-   • Mean < Median < Mode
-   • Use median and IQR  
-   • Consider power transformation
-   • Apply non-parametric tests
-
-📦 Box plots help identify:
-   • Distribution shape and skewness
-   • Outliers and extreme values
-   • Quartile positions and spread
-
-🎯 Always visualize your data first before choosing statistical methods!
-```
-
-# 📊 Covariance and Correlation
-
-Understanding the relationship between two variables is crucial in statistics. While measures of central tendency and dispersion describe individual variables, **covariance and correlation** help us understand how two variables relate to each other.
-
-## 🔗 What is Covariance?
-
-**Definition:** Covariance measures the degree to which two variables change together. It indicates whether increases in one variable correspond to increases (positive covariance) or decreases (negative covariance) in another variable.
-
-### 📐 Covariance Formula
-
-For sample data with n observations:
-
-```
-Cov(X,Y) = Σ(Xi - x̄)(Yi - ȳ) / (n-1)
-
-Where:
-• Xi = Individual data points of variable X
-• x̄ = Sample mean of X  
-• Yi = Individual data points of variable Y
-• ȳ = Sample mean of Y
-• n = Sample size
-```
-
-### 🎯 Understanding Covariance Direction
-
-The relationship between X and Y can be visualized by looking at how the variables change together:
-
-| **Scenario** | **X Direction** | **Y Direction** | **Covariance Sign** | **Interpretation** |
-|-------------|----------------|-----------------|--------------------|--------------------|
-| **Positive Covariance** | X↑ | Y↑ | **+ve** | Variables increase together |
-| **Positive Covariance** | X↓ | Y↓ | **+ve** | Variables decrease together |
-| **Negative Covariance** | X↑ | Y↓ | **-ve** | One increases, other decreases |
-| **Negative Covariance** | X↓ | Y↑ | **-ve** | One decreases, other increases |
-
-### 📊 Practical Example
-
-Let's work through the example from the lecture:
-
-**Dataset:**
-```
-X: [2, 4, 6, 8]
-Y: [3, 5, 7, 9]
-```
-
-**Step 1:** Calculate means
-```
-x̄ = (2 + 4 + 6 + 8) / 4 = 20 / 4 = 5
-ȳ = (3 + 5 + 7 + 9) / 4 = 24 / 4 = 6
-```
-
-**Step 2:** Calculate deviations and their products
-```
-(Xi - x̄)(Yi - ȳ):
-(2-5)(3-6) = (-3)(-3) = 9
-(4-5)(5-6) = (-1)(-1) = 1  
-(6-5)(7-6) = (1)(1) = 1
-(8-5)(9-6) = (3)(3) = 9
-
-Sum = 9 + 1 + 1 + 9 = 20
-```
-
-**Step 3:** Apply formula
-```
-Cov(X,Y) = 20 / (4-1) = 20 / 3 = 6.67
-```
-
-**Result:** Positive covariance = 6.67, indicating X and Y tend to increase together.
-
-## ⚖️ Advantages and Disadvantages of Covariance
-
-### ✅ Advantages
-1. **Shows relationship direction** between X and Y
-2. **Provides +ve or -ve value** indicating correlation direction
-
-### ❌ Disadvantages  
-1. **No specific limit value** - difficult to interpret magnitude
-2. **Units dependent** - affected by the scale of variables
-3. **Hard to compare** across different datasets with different units
-
-### 💡 Real-world Example
-- **House size vs House price:** Positive covariance (larger houses tend to cost more)
-- **Temperature vs Heating bill:** Negative covariance (warmer weather, lower heating costs)
-
-## 📏 Pearson Correlation Coefficient
-
-To address the limitations of covariance, we use the **Pearson Correlation Coefficient**, which standardizes covariance to a range of -1 to +1.
-
-### 🔢 Correlation Formula
-
-```
-ρ(X,Y) = Cov(X,Y) / (σx × σy)
-
-Where:
-• Cov(X,Y) = Covariance between X and Y
-• σx = Standard deviation of X
-• σy = Standard deviation of Y
-```
-
-### 📊 Correlation Interpretation
-
-| **Correlation Value** | **Strength** | **Direction** | **Interpretation** |
-|----------------------|--------------|---------------|-------------------|
-| **+1.0** | Perfect | Positive | Perfect positive linear relationship |
-| **+0.7 to +0.9** | Strong | Positive | Strong positive relationship |
-| **+0.3 to +0.7** | Moderate | Positive | Moderate positive relationship |
-| **0 to +0.3** | Weak | Positive | Weak positive relationship |
-| **0** | None | None | No linear relationship |
-| **0 to -0.3** | Weak | Negative | Weak negative relationship |
-| **-0.3 to -0.7** | Moderate | Negative | Moderate negative relationship |
-| **-0.7 to -0.9** | Strong | Negative | Strong negative relationship |
-| **-1.0** | Perfect | Negative | Perfect negative linear relationship |
-
-### 🎯 Key Properties of Correlation
-1. **Standardized measure:** Always between -1 and +1
-2. **Unit-free:** Not affected by changes in scale
-3. **Symmetric:** Correlation of X with Y equals correlation of Y with X
-4. **Linear relationships only:** May miss non-linear relationships
-
-## 📈 Spearman Rank Correlation
-
-For non-linear relationships or ordinal data, we use **Spearman Rank Correlation**.
-
-### 🔢 Spearman Formula
-
-```
-rs = Cov(R(X), R(Y)) / (σ(R(X)) × σ(R(Y)))
-
-Where:
-• R(X) = Ranks of X values
-• R(Y) = Ranks of Y values
-```
-
-### 📊 Example: Spearman Calculation
-
-**Original Data:**
-```
-X: [1, 3, 5, 7, 0, 8]
-Y: [2, 4, 6, 8, 7, 1]
-```
-
-**Step 1:** Convert to ranks
-```
-R(X): [5, 4, 3, 2, 6, 1]  (8 gets rank 1, 7 gets rank 2, etc.)
-R(Y): [5, 4, 3, 1, 2, 6]  (8 gets rank 1, 7 gets rank 2, etc.)
-```
-
-**Step 2:** Calculate correlation using ranks instead of original values
-
-### 🎯 When to Use Each Method
-
-| **Method** | **Use When** | **Advantages** | **Limitations** |
-|------------|--------------|----------------|-----------------|
-| **Covariance** | Initial exploration | Shows direction clearly | Hard to interpret magnitude |
-| **Pearson Correlation** | Linear relationships, continuous data | Standardized, easy to interpret | Assumes linear relationship |
-| **Spearman Correlation** | Non-linear relationships, ordinal data | Works with ranks, non-parametric | Less sensitive to outliers |
-
-## 💻 Programming Implementation
-
-### Real-World Example: Health Expenditure Analysis
-
-Let's analyze the relationship between healthcare spending and life expectancy using the Seaborn health expenditure dataset from your Jupyter notebook:
-
-```python
-import seaborn as sns
-import pandas as pd
-import numpy as np
-
-# Load the health expenditure dataset
+# Health expenditure example
 df = sns.load_dataset('healthexp')
-print(df.head())
-```
 
-**Sample Data Output:**
-```
-   Year    Country  Spending_USD  Life_Expectancy
-0  1970    Germany       252.311             70.6
-1  1970     France       192.143             72.2
-2  1970  Great Britain   123.993             71.9
-3  1970      Japan       150.437             72.0
-4  1970        USA       326.961             70.9
-```
-
-### Step 1: Calculate Covariance Matrix
-
-```python
-# Calculate covariance matrix for all numeric columns
-covariance_matrix = df.cov()
-print("Covariance Matrix:")
-print(covariance_matrix)
-```
-
-**Output:**
-```
-                   Year  Spending_USD  Life_Expectancy
-Year           201.098848   25718.827373        41.915454
-Spending_USD  25718.827373  4817761.000000  4166.800912
-Life_Expectancy   41.915454    4166.800912        10.733902
-```
-
-**Interpretation:**
-- **Year vs Spending_USD:** Covariance = 25,718.83 (positive, spending increases over time)
-- **Year vs Life_Expectancy:** Covariance = 41.92 (positive, life expectancy increases over time)
-- **Spending_USD vs Life_Expectancy:** Covariance = 4,166.80 (positive, higher spending associated with higher life expectancy)
-
-### Step 2: Calculate Pearson Correlation
-
-```python
-# Calculate Pearson correlation coefficient
-pearson_correlation = df.corr(method='pearson')
-print("Pearson Correlation Matrix:")
-print(pearson_correlation)
-```
-
-**Output:**
-```
-                   Year  Spending_USD  Life_Expectancy
-Year            1.000000      0.826273         0.902175
-Spending_USD    0.826273      1.000000         0.579430
-Life_Expectancy 0.902175      0.579430         1.000000
-```
-
-**Key Insights:**
-- **Year vs Life_Expectancy:** r = 0.902 (very strong positive correlation)
-- **Year vs Spending_USD:** r = 0.826 (strong positive correlation)  
-- **Spending_USD vs Life_Expectancy:** r = 0.579 (moderate positive correlation)
-
-### Step 3: Calculate Spearman Rank Correlation
-
-```python
-# Calculate Spearman rank correlation
-spearman_correlation = df.corr(method='spearman')
-print("Spearman Correlation Matrix:")
-print(spearman_correlation)
-```
-
-**Output:**
-```
-                   Year  Spending_USD  Life_Expectancy
-Year            1.000000      0.931598         0.896117
-Spending_USD    0.931598      1.000000         0.747407
-Life_Expectancy 0.896117      0.747407         1.000000
-```
-
-**Comparison of Results:**
-- **Spending_USD vs Life_Expectancy:**
-  - Pearson: 0.579 (moderate)
-  - Spearman: 0.747 (strong)
-  - The higher Spearman correlation suggests a stronger monotonic relationship than linear
-
-### Complete Analysis Code
-
-```python
-import seaborn as sns
-import pandas as pd
-import numpy as np
-from scipy.stats import pearsonr, spearmanr
-import matplotlib.pyplot as plt
-
-# Load and explore data
-df = sns.load_dataset('healthexp')
-print("Dataset Shape:", df.shape)
-print("\nFirst 5 rows:")
-print(df.head())
-
-# Basic statistics
-print("\nBasic Statistics:")
-print(df.describe())
-
-# Covariance analysis
-print("\n" + "="*50)
-print("COVARIANCE ANALYSIS")
-print("="*50)
-cov_matrix = df.cov()
-print(cov_matrix)
-
-# Correlation analysis  
-print("\n" + "="*50)
-print("PEARSON CORRELATION ANALYSIS")
-print("="*50)
+# Calculate correlations
 pearson_corr = df.corr(method='pearson')
+spearman_corr = df.corr(method='spearman')
+
+print("Pearson Correlation:")
 print(pearson_corr)
 
-print("\n" + "="*50)
-print("SPEARMAN CORRELATION ANALYSIS") 
-print("="*50)
-spearman_corr = df.corr(method='spearman')
+print("\nSpearman Correlation:")
 print(spearman_corr)
 
-# Individual correlation calculations
-spending_life_pearson, p_val = pearsonr(df['Spending_USD'], df['Life_Expectancy'])
-spending_life_spearman, sp_val = spearmanr(df['Spending_USD'], df['Life_Expectancy'])
+# Visualize relationships
+plt.figure(figsize=(12, 4))
 
-print("\n" + "="*50)
-print("SPENDING vs LIFE EXPECTANCY ANALYSIS")
-print("="*50)
-print(f"Pearson Correlation: {spending_life_pearson:.4f} (p-value: {p_val:.4f})")
-print(f"Spearman Correlation: {spending_life_spearman:.4f} (p-value: {sp_val:.4f})")
+plt.subplot(1, 3, 1)
+plt.scatter(df['Spending_USD'], df['Life_Expectancy'])
+plt.xlabel('Health Spending (USD)')
+plt.ylabel('Life Expectancy')
+plt.title('Spending vs Life Expectancy')
 
-# Interpretation
-if spending_life_pearson > 0.7:
-    print("Strong positive linear relationship")
-elif spending_life_pearson > 0.5:
-    print("Moderate positive linear relationship")
-elif spending_life_pearson > 0.3:
-    print("Weak positive linear relationship")
-else:
-    print("Very weak or no linear relationship")
-```
+plt.subplot(1, 3, 2)
+sns.heatmap(pearson_corr, annot=True, cmap='coolwarm', center=0)
+plt.title('Pearson Correlations')
 
-### Visualizing the Health Expenditure Relationships
-
-```python
-# Create comprehensive visualization of the health expenditure data
-fig, axes = plt.subplots(2, 3, figsize=(18, 12))
-
-# Spending vs Life Expectancy scatter plot
-axes[0, 0].scatter(df['Spending_USD'], df['Life_Expectancy'], alpha=0.6, color='blue')
-axes[0, 0].set_xlabel('Health Spending (USD)')
-axes[0, 0].set_ylabel('Life Expectancy (years)')
-axes[0, 0].set_title(f'Spending vs Life Expectancy\n(Pearson: {spending_life_pearson:.3f})')
-
-# Year vs Life Expectancy  
-axes[0, 1].scatter(df['Year'], df['Life_Expectancy'], alpha=0.6, color='green')
-axes[0, 1].set_xlabel('Year')
-axes[0, 1].set_ylabel('Life Expectancy (years)')
-year_life_corr = df['Year'].corr(df['Life_Expectancy'])
-axes[0, 1].set_title(f'Year vs Life Expectancy\n(Pearson: {year_life_corr:.3f})')
-
-# Year vs Spending
-axes[0, 2].scatter(df['Year'], df['Spending_USD'], alpha=0.6, color='red')
-axes[0, 2].set_xlabel('Year')
-axes[0, 2].set_ylabel('Health Spending (USD)')
-year_spending_corr = df['Year'].corr(df['Spending_USD'])
-axes[0, 2].set_title(f'Year vs Spending\n(Pearson: {year_spending_corr:.3f})')
-
-# Correlation heatmap
-import seaborn as sns
-corr_matrix = df.corr()
-sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0, 
-            square=True, ax=axes[1, 0])
-axes[1, 0].set_title('Pearson Correlation Heatmap')
-
-# Comparison of Pearson vs Spearman
-methods = ['Pearson', 'Spearman']
-spending_life_corrs = [spending_life_pearson, spending_life_spearman]
-axes[1, 1].bar(methods, spending_life_corrs, color=['lightblue', 'lightcoral'])
-axes[1, 1].set_ylabel('Correlation Coefficient')
-axes[1, 1].set_title('Spending vs Life Expectancy:\nPearson vs Spearman')
-axes[1, 1].set_ylim(0, 1)
-
-# Distribution of Life Expectancy over time
-df_recent = df[df['Year'] >= 2000]  # Focus on recent data
-axes[1, 2].boxplot([df_recent[df_recent['Year'] == year]['Life_Expectancy'].values 
-                    for year in sorted(df_recent['Year'].unique())])
-axes[1, 2].set_xlabel('Year (2000+)')
-axes[1, 2].set_ylabel('Life Expectancy Distribution')
-axes[1, 2].set_title('Life Expectancy Distribution by Year')
+plt.subplot(1, 3, 3)
+df.boxplot(column='Life_Expectancy')
+plt.title('Life Expectancy Distribution')
 
 plt.tight_layout()
 plt.show()
-
-# Summary statistics table
-print("\n" + "="*60)
-print("SUMMARY OF KEY RELATIONSHIPS")
-print("="*60)
-print(f"Year vs Life Expectancy:     {year_life_corr:.3f} (Very Strong Positive)")
-print(f"Year vs Spending:            {year_spending_corr:.3f} (Strong Positive)")
-print(f"Spending vs Life Expectancy: {spending_life_pearson:.3f} (Moderate Positive)")
-print(f"Spearman (Spending vs Life): {spending_life_spearman:.3f} (Strong Positive)")
-print("\nKey Insight: Healthcare spending shows stronger monotonic")
-print("relationship with life expectancy than linear relationship.")
 ```
-
-## 📊 Real-World Insights from Health Expenditure Data
-
-### Key Findings from the Analysis
-
-Based on the health expenditure dataset analysis, we discovered several important relationships:
-
-#### 1️⃣ **Time Trends (Very Strong Correlations)**
-- **Year vs Life Expectancy:** r = 0.902 
-  - Life expectancy has consistently increased over time across countries
-  - This represents a very strong positive linear trend
-- **Year vs Health Spending:** r = 0.826
-  - Healthcare spending has dramatically increased over decades
-  - Strong positive correlation indicating consistent growth in health investments
-
-#### 2️⃣ **Healthcare Investment Impact (Moderate to Strong)**
-- **Spending vs Life Expectancy (Pearson):** r = 0.579
-  - Moderate positive linear relationship
-  - Countries with higher health spending tend to have higher life expectancy
-- **Spending vs Life Expectancy (Spearman):** r = 0.747
-  - Much stronger monotonic relationship
-  - Suggests non-linear relationship where benefits may plateau at higher spending levels
-
-#### 3️⃣ **Statistical Interpretation**
-```
-Strong Correlations (r > 0.8):  Time-based trends
-Moderate Correlations (0.5-0.8): Health spending effectiveness  
-Weak Correlations (< 0.5):      Individual country variations
-```
-
-### Why Spearman > Pearson for Health Spending?
-
-The difference between Pearson (0.579) and Spearman (0.747) correlations for spending vs life expectancy suggests:
-
-1. **Diminishing Returns:** Initial healthcare investments show high returns in life expectancy, but additional spending beyond a threshold shows smaller improvements
-2. **Non-linear Relationship:** The relationship isn't perfectly linear - it may follow a logarithmic or power curve
-3. **Outliers Present:** Some countries may have exceptionally high spending with proportionally smaller gains
-
-### Practical Applications
-
-#### Healthcare Policy
-- **Budget Allocation:** Understanding spending-outcome relationships helps optimize healthcare budgets
-- **International Comparisons:** Countries can benchmark their health spending efficiency
-- **Trend Analysis:** Long-term correlations help predict future healthcare needs
-
-#### Research Applications  
-- **Variable Selection:** High correlations between year and outcomes suggest time should be included in models
-- **Methodology Choice:** Non-linear relationships indicate need for advanced statistical methods
-- **Data Quality:** Strong correlations validate data consistency across time periods
-
-## 🎯 Key Takeaways
-
-```
-🔗 Covariance = Measures how two variables change together
-📏 Range: -∞ to +∞ (unlimited range)
-➕ Positive: Variables increase/decrease together  
-➖ Negative: One increases while other decreases
-
-📊 Correlation = Standardized covariance  
-📏 Range: -1 to +1 (standardized)
-🎯 Easier to interpret than covariance
-🔄 Unit-free and scale-independent
-
-📈 Pearson = For linear relationships
-📊 Spearman = For non-linear/ordinal data  
-🎯 Use correlation for most practical applications
-⚠️ Correlation ≠ Causation (important reminder!)
-
-💡 Applications:
-• Feature selection in ML
-• Risk assessment in finance  
-• Quality control in manufacturing
-• Relationship analysis in research
-```
-
-## ⚠️ Important Notes
-
-1. **Correlation does not imply causation:** High correlation doesn't mean one variable causes changes in another
-2. **Linear assumption:** Pearson correlation only captures linear relationships
-3. **Outliers impact:** Both covariance and correlation can be affected by extreme values
-4. **Sample size matters:** Larger samples provide more reliable correlation estimates
 
 ---
 
-Understanding covariance and correlation is essential for data analysis, feature selection in machine learning, and identifying relationships in research. These concepts form the foundation for more advanced statistical methods like regression analysis and multivariate statistics.
+## Quick Reference Guide
 
-## 📋 Types of Data
-Data can be broadly categorized into two main types:
+### Data Types Quick Check
+```
+Quantitative Data:
+├── Discrete: Count-based (students, accounts, children)
+└── Continuous: Measured (height, weight, temperature)
 
-```mermaid
-graph TD
-    A[📊 DATA] --> B[🔢 Quantitative<br/>Numerical]
-    A --> C[📝 Qualitative<br/>Categorical]
-
-    B --> D[🎯 Discrete<br/>Whole Numbers]
-    B --> E[📈 Continuous<br/>Any Value]
-
-    C --> F[🏷️ Nominal<br/>No Order]
-    C --> G[📊 Ordinal<br/>Has Rank]
-
-    style A fill:#e3f2fd,color:#000
-    style B fill:#fff3e0,color:#000
-    style C fill:#fce4ec,color:#000
-    style D fill:#e8f5e8,color:#000
-    style E fill:#e8f5e8,color:#000
-    style F fill:#f3e5f5,color:#000
-    style G fill:#f3e5f5,color:#000
+Qualitative Data:
+├── Nominal: Categories, no order (gender, colors, blood type)
+└── Ordinal: Categories with order (ratings, education levels)
 ```
 
-### 🔢 Quantitative Data (Numerical)
-**Definition:** Data that represents numbers and amounts, can perform mathematical operations (+, -, %, *)
-
-#### 🎯 Discrete Data
-- **Definition:** Whole numbers, countable values
-- **Characteristics:** Cannot be broken down into smaller meaningful units
-- **Examples:**
-  - Number of bank accounts: 1, 2, 3, 5
-  - Number of children in a family: 0, 1, 2, 4
-  - Number of students in a class: 25, 30, 45
-
-#### 📈 Continuous Data  
-- **Definition:** Can take any numerical value within a range
-- **Characteristics:** Can be measured with infinite precision
-- **Examples:**
-  - Weight: 65.5 kg, 72.3 kg, 80.125 kg
-  - Height: 165.2 cm, 175.8 cm, 180.25 cm
-  - Temperature: 25.7C, 32.4C, 18.9C
-  - Speed: 60.5 km/h, 85.3 km/h
-
-### 📝 Qualitative Data (Categorical)
-**Definition:** Data that represents categories, qualities, or characteristics
-
-#### 🏷️ Nominal Data
-- **Definition:** Categories with no intrinsic order or ranking
-- **Characteristics:** Just labels or names, no mathematical operations possible
-- **Examples:**
-  - Gender: Male (M), Female (F)
-  - Blood Group: A, B, AB, O
-  - Pincode: 110001, 400001, 600001
-  - Colors: Red, Blue, Green, Yellow
-
-#### 📊 Ordinal Data
-- **Definition:** Categories with a natural order or ranking
-- **Characteristics:** Has meaningful sequence but intervals aren't necessarily equal
-- **Examples:**
-  - Customer Feedback: Good, Bad, Better, Best
-  - Education Level: High School, Bachelor's, Master's, PhD
-  - Star Ratings: ⭐, ⭐⭐, ⭐⭐⭐, ⭐⭐⭐⭐, ⭐⭐⭐⭐⭐
-
-### 📊 Data Types Summary Table
-
-| **Data Type** | **Subtype** | **Description** | **Examples** | **Operations** | **Scale** |
-|---------------|-------------|-----------------|--------------|----------------|-----------|
-| **Quantitative** | Discrete | Countable whole numbers | Bank accounts, Children, Students | +, -, ×, ÷, Statistics | Ratio |
-| **Quantitative** | Continuous | Any numerical value | Weight, Height, Temperature* | +, -, ×, ÷, Statistics | Interval/Ratio |
-| **Qualitative** | Nominal | Categories, no order | Gender, Blood group, Colors | Count, Mode | Nominal |
-| **Qualitative** | Ordinal | Categories with order | Ratings, Education level | Count, Mode, Median | Ordinal |
-
-**Note:** Temperature in Celsius/Fahrenheit is Interval scale, while Kelvin is Ratio scale due to absolute zero.
-
-## 📏 Scales of Measurement
-Understanding the scale of measurement is crucial for choosing appropriate statistical methods. There are four main scales:
-
-### 1️⃣ Nominal Scale Data
-- **Definition:** Qualitative/Categorical data
-- **Characteristics:**
-  - Order does not matter
-  - Categories with no ranking
-  - Can only count frequencies and find mode
-- **Examples:**
-  - Favorite Color: Red (5) → 50%, Blue (3) → 30%, Orange (2) → 20%
-  - Gender: M, F
-  - Blood Type: A, B, AB, O
-
-### 2️⃣ Ordinal Scale Data  
-- **Definition:** Categorical data with meaningful order
-- **Characteristics:**
-  - Ranking is important
-  - Order matters
-  - Differences cannot be measured precisely
-- **Examples:**
-  - Rating Scale: 1 → Best, 2 → Good, 3 → Bad
-  - Education Level: High School < Bachelor's < Master's < PhD
-  - Customer Satisfaction: Poor < Fair < Good < Excellent
-
-### 3️⃣ Interval Scale Data
-- **Definition:** Numerical data with equal intervals
-- **Characteristics:**
-  - Order matters
-  - Differences can be measured
-  - **No true "0" starting point**
-  - Ratios cannot be calculated meaningfully
-- **Examples:**
-  - Temperature: -30°F, -15°F, 30°F, 60°F, 90°F, 120°F
-    - Difference: 60°F - 30°F = 30°F (meaningful)
-    - Ratio: 90°F ÷ 30°F = 3:1 (NOT meaningful - 90°F is not "3 times hotter")
-
-### 4️⃣ Ratio Scale Data
-- **Definition:** Numerical data with true zero point
-- **Characteristics:**
-  - Order matters ✓
-  - Differences are measurable ✓
-  - **Contains a true "0" starting point** ✓
-  - Ratios can be calculated meaningfully ✓
-- **Examples:**
-  - Student marks in a class: 0, 90, 60, 30, 35, 40, 50
-    - Mean = 30, 40, 50, 60, 35, 90
-    - Differences: 40 - 30 = 10 points
-    - Ratio: 90 ÷ 30 = 3:1 (90 is 3 times higher than 30)
-
-## 📊 Scale Comparison Table
-
-| **Scale** | **Order Matters** | **Measurable Differences** | **True Zero** | **Ratios Meaningful** | **Examples** |
-|-----------|-------------------|----------------------------|---------------|---------------------|--------------|
-| **Nominal** | ❌ | ❌ | ❌ | ❌ | Colors, Gender, Blood Type |
-| **Ordinal** | ✅ | ❌ | ❌ | ❌ | Ratings, Education Level |
-| **Interval** | ✅ | ✅ | ❌ | ❌ | Temperature (°F, °C) |
-| **Ratio** | ✅ | ✅ | ✅ | ✅ | Height, Weight, Age, Income |
-
-## 📈 Key Concepts
-
-### Data
-**Definition:** Facts or pieces of information that can be collected, measured, and analyzed.
-
-**Example:** Heights of students in a classroom
+### Measurement Scales
 ```
-{135 cm, 180 cm, 190 cm, 160 cm, 145 cm, 175 cm, 168 cm, 172 cm}
+Nominal → Categories only → Mode
+Ordinal → Order matters → Mode, Median  
+Interval → Equal intervals, no true zero → Mean (if normal)
+Ratio → True zero point → All statistics
 ```
 
-## 🔄 The Statistical Process
-```mermaid
-flowchart TD
-    A[📊 Statistics] --> B[📋 Data Collection]
-    B --> C[🗂️ Data Organization]
-    C --> D[🔍 Data Analysis]
-    D --> E[📊 Interpretation]
-    E --> F[💡 Decision Making]
-
-    style A fill:#e1f5fe,color:#000
-    style B fill:#f3e5f5,color:#000
-    style C fill:#fff3e0,color:#000
-    style D fill:#e8f5e8,color:#000
-    style E fill:#fce4ec,color:#000
-    style F fill:#f1f8e9,color:#000
+### Central Tendency Selection
+```
+Normal Distribution → Mean
+Skewed Distribution → Median
+Categorical Data → Mode
+Outliers Present → Median
 ```
 
-## 📊 Data Visualization Examples
-
-### Sample Dataset: Student Heights
+### Distribution Shapes
 ```
-Student A: 135 cm
-Student B: 180 cm  
-Student C: 190 cm
-Student D: 160 cm
-Student E: 145 cm
-Student F: 175 cm
-Student G: 168 cm
-Student H: 172 cm
+Symmetric: Mean = Median = Mode
+Right Skewed: Mean > Median > Mode
+Left Skewed: Mean < Median < Mode
 ```
 
-### Basic Statistics from Our Example:
-- **Count**: 8 students
-- **Range**: 135 cm - 190 cm (55 cm difference)
-- **Mean**: ~165.6 cm
-- **Median**: ~170 cm
-- **Mode**: No mode (all values unique)
-
-## 🎯 Why Statistics Matters
-Statistics helps us:
-- ✅ Make data-driven decisions
-- ✅ Identify patterns and trends  
-- ✅ Predict future outcomes
-- ✅ Test hypotheses
-- ✅ Reduce uncertainty
-- ✅ Choose appropriate analysis methods based on data scale
-
-## 📚 Common Statistical Applications
-
-| Field | Application |
-|-------|-------------|
-| 🏥 **Healthcare** | Clinical trials, disease tracking |
-| 💰 **Business** | Market research, sales forecasting |
-| 🏫 **Education** | Student performance analysis |
-| 🌡️ **Weather** | Climate modeling, predictions |
-| 🏃 **Sports** | Player statistics, performance metrics |
-
-## 🔍 Statistical Workflow
-```mermaid
-graph LR
-    A[🤔 Question] --> B[📊 Collect Data]
-    B --> C[🧹 Clean Data]
-    C --> D[📈 Analyze]
-    D --> E[📊 Visualize]
-    E --> F[💭 Interpret]
-    F --> G[📋 Report]
-
-    style A fill:#ffebee,color:#000
-    style G fill:#e8f5e8,color:#000
+### Correlation Strength
+```
+|r| = 0.0-0.3: Weak relationship
+|r| = 0.3-0.7: Moderate relationship  
+|r| = 0.7-0.9: Strong relationship
+|r| = 0.9-1.0: Very strong relationship
 ```
 
-## 📖 Next Steps
-1. **Learn about probability concepts**
-2. **Explore data visualization techniques** (charts, graphs)
-3. **Understand hypothesis testing**
-4. **Practice with real datasets**
+### When to Use Each Method
+```
+Covariance: Direction of relationship
+Pearson: Linear relationships, continuous data
+Spearman: Non-linear, ordinal data, outliers present
+```
 
 ---
 
-### 📝 Quick Reference
-```
-📊 Statistics = Science of Data
-📋 Data = Facts/Information  
-📈 Analysis = Finding Patterns
-💡 Goal = Better Decisions
-🌍 Population = Entire group of interest
-📋 Sample = Subset of population
-🔍 Descriptive = Organizing & summarizing data
-🎯 Inferential = Making conclusions from data
+## Key Takeaways
 
-🎲 Random Variable = Mapping random outcomes to numbers
-🪙 Examples: Coin toss (0,1), Dice roll (1-6), Temperature
-🔢 Discrete RV = Countable values (dice, coins)
-📈 Continuous RV = Any value in range (temperature, height)
+1. **Start with data type identification** - this determines your statistical options
+2. **Always visualize your data first** - plots reveal distribution shape and outliers
+3. **Choose statistics appropriate for your data type and distribution**
+4. **Correlation ≠ Causation** - strong relationships don't prove one variable causes another
+5. **Consider your audience** - different measures may be more meaningful for different purposes
+6. **Check assumptions** - many statistical methods assume normal distributions
+7. **Sample size matters** - larger samples provide more reliable estimates
 
-📚 Set Theory Basics:
-🔗 A ∩ B = Intersection (common elements)
-🔄 A ∪ B = Union (all elements from both sets)
-➖ A - B = Difference (elements in A but not B)
-⊆ A ⊆ B = Subset (A is contained in B)
-⊇ B ⊇ A = Superset (B contains A)
-
-🔢 Quantitative = Numerical data (Discrete + Continuous)
-📝 Qualitative = Categorical data (Nominal + Ordinal)
-🎯 Discrete = Countable numbers (1, 2, 3...)
-📈 Continuous = Any value (1.5, 2.7, 3.14...)
-🏷️ Nominal = No order (Gender, Colors)
-📊 Ordinal = Has order (Ratings, Grades)
-
-📏 Scales of Measurement:
-🏷️ Nominal = Categories, no order (Gender, Colors)
-📊 Ordinal = Categories with order (Ratings, Education)  
-📏 Interval = Equal intervals, no true zero (Temperature °C/°F)
-📐 Ratio = True zero point, ratios meaningful (Height, Weight, Age)
-
-📊 Central Tendency:
-📊 Mean = Arithmetic average (Σx/n)
-📊 Median = Middle value when sorted
-📊 Mode = Most frequent value
-
-📏 Measures of Dispersion:
-🔢 Variance = Average of squared differences from mean
-   • Population: σ² = Σ(Xi-μ)²/N  
-   • Sample: S² = Σ(Xi-x̄)²/(n-1)
-📐 Standard Deviation = Square root of variance
-   • Population: σ = √σ²
-   • Sample: S = √S²
-🎯 Bessel's Correction = Use (n-1) for unbiased sample estimates
-
-📈 Normal Distribution (68-95-99.7 Rule):
-• 68% of data within ±1σ of mean
-• 95% of data within ±2σ of mean  
-• 99.7% of data within ±3σ of mean
-
-📊 Histograms and Distribution:
-📊 Histogram = Visual representation of data distribution
-📏 Bin size affects appearance and interpretation
-🔔 Normal Distribution: Mean = Median = Mode
-📈 Right Skewed: Mean > Median > Mode (positive skew)
-📉 Left Skewed: Mean < Median < Mode (negative skew)
-📦 Box plots show quartiles, outliers, and skewness
-🎯 Always visualize data before choosing statistical methods
-``` 
-
----
-
-*Remember: Good statistics start with good data! Always ensure your data is accurate, relevant, and properly collected.*
+Understanding these fundamentals provides the foundation for more advanced statistical concepts like hypothesis testing, regression analysis, and machine learning algorithms.
