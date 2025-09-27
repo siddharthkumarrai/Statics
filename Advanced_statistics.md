@@ -902,13 +902,13 @@ The Normal Distribution is fundamental to statistics because:
 
 This distribution serves as the cornerstone for statistical inference and hypothesis testing in your coursework.
 ---
-# Uniform Distribution - Complete Analysis
+## Topic 10: Uniform Distribution - Complete Analysis
 
-## Definition and Types
+### Definition and Types
 
 The uniform distribution is a family of symmetric probability distributions where all outcomes in a given range are equally likely.
 
-### Two Types:
+#### Two Types:
 1. **Continuous Uniform Distribution (PDF)**
 2. **Discrete Uniform Distribution (PMF)**
 
