@@ -1056,6 +1056,464 @@ plt.show()
 🎯 Always visualize your data first before choosing statistical methods!
 ```
 
+# 📊 Covariance and Correlation
+
+Understanding the relationship between two variables is crucial in statistics. While measures of central tendency and dispersion describe individual variables, **covariance and correlation** help us understand how two variables relate to each other.
+
+## 🔗 What is Covariance?
+
+**Definition:** Covariance measures the degree to which two variables change together. It indicates whether increases in one variable correspond to increases (positive covariance) or decreases (negative covariance) in another variable.
+
+### 📐 Covariance Formula
+
+For sample data with n observations:
+
+```
+Cov(X,Y) = Σ(Xi - x̄)(Yi - ȳ) / (n-1)
+
+Where:
+• Xi = Individual data points of variable X
+• x̄ = Sample mean of X  
+• Yi = Individual data points of variable Y
+• ȳ = Sample mean of Y
+• n = Sample size
+```
+
+### 🎯 Understanding Covariance Direction
+
+The relationship between X and Y can be visualized by looking at how the variables change together:
+
+| **Scenario** | **X Direction** | **Y Direction** | **Covariance Sign** | **Interpretation** |
+|-------------|----------------|-----------------|--------------------|--------------------|
+| **Positive Covariance** | X↑ | Y↑ | **+ve** | Variables increase together |
+| **Positive Covariance** | X↓ | Y↓ | **+ve** | Variables decrease together |
+| **Negative Covariance** | X↑ | Y↓ | **-ve** | One increases, other decreases |
+| **Negative Covariance** | X↓ | Y↑ | **-ve** | One decreases, other increases |
+
+### 📊 Practical Example
+
+Let's work through the example from the lecture:
+
+**Dataset:**
+```
+X: [2, 4, 6, 8]
+Y: [3, 5, 7, 9]
+```
+
+**Step 1:** Calculate means
+```
+x̄ = (2 + 4 + 6 + 8) / 4 = 20 / 4 = 5
+ȳ = (3 + 5 + 7 + 9) / 4 = 24 / 4 = 6
+```
+
+**Step 2:** Calculate deviations and their products
+```
+(Xi - x̄)(Yi - ȳ):
+(2-5)(3-6) = (-3)(-3) = 9
+(4-5)(5-6) = (-1)(-1) = 1  
+(6-5)(7-6) = (1)(1) = 1
+(8-5)(9-6) = (3)(3) = 9
+
+Sum = 9 + 1 + 1 + 9 = 20
+```
+
+**Step 3:** Apply formula
+```
+Cov(X,Y) = 20 / (4-1) = 20 / 3 = 6.67
+```
+
+**Result:** Positive covariance = 6.67, indicating X and Y tend to increase together.
+
+## ⚖️ Advantages and Disadvantages of Covariance
+
+### ✅ Advantages
+1. **Shows relationship direction** between X and Y
+2. **Provides +ve or -ve value** indicating correlation direction
+
+### ❌ Disadvantages  
+1. **No specific limit value** - difficult to interpret magnitude
+2. **Units dependent** - affected by the scale of variables
+3. **Hard to compare** across different datasets with different units
+
+### 💡 Real-world Example
+- **House size vs House price:** Positive covariance (larger houses tend to cost more)
+- **Temperature vs Heating bill:** Negative covariance (warmer weather, lower heating costs)
+
+## 📏 Pearson Correlation Coefficient
+
+To address the limitations of covariance, we use the **Pearson Correlation Coefficient**, which standardizes covariance to a range of -1 to +1.
+
+### 🔢 Correlation Formula
+
+```
+ρ(X,Y) = Cov(X,Y) / (σx × σy)
+
+Where:
+• Cov(X,Y) = Covariance between X and Y
+• σx = Standard deviation of X
+• σy = Standard deviation of Y
+```
+
+### 📊 Correlation Interpretation
+
+| **Correlation Value** | **Strength** | **Direction** | **Interpretation** |
+|----------------------|--------------|---------------|-------------------|
+| **+1.0** | Perfect | Positive | Perfect positive linear relationship |
+| **+0.7 to +0.9** | Strong | Positive | Strong positive relationship |
+| **+0.3 to +0.7** | Moderate | Positive | Moderate positive relationship |
+| **0 to +0.3** | Weak | Positive | Weak positive relationship |
+| **0** | None | None | No linear relationship |
+| **0 to -0.3** | Weak | Negative | Weak negative relationship |
+| **-0.3 to -0.7** | Moderate | Negative | Moderate negative relationship |
+| **-0.7 to -0.9** | Strong | Negative | Strong negative relationship |
+| **-1.0** | Perfect | Negative | Perfect negative linear relationship |
+
+### 🎯 Key Properties of Correlation
+1. **Standardized measure:** Always between -1 and +1
+2. **Unit-free:** Not affected by changes in scale
+3. **Symmetric:** Correlation of X with Y equals correlation of Y with X
+4. **Linear relationships only:** May miss non-linear relationships
+
+## 📈 Spearman Rank Correlation
+
+For non-linear relationships or ordinal data, we use **Spearman Rank Correlation**.
+
+### 🔢 Spearman Formula
+
+```
+rs = Cov(R(X), R(Y)) / (σ(R(X)) × σ(R(Y)))
+
+Where:
+• R(X) = Ranks of X values
+• R(Y) = Ranks of Y values
+```
+
+### 📊 Example: Spearman Calculation
+
+**Original Data:**
+```
+X: [1, 3, 5, 7, 0, 8]
+Y: [2, 4, 6, 8, 7, 1]
+```
+
+**Step 1:** Convert to ranks
+```
+R(X): [5, 4, 3, 2, 6, 1]  (8 gets rank 1, 7 gets rank 2, etc.)
+R(Y): [5, 4, 3, 1, 2, 6]  (8 gets rank 1, 7 gets rank 2, etc.)
+```
+
+**Step 2:** Calculate correlation using ranks instead of original values
+
+### 🎯 When to Use Each Method
+
+| **Method** | **Use When** | **Advantages** | **Limitations** |
+|------------|--------------|----------------|-----------------|
+| **Covariance** | Initial exploration | Shows direction clearly | Hard to interpret magnitude |
+| **Pearson Correlation** | Linear relationships, continuous data | Standardized, easy to interpret | Assumes linear relationship |
+| **Spearman Correlation** | Non-linear relationships, ordinal data | Works with ranks, non-parametric | Less sensitive to outliers |
+
+## 💻 Programming Implementation
+
+### Real-World Example: Health Expenditure Analysis
+
+Let's analyze the relationship between healthcare spending and life expectancy using the Seaborn health expenditure dataset from your Jupyter notebook:
+
+```python
+import seaborn as sns
+import pandas as pd
+import numpy as np
+
+# Load the health expenditure dataset
+df = sns.load_dataset('healthexp')
+print(df.head())
+```
+
+**Sample Data Output:**
+```
+   Year    Country  Spending_USD  Life_Expectancy
+0  1970    Germany       252.311             70.6
+1  1970     France       192.143             72.2
+2  1970  Great Britain   123.993             71.9
+3  1970      Japan       150.437             72.0
+4  1970        USA       326.961             70.9
+```
+
+### Step 1: Calculate Covariance Matrix
+
+```python
+# Calculate covariance matrix for all numeric columns
+covariance_matrix = df.cov()
+print("Covariance Matrix:")
+print(covariance_matrix)
+```
+
+**Output:**
+```
+                   Year  Spending_USD  Life_Expectancy
+Year           201.098848   25718.827373        41.915454
+Spending_USD  25718.827373  4817761.000000  4166.800912
+Life_Expectancy   41.915454    4166.800912        10.733902
+```
+
+**Interpretation:**
+- **Year vs Spending_USD:** Covariance = 25,718.83 (positive, spending increases over time)
+- **Year vs Life_Expectancy:** Covariance = 41.92 (positive, life expectancy increases over time)
+- **Spending_USD vs Life_Expectancy:** Covariance = 4,166.80 (positive, higher spending associated with higher life expectancy)
+
+### Step 2: Calculate Pearson Correlation
+
+```python
+# Calculate Pearson correlation coefficient
+pearson_correlation = df.corr(method='pearson')
+print("Pearson Correlation Matrix:")
+print(pearson_correlation)
+```
+
+**Output:**
+```
+                   Year  Spending_USD  Life_Expectancy
+Year            1.000000      0.826273         0.902175
+Spending_USD    0.826273      1.000000         0.579430
+Life_Expectancy 0.902175      0.579430         1.000000
+```
+
+**Key Insights:**
+- **Year vs Life_Expectancy:** r = 0.902 (very strong positive correlation)
+- **Year vs Spending_USD:** r = 0.826 (strong positive correlation)  
+- **Spending_USD vs Life_Expectancy:** r = 0.579 (moderate positive correlation)
+
+### Step 3: Calculate Spearman Rank Correlation
+
+```python
+# Calculate Spearman rank correlation
+spearman_correlation = df.corr(method='spearman')
+print("Spearman Correlation Matrix:")
+print(spearman_correlation)
+```
+
+**Output:**
+```
+                   Year  Spending_USD  Life_Expectancy
+Year            1.000000      0.931598         0.896117
+Spending_USD    0.931598      1.000000         0.747407
+Life_Expectancy 0.896117      0.747407         1.000000
+```
+
+**Comparison of Results:**
+- **Spending_USD vs Life_Expectancy:**
+  - Pearson: 0.579 (moderate)
+  - Spearman: 0.747 (strong)
+  - The higher Spearman correlation suggests a stronger monotonic relationship than linear
+
+### Complete Analysis Code
+
+```python
+import seaborn as sns
+import pandas as pd
+import numpy as np
+from scipy.stats import pearsonr, spearmanr
+import matplotlib.pyplot as plt
+
+# Load and explore data
+df = sns.load_dataset('healthexp')
+print("Dataset Shape:", df.shape)
+print("\nFirst 5 rows:")
+print(df.head())
+
+# Basic statistics
+print("\nBasic Statistics:")
+print(df.describe())
+
+# Covariance analysis
+print("\n" + "="*50)
+print("COVARIANCE ANALYSIS")
+print("="*50)
+cov_matrix = df.cov()
+print(cov_matrix)
+
+# Correlation analysis  
+print("\n" + "="*50)
+print("PEARSON CORRELATION ANALYSIS")
+print("="*50)
+pearson_corr = df.corr(method='pearson')
+print(pearson_corr)
+
+print("\n" + "="*50)
+print("SPEARMAN CORRELATION ANALYSIS") 
+print("="*50)
+spearman_corr = df.corr(method='spearman')
+print(spearman_corr)
+
+# Individual correlation calculations
+spending_life_pearson, p_val = pearsonr(df['Spending_USD'], df['Life_Expectancy'])
+spending_life_spearman, sp_val = spearmanr(df['Spending_USD'], df['Life_Expectancy'])
+
+print("\n" + "="*50)
+print("SPENDING vs LIFE EXPECTANCY ANALYSIS")
+print("="*50)
+print(f"Pearson Correlation: {spending_life_pearson:.4f} (p-value: {p_val:.4f})")
+print(f"Spearman Correlation: {spending_life_spearman:.4f} (p-value: {sp_val:.4f})")
+
+# Interpretation
+if spending_life_pearson > 0.7:
+    print("Strong positive linear relationship")
+elif spending_life_pearson > 0.5:
+    print("Moderate positive linear relationship")
+elif spending_life_pearson > 0.3:
+    print("Weak positive linear relationship")
+else:
+    print("Very weak or no linear relationship")
+```
+
+### Visualizing the Health Expenditure Relationships
+
+```python
+# Create comprehensive visualization of the health expenditure data
+fig, axes = plt.subplots(2, 3, figsize=(18, 12))
+
+# Spending vs Life Expectancy scatter plot
+axes[0, 0].scatter(df['Spending_USD'], df['Life_Expectancy'], alpha=0.6, color='blue')
+axes[0, 0].set_xlabel('Health Spending (USD)')
+axes[0, 0].set_ylabel('Life Expectancy (years)')
+axes[0, 0].set_title(f'Spending vs Life Expectancy\n(Pearson: {spending_life_pearson:.3f})')
+
+# Year vs Life Expectancy  
+axes[0, 1].scatter(df['Year'], df['Life_Expectancy'], alpha=0.6, color='green')
+axes[0, 1].set_xlabel('Year')
+axes[0, 1].set_ylabel('Life Expectancy (years)')
+year_life_corr = df['Year'].corr(df['Life_Expectancy'])
+axes[0, 1].set_title(f'Year vs Life Expectancy\n(Pearson: {year_life_corr:.3f})')
+
+# Year vs Spending
+axes[0, 2].scatter(df['Year'], df['Spending_USD'], alpha=0.6, color='red')
+axes[0, 2].set_xlabel('Year')
+axes[0, 2].set_ylabel('Health Spending (USD)')
+year_spending_corr = df['Year'].corr(df['Spending_USD'])
+axes[0, 2].set_title(f'Year vs Spending\n(Pearson: {year_spending_corr:.3f})')
+
+# Correlation heatmap
+import seaborn as sns
+corr_matrix = df.corr()
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0, 
+            square=True, ax=axes[1, 0])
+axes[1, 0].set_title('Pearson Correlation Heatmap')
+
+# Comparison of Pearson vs Spearman
+methods = ['Pearson', 'Spearman']
+spending_life_corrs = [spending_life_pearson, spending_life_spearman]
+axes[1, 1].bar(methods, spending_life_corrs, color=['lightblue', 'lightcoral'])
+axes[1, 1].set_ylabel('Correlation Coefficient')
+axes[1, 1].set_title('Spending vs Life Expectancy:\nPearson vs Spearman')
+axes[1, 1].set_ylim(0, 1)
+
+# Distribution of Life Expectancy over time
+df_recent = df[df['Year'] >= 2000]  # Focus on recent data
+axes[1, 2].boxplot([df_recent[df_recent['Year'] == year]['Life_Expectancy'].values 
+                    for year in sorted(df_recent['Year'].unique())])
+axes[1, 2].set_xlabel('Year (2000+)')
+axes[1, 2].set_ylabel('Life Expectancy Distribution')
+axes[1, 2].set_title('Life Expectancy Distribution by Year')
+
+plt.tight_layout()
+plt.show()
+
+# Summary statistics table
+print("\n" + "="*60)
+print("SUMMARY OF KEY RELATIONSHIPS")
+print("="*60)
+print(f"Year vs Life Expectancy:     {year_life_corr:.3f} (Very Strong Positive)")
+print(f"Year vs Spending:            {year_spending_corr:.3f} (Strong Positive)")
+print(f"Spending vs Life Expectancy: {spending_life_pearson:.3f} (Moderate Positive)")
+print(f"Spearman (Spending vs Life): {spending_life_spearman:.3f} (Strong Positive)")
+print("\nKey Insight: Healthcare spending shows stronger monotonic")
+print("relationship with life expectancy than linear relationship.")
+```
+
+## 📊 Real-World Insights from Health Expenditure Data
+
+### Key Findings from the Analysis
+
+Based on the health expenditure dataset analysis, we discovered several important relationships:
+
+#### 1️⃣ **Time Trends (Very Strong Correlations)**
+- **Year vs Life Expectancy:** r = 0.902 
+  - Life expectancy has consistently increased over time across countries
+  - This represents a very strong positive linear trend
+- **Year vs Health Spending:** r = 0.826
+  - Healthcare spending has dramatically increased over decades
+  - Strong positive correlation indicating consistent growth in health investments
+
+#### 2️⃣ **Healthcare Investment Impact (Moderate to Strong)**
+- **Spending vs Life Expectancy (Pearson):** r = 0.579
+  - Moderate positive linear relationship
+  - Countries with higher health spending tend to have higher life expectancy
+- **Spending vs Life Expectancy (Spearman):** r = 0.747
+  - Much stronger monotonic relationship
+  - Suggests non-linear relationship where benefits may plateau at higher spending levels
+
+#### 3️⃣ **Statistical Interpretation**
+```
+Strong Correlations (r > 0.8):  Time-based trends
+Moderate Correlations (0.5-0.8): Health spending effectiveness  
+Weak Correlations (< 0.5):      Individual country variations
+```
+
+### Why Spearman > Pearson for Health Spending?
+
+The difference between Pearson (0.579) and Spearman (0.747) correlations for spending vs life expectancy suggests:
+
+1. **Diminishing Returns:** Initial healthcare investments show high returns in life expectancy, but additional spending beyond a threshold shows smaller improvements
+2. **Non-linear Relationship:** The relationship isn't perfectly linear - it may follow a logarithmic or power curve
+3. **Outliers Present:** Some countries may have exceptionally high spending with proportionally smaller gains
+
+### Practical Applications
+
+#### Healthcare Policy
+- **Budget Allocation:** Understanding spending-outcome relationships helps optimize healthcare budgets
+- **International Comparisons:** Countries can benchmark their health spending efficiency
+- **Trend Analysis:** Long-term correlations help predict future healthcare needs
+
+#### Research Applications  
+- **Variable Selection:** High correlations between year and outcomes suggest time should be included in models
+- **Methodology Choice:** Non-linear relationships indicate need for advanced statistical methods
+- **Data Quality:** Strong correlations validate data consistency across time periods
+
+## 🎯 Key Takeaways
+
+```
+🔗 Covariance = Measures how two variables change together
+📏 Range: -∞ to +∞ (unlimited range)
+➕ Positive: Variables increase/decrease together  
+➖ Negative: One increases while other decreases
+
+📊 Correlation = Standardized covariance  
+📏 Range: -1 to +1 (standardized)
+🎯 Easier to interpret than covariance
+🔄 Unit-free and scale-independent
+
+📈 Pearson = For linear relationships
+📊 Spearman = For non-linear/ordinal data  
+🎯 Use correlation for most practical applications
+⚠️ Correlation ≠ Causation (important reminder!)
+
+💡 Applications:
+• Feature selection in ML
+• Risk assessment in finance  
+• Quality control in manufacturing
+• Relationship analysis in research
+```
+
+## ⚠️ Important Notes
+
+1. **Correlation does not imply causation:** High correlation doesn't mean one variable causes changes in another
+2. **Linear assumption:** Pearson correlation only captures linear relationships
+3. **Outliers impact:** Both covariance and correlation can be affected by extreme values
+4. **Sample size matters:** Larger samples provide more reliable correlation estimates
+
+---
+
+Understanding covariance and correlation is essential for data analysis, feature selection in machine learning, and identifying relationships in research. These concepts form the foundation for more advanced statistical methods like regression analysis and multivariate statistics.
+
 ## 📋 Types of Data
 Data can be broadly categorized into two main types:
 
