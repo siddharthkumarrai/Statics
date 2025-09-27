@@ -429,7 +429,8 @@ graph LR
 ### Extension of Bernoulli to Multiple Trials: 
 
 **Definition:** Models the number of successes in n independent Bernoulli trials
-**Key Insight :** "For a single trial (n=1), the binomial distribution is a Bernoulli distribution"
+
+**Key Insight:** "For a single trial (n=1), the binomial distribution is a Bernoulli distribution"
 
 ### Parameters from Your Screenshots
 - **n ∈ {0,1,2,...}** → number of trials
