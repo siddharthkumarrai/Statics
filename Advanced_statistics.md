@@ -432,7 +432,7 @@ graph LR
 
 **Key Insight:** "For a single trial (n=1), the binomial distribution is a Bernoulli distribution"
 
-### Parameters from Your Screenshots
+### Parameters 
 - **n ∈ {0,1,2,...}** → number of trials
 - **p ∈ [0,1]** → success probability for each trial  
 - **q = 1-p** → failure probability
