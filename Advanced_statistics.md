@@ -2520,16 +2520,355 @@ Confidence intervals provide a range of plausible values for the population para
 
 This comprehensive framework provides the foundation for conducting proper statistical hypothesis testing using both Z-tests and t-tests, with clear decision-making criteria based on both critical values and p-value approaches.
 _________________
-### Relationship Summary: Bernoulli → Binomial
+________________
+# Student t-Distribution - Complete Analysis
 
-| Distribution | Trials | Outcomes | PMF | Example |
-|-------------|--------|-----------|-----|---------|
-| Bernoulli | n = 1 | k ∈ {0,1} | p^k(1-p)^(1-k) | Single coin toss |
-| Binomial | n ≥ 1 | k ∈ {0,1,...,n} | C(n,k)p^k(1-p)^(n-k) | 10 coin tosses |
+## Definition and Core Purpose
 
-**Key Insight:** Bernoulli is the special case of Binomial when n = 1
+The Student t-distribution is a probability distribution used for statistical analysis when the population standard deviation is unknown. It provides the solution for performing hypothesis testing when we don't know the population standard deviation (σ).
 
----
+### Key Question Addressed:
+**"How do we perform an analysis when we don't know the population standard deviation?"**
+
+**Solution:** Student t-distribution
+
+## Formula Comparison
+
+### Z-Test vs t-Test Formulas
+
+**Z-Test Formula (when σ is known):**
+```
+Z = (x̄ - μ)/(σ/√n)
+```
+
+**t-Test Formula (when σ is unknown):**
+```
+t = (x̄ - μ)/(s/√n)
+```
+
+Where:
+- **s = Sample Standard Deviation**
+- **σ = Population Standard Deviation (unknown)**
+
+```mermaid
+graph TD
+    A["Statistical Analysis Decision"] --> B["Do you know the Population Std σ?"]
+    
+    B --> C["YES"]
+    B --> D["NO"]
+    
+    C --> E["Is Sample Size above 30?"]
+    D --> F["Use t-test"]
+    
+    E --> G["YES: Use Z-test"]
+    E --> H["NO: Use t-test"]
+    
+    I["Test Outputs"] --> J["Z table → Z score"]
+    I --> K["t table dof → t score"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#ffab91,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#c8e6c9,color:#000
+    style H fill:#ffab91,color:#000
+    style I fill:#f3e5f5,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Degrees of Freedom
+
+### Definition and Calculation
+**Degrees of Freedom (dof) = n - 1**
+
+Where n = Sample Size
+
+### Example Illustration
+For **3 People** sample:
+- Sample size (n) = 3
+- Degrees of freedom = 3 - 1 = 2
+
+**Visual representation:** [X] □ [X] 
+- Two constraints (X marks)
+- One free choice (empty square)
+
+```mermaid
+flowchart TD
+    A["Degrees of Freedom Concept"] --> B["dof = n - 1"]
+    
+    C["Sample Size Examples"] --> D["n = 3 → dof = 2"]
+    C --> E["n = 30 → dof = 29"]
+    C --> F["n = 100 → dof = 99"]
+    
+    G["Why n-1?"] --> H["One parameter estimated from sample"]
+    G --> I["Reduces available freedom by 1"]
+    
+    J["Impact on Distribution"] --> K["Smaller dof → Wider distribution"]
+    J --> L["Larger dof → Approaches normal distribution"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Worked Example: IQ Medication Study
+
+### Problem Statement
+In the population, the average IQ is 100. A team of researchers wants to test a new medication to see if it has either a positive or negative effect on intelligence, or no effect at all. A sample of 30 participants who have taken the medication has a mean of 140 with a standard deviation of 20. Did the medication affect intelligence? (C.I = 95%)
+
+### Given Information
+- Population mean (μ) = 100
+- Sample size (n) = 30
+- Sample mean (x̄) = 140
+- Sample standard deviation (s) = 20
+- Confidence interval = 95%
+- Significance level (α) = 0.05
+
+### Step-by-Step Solution
+
+**Step 1: State Hypotheses**
+- **H₀:** μ = 100 (null hypothesis - no effect)
+- **H₁:** μ ≠ 100 (alternative hypothesis - two-tail test, medication has effect)
+
+**Step 2: Significance Level**
+- **α = 0.05**
+
+**Step 3: Degrees of Freedom**
+- **dof = n - 1 = 30 - 1 = 29**
+
+```mermaid
+flowchart TD
+    A["IQ Medication Study Setup"] --> B["Population IQ: μ = 100"]
+    B --> C["Sample: n = 30, x̄ = 140, s = 20"]
+    
+    D["Hypothesis Framework"] --> E["H₀: μ = 100 (no effect)"]
+    D --> F["H₁: μ ≠ 100 (has effect)"]
+    
+    G["Test Parameters"] --> H["Two-tailed test"]
+    G --> I["α = 0.05, dof = 29"]
+    G --> J["Critical values: ±2.045"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+**Step 4: Decision Rule**
+For α = 0.05 with dof = 29 (two-tailed test):
+- **Critical values:** ±2.045
+- **Decision Rule:** If t-stat is less than -2.045 or greater than +2.045, reject the null hypothesis
+
+**Visual Decision Boundary:**
+```
+        2.5%      95%      2.5%
+    |-------|-----------|-------|
+   -2.045    0        +2.045
+```
+
+**Step 5: Calculate t-test Statistic**
+
+**t-test Formula:**
+```
+t = (x̄ - μ)/(s/√n)
+```
+
+**Calculation:**
+```
+t = (140 - 100)/(20/√30)
+t = 40/(20/5.48)
+t = 40/3.65
+t = 10.96
+```
+
+**Step 6: Conclusion**
+
+**Decision Rule:** If t is less than -2.045 and greater than 2.045, reject the null hypothesis
+
+**Result:** t = 10.96 > 2.045 → **Rejecting the Null Hypothesis**
+
+**Conclusion:** The medication significantly affects intelligence (increases IQ).
+
+```mermaid
+graph TD
+    A["t-Test Calculation Results"] --> B["t-statistic = 10.96"]
+    
+    C["Critical Value Comparison"] --> D["10.96 > 2.045"]
+    C --> E["Reject H₀"]
+    
+    F["Statistical Decision"] --> G["Medication has significant effect"]
+    F --> H["IQ significantly increased"]
+    
+    I["Interpretation"] --> J["Strong evidence against null hypothesis"]
+    I --> K["Medication improves intelligence"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#c8e6c9,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Decision Tree: Z-Test vs t-Test
+
+### When to Use Each Test
+
+The decision tree for choosing between Z-test and t-test:
+
+**Step 1:** Do you know the population standard deviation (σ)?
+- **YES** → Continue to Step 2
+- **NO** → Use t-test
+
+**Step 2:** Is the sample size above 30?
+- **YES** → Use Z-test
+- **NO** → Use t-test
+
+### Test Outputs
+- **Z-test** → Z table → Z score and p-value
+- **t-test** → t table with degrees of freedom → t score and p-value
+
+```mermaid
+flowchart TD
+    A["Statistical Test Selection"] --> B["Population σ Known?"]
+    
+    B --> C["Yes"] 
+    B --> D["No → Use t-test"]
+    
+    C --> E["Sample Size ≥ 30?"]
+    
+    E --> F["Yes → Use Z-test"] 
+    E --> G["No → Use t-test"]
+    
+    H["Reference Tables"] --> I["Z-test uses Z-table"]
+    H --> J["t-test uses t-table with dof"]
+    
+    K["Key Differences"] --> L["Z-test: σ known, large samples"]
+    K --> M["t-test: σ unknown, any sample size"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#ffab91,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#ffab91,color:#000
+    style H fill:#f3e5f5,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Key Characteristics of t-Distribution
+
+### Distribution Properties
+
+1. **Bell-shaped and symmetric** (like normal distribution)
+2. **Wider spread** than normal distribution
+3. **Heavier tails** than normal distribution
+4. **Approaches normal distribution** as degrees of freedom increase
+
+### Relationship with Sample Size
+- **Small samples (low dof):** More spread out, heavier tails
+- **Large samples (high dof):** Approaches standard normal distribution
+- **Rule of thumb:** When dof > 30, t-distribution ≈ normal distribution
+
+### Critical Values
+- **Depend on degrees of freedom**
+- **Always larger than Z-values** for same significance level
+- **Decrease as degrees of freedom increase**
+
+## Practical Applications
+
+### When t-Test is Preferred
+
+1. **Medical research** with limited sample sizes
+2. **Quality control** when population parameters unknown
+3. **Educational studies** with small classroom sizes
+4. **Market research** with pilot studies
+5. **Scientific experiments** with expensive or time-consuming data collection
+
+### Advantages of t-Test
+- **More realistic assumption:** Population σ usually unknown
+- **Works with small samples:** No minimum sample size requirement
+- **Robust method:** Accounts for additional uncertainty from estimating σ
+
+## Summary Table
+
+| Aspect | Z-Test | t-Test |
+|--------|--------|--------|
+| **Population σ** | Known | Unknown |
+| **Sample Size** | Typically ≥ 30 | Any size |
+| **Distribution** | Standard Normal | t-Distribution |
+| **Critical Values** | From Z-table | From t-table (depends on dof) |
+| **Formula** | Z = (x̄-μ)/(σ/√n) | t = (x̄-μ)/(s/√n) |
+| **Degrees of Freedom** | Not applicable | n - 1 |
+
+```mermaid
+graph TD
+    A["t-Distribution Summary"] --> B["Used when σ unknown"]
+    
+    C["Key Formula"] --> D["t = (x̄-μ)/(s/√n)"]
+    
+    E["Critical Concept"] --> F["Degrees of Freedom = n-1"]
+    
+    G["Distribution Shape"] --> H["Bell-shaped, wider than normal"]
+    G --> I["Approaches normal as dof increases"]
+    
+    J["Decision Process"] --> K["Calculate t-statistic"]
+    J --> L["Compare with critical values"]
+    J --> M["Make statistical decision"]
+    
+    N["Applications"] --> O["Small sample research"]
+    N --> P["Unknown population parameters"]
+    N --> Q["Real-world statistical analysis"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#ffecb3,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#f3e5f5,color:#000
+    style O fill:#fff,color:#000
+    style P fill:#fff,color:#000
+    style Q fill:#fff,color:#000
+```
+
+The Student t-distribution provides a robust framework for hypothesis testing in real-world scenarios where population parameters are typically unknown, making it one of the most practically useful statistical tools for researchers and analysts.
+________________
 
 ---
 
