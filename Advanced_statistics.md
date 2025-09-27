@@ -2095,7 +2095,431 @@ graph TD
 
 Hypothesis testing provides a rigorous framework for making data-driven decisions while acknowledging uncertainty. It's a fundamental tool that bridges the gap between sample observations and population-level conclusions, enabling informed decision-making across numerous fields and applications.
 __
+_________________
+# Statistical Analysis and Hypothesis Testing - Complete Guide
 
+## Statistical Tests Overview
+
+Statistical analysis involves choosing appropriate tests based on the nature of your data and research question.
+
+### Four Main Categories of Statistical Tests:
+
+1. **Z Test** → Z table → Z score and p value
+2. **t Test** → t table → t score and p value  
+3. **Chi Square** → Categorical Data
+4. **ANOVA** → Variance analysis
+
+### When to Use Each Test:
+
+**Z Test:** 
+- Population standard deviation is known
+- Sample size n ≥ 30
+
+**t Test:**
+- Population standard deviation is unknown
+- Generally smaller sample sizes
+
+```mermaid
+graph TD
+    A["Statistical Analysis Framework"] --> B["Choose Appropriate Test"]
+    
+    C["Test Selection Criteria"] --> D["Z Test: σ known, n≥30"]
+    C --> E["t Test: σ unknown"]
+    C --> F["Chi-Square: Categorical data"]
+    C --> G["ANOVA: Variance comparison"]
+    
+    H["Output"] --> I["Test statistic (Z or t score)"]
+    H --> J["P-value"]
+    H --> K["Statistical decision"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#c8e6c9,color:#000
+    style H fill:#fff3e0,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Worked Example 1: Height Analysis (Z Test)
+
+### Problem Statement
+The average height of all residents in a city is 168cm with σ = 3.9. A doctor believes the mean to be different. He measured the height of 36 individuals and found the average height to be 169.5 cm.
+
+**(a) State null and alternate hypothesis**
+**(b) At a 95% confidence level, is there enough evidence to reject the null hypothesis?**
+
+### Given Information
+- Population mean (μ) = 168cm
+- Population standard deviation (σ) = 3.9  
+- Sample size (n) = 36
+- Sample mean (x̄) = 169.5cm
+- Confidence level = 95% → α = 1 - 0.95 = 0.05
+
+### Step-by-Step Solution
+
+**Step 1: State Hypotheses**
+- **H₀:** μ = 168cm (null hypothesis)  
+- **H₁:** μ ≠ 168cm (alternative hypothesis - two-tail test)
+
+**Step 2: Significance Level**
+- **C.I = 0.95**
+- **α = 1 - 0.95 = 0.05**
+
+**Step 3: Decision Boundary**
+Using the normal distribution with α = 0.05 (two-tailed):
+- Critical values: ±1.96
+- If Z-stat value is less than -1.96 or greater than +1.96 → **We Reject the Null Hypothesis**
+- Otherwise → **We Accept Null Hypothesis**
+
+```mermaid
+flowchart TD
+    A["Height Analysis Example"] --> B["Population: μ=168cm, σ=3.9"]
+    B --> C["Sample: n=36, x̄=169.5cm"]
+    
+    D["Hypotheses"] --> E["H₀: μ = 168cm"]
+    D --> F["H₁: μ ≠ 168cm (Two-tailed)"]
+    
+    G["Test Setup"] --> H["95% Confidence Level"]
+    G --> I["α = 0.05"]
+    G --> J["Critical values: ±1.96"]
+    
+    K["Decision Rule"] --> L["If |Z| > 1.96: Reject H₀"]
+    K --> M["If |Z| ≤ 1.96: Accept H₀"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffab91,color:#000
+    style M fill:#c8e6c9,color:#000
+```
+
+**Step 4: Statistical Analysis**
+
+**Z-test formula:**
+```
+Z-test = (x̄ - μ)/(σ/√n)
+```
+
+**Calculation:**
+```
+Z-test = (169.5 - 168)/(3.9/√36)
+       = 1.5/(3.9/6)
+       = 1.5/0.65
+       = 2.31
+```
+
+**Decision:**
+Since Z = 2.31 > +1.96, we **reject the null hypothesis**.
+
+**Step 5: P-Value Analysis**
+
+For Z = 2.31 in a two-tailed test:
+- Area under the curve from Z = 2.31 to right tail
+- From Z-table: Area = 0.01044
+- Two-tailed p-value = 2 × 0.01044 = 0.02088
+
+**P-value Decision Rule:**
+- If p-value < significance level: Reject H₀
+- 0.02088 < 0.05 → **Reject the Null Hypothesis**
+
+```mermaid
+graph TD
+    A["Z-Test Calculation"] --> B["Formula: Z = (x̄-μ)/(σ/√n)"]
+    
+    C["Given Values"] --> D["x̄ = 169.5, μ = 168"]
+    C --> E["σ = 3.9, n = 36"]
+    
+    F["Calculation Steps"] --> G["Z = (169.5-168)/(3.9/√36)"]
+    F --> H["Z = 1.5/0.65 = 2.31"]
+    
+    I["Decision"] --> J["Z = 2.31 > 1.96"]
+    I --> K["Reject H₀"]
+    
+    L["P-Value"] --> M["p = 2 × 0.01044 = 0.02088"]
+    L --> N["0.02088 < 0.05: Reject H₀"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#ffab91,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#ffab91,color:#000
+```
+
+## Worked Example 2: Light Bulb Warranty (t Test)
+
+### Problem Statement
+A factory manufactures bulbs with an average warranty of 5 years with standard deviation of 0.50. A worker believes that the bulb will malfunction in less than 5 years. He tests a sample of 40 bulbs and finds the average time to be 4.8 years.
+
+**(a) State null and alternate hypothesis**
+**(b) At a 2% significance level, is there enough evidence to support the idea that the warranty should be revised?**
+
+### Given Information
+- Population mean (μ) = 5 years
+- Population standard deviation (σ) = 0.50
+- Sample size (n) = 40  
+- Sample mean (x̄) = 4.8 years
+- Significance level = 2% → α = 0.02
+
+### Step-by-Step Solution
+
+**Step 1: State Hypotheses**
+- **H₀:** μ = 5 (null hypothesis)
+- **H₁:** μ < 5 (alternative hypothesis - one-tail test)
+
+**Step 2: Significance Level**  
+- **α = 0.02**
+- **C.I = 0.98**
+
+**Step 3: Decision Boundary**
+For a one-tailed test with α = 0.02:
+- Critical value at left tail = -2.05 (approximately)
+- If t-stat < -2.05: Reject H₀
+- Otherwise: Accept H₀
+
+```mermaid
+flowchart TD
+    A["Light Bulb Warranty Analysis"] --> B["Population: μ=5 years, σ=0.50"]
+    B --> C["Sample: n=40, x̄=4.8 years"]
+    
+    D["Hypotheses"] --> E["H₀: μ = 5 years"]
+    D --> F["H₁: μ < 5 years (One-tailed)"]
+    
+    G["Test Setup"] --> H["α = 0.02 (2% significance)"]
+    G --> I["98% Confidence Level"]
+    G --> J["Critical value ≈ -2.05"]
+    
+    K["Decision Rule"] --> L["If t < -2.05: Reject H₀"]
+    K --> M["If t ≥ -2.05: Accept H₀"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffab91,color:#000
+    style M fill:#c8e6c9,color:#000
+```
+
+**Step 4: Statistical Analysis**
+
+**t-test formula:**
+```
+t-test = (x̄ - μ)/(σ/√n)
+```
+
+**Calculation:**
+```
+t-test = (4.8 - 5)/(0.50/√40)
+       = -0.2/(0.50/6.32)
+       = -0.2/0.079
+       = -2.53
+```
+
+**Step 5: P-Value Analysis**
+
+For t = -2.53 in a one-tailed test:
+- Area under the curve to the left of t = -2.53
+- From t-table: p-value = 0.0070
+
+**Decision:**
+- t-stat = -2.53 < -2.05 → **Reject H₀**
+- p-value = 0.0070 < 0.02 → **Reject H₀**
+
+**Conclusion:** There is sufficient evidence to support the idea that the warranty should be revised.
+
+```mermaid
+graph TD
+    A["t-Test Results"] --> B["t-statistic = -2.53"]
+    
+    C["Critical Comparison"] --> D["t = -2.53 < -2.05"]
+    C --> E["Reject H₀"]
+    
+    F["P-Value Analysis"] --> G["p-value = 0.0070"]
+    F --> H["0.0070 < 0.02"]
+    F --> I["Reject H₀"]
+    
+    J["Final Decision"] --> K["Warranty should be revised"]
+    J --> L["Statistical evidence supports worker's claim"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#ffab91,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Key Formulas and Concepts
+
+### Test Statistic Formulas
+
+**Z-Test (Population σ known):**
+```
+Z = (x̄ - μ)/(σ/√n)
+```
+
+**t-Test (Population σ unknown):**
+```
+t = (x̄ - μ)/(s/√n)
+```
+
+Where:
+- x̄ = sample mean
+- μ = population mean  
+- σ = population standard deviation
+- s = sample standard deviation
+- n = sample size
+
+### Decision Rules
+
+**Using Critical Values:**
+- **Two-tailed test:** Reject H₀ if |test statistic| > critical value
+- **One-tailed test:** Reject H₀ if test statistic > critical value (right tail) or < -critical value (left tail)
+
+**Using P-Values:**
+- **Rule:** If p-value < α, reject H₀
+- **Rule:** If p-value ≥ α, fail to reject H₀
+
+### Types of Tests
+
+**One-Tailed Tests:**
+- **Left-tailed:** H₁: μ < μ₀
+- **Right-tailed:** H₁: μ > μ₀
+
+**Two-Tailed Test:**
+- **Two-sided:** H₁: μ ≠ μ₀
+
+```mermaid
+flowchart TD
+    A["Hypothesis Testing Summary"] --> B["Select Appropriate Test"]
+    
+    C["Test Selection"] --> D["Z-test: σ known, n≥30"]
+    C --> E["t-test: σ unknown"]
+    
+    F["Critical Steps"] --> G["1. State hypotheses"]
+    F --> H["2. Set significance level"]
+    F --> I["3. Calculate test statistic"]
+    F --> J["4. Find p-value"]
+    F --> K["5. Make decision"]
+    
+    L["Decision Methods"] --> M["Critical value approach"]
+    L --> N["P-value approach"]
+    
+    O["Common Significance Levels"] --> P["α = 0.01 (99% confidence)"]
+    O --> Q["α = 0.05 (95% confidence)"]
+    O --> R["α = 0.10 (90% confidence)"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#ffecb3,color:#000
+    style P fill:#fff,color:#000
+    style Q fill:#fff,color:#000
+    style R fill:#fff,color:#000
+```
+
+## Practical Applications
+
+### When to Use Z-Test vs t-Test
+
+**Use Z-Test when:**
+- Population standard deviation (σ) is known
+- Large sample size (n ≥ 30)
+- Population is normally distributed
+
+**Use t-Test when:**
+- Population standard deviation (σ) is unknown
+- Small to moderate sample sizes
+- Sample standard deviation (s) is used as estimate
+
+### Common Scenarios
+
+**Z-Test Applications:**
+- Quality control with known process variation
+- Standardized test scores
+- Large population surveys
+
+**t-Test Applications:**
+- Medical research with limited samples
+- Product testing with unknown variation
+- Educational research studies
+
+### Critical Value Tables
+
+**Z-Distribution (Standard Normal):**
+- α = 0.05 (two-tailed): ±1.96
+- α = 0.01 (two-tailed): ±2.576
+- α = 0.05 (one-tailed): ±1.645
+
+**t-Distribution (depends on degrees of freedom):**
+- Use t-table with df = n-1
+- Critical values increase as df decreases
+
+## Statistical Interpretation
+
+### P-Value Meaning
+The p-value represents the probability of observing the test results (or more extreme) assuming the null hypothesis is true.
+
+**Interpretation Guidelines:**
+- **p < 0.01:** Very strong evidence against H₀
+- **0.01 ≤ p < 0.05:** Strong evidence against H₀  
+- **0.05 ≤ p < 0.10:** Weak evidence against H₀
+- **p ≥ 0.10:** Little to no evidence against H₀
+
+### Confidence Intervals
+Confidence intervals provide a range of plausible values for the population parameter.
+
+**Relationship with Hypothesis Testing:**
+- If hypothesized value falls outside confidence interval → Reject H₀
+- If hypothesized value falls inside confidence interval → Fail to reject H₀
+
+This comprehensive framework provides the foundation for conducting proper statistical hypothesis testing using both Z-tests and t-tests, with clear decision-making criteria based on both critical values and p-value approaches.
+_________________
 ### Relationship Summary: Bernoulli → Binomial
 
 | Distribution | Trials | Outcomes | PMF | Example |
