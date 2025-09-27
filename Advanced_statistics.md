@@ -70,7 +70,7 @@ graph LR
 ## Topic 2: Probability Mass Function (PMF)
 ### For Discrete Random Variables
 
-**From Image 2:** Rolling a dice {1, 2, 3, 4, 5, 6}
+**Rolling a dice:** Rolling a dice {1, 2, 3, 4, 5, 6}
 
 ### Key Calculations from Your Lecture
 ```
@@ -111,7 +111,7 @@ graph TD
 ---
 
 ## Topic 3: Cumulative Distribution Function (CDF)
-### From Images 3 & 6: PDF to CDF Relationship
+### PDF to CDF Relationship: 
 
 **Definition:** F(x) = P(X ≤ x)
 
@@ -120,7 +120,7 @@ graph TD
 - **Right side:** CDF (S-shaped curve)
 - **Critical relationship:** "Probability Density = Gradient of Cumulative Curve"
 
-### From Image 3 Values
+### 3 Values
 - At height 155: F(155) ≈ 0.25
 - At height 165: F(165) ≈ 0.5
 - The gradient (slope) of CDF = PDF value at that point
@@ -152,7 +152,7 @@ flowchart TD
 ---
 
 ## Topic 4: Discrete Random Variable Analysis
-### From Images 4 & 5: Complete Dice Example
+### Complete Dice Example: 
 
 **Rolling a dice:** {1, 2, 3, 4, 5, 6}
 
@@ -165,7 +165,7 @@ flowchart TD
 - Step function increasing from 1/6 to 6/6 = 1
 - Each step represents cumulative probability
 
-### Calculations from Your Images
+### Calculations
 ```
 P(X ≤ 2) = P(X=1) + P(X=2) = 1/6 + 1/6 = 2/6 = 1/3
 P(X ≤ 6) = 1 (certainty)
@@ -200,22 +200,22 @@ graph TD
 ---
 
 ## Topic 5: Continuous Random Variable Distribution
-### From Image 6: Detailed PDF and CDF Analysis
+### Detailed PDF and CDF Analysis:
 
-**Height Example:** Range 140-180 (from your diagram)
+**Height Example:** Range 140-180 
 
-### PDF Characteristics (Left side of Image 6)
+### PDF Characteristics 
 - Smooth bell-shaped curve
 - Peak around 165 (mean)
 - Density values: 0.01, 0.02, 0.03, 0.04 on Y-axis
 - Shaded areas represent specific probabilities
 
-### CDF Characteristics (Right side of Image 6)
+### CDF Characteristics 
 - Smooth S-shaped curve from 0 to 1
 - Steepest where PDF is highest (around 165)
 - Shows cumulative probabilities
 
-### Critical Insight from Your Lecture
+### Critical Insight 
 **"Probability Density = Gradient of Cumulative Curve"**
 
 This means:
@@ -226,7 +226,7 @@ This means:
 ---
 
 ## Topic 6: Types of Probability Distribution
-### From Image 7: Complete Distribution Overview
+### Complete Distribution Overview: 
 
 ```mermaid
 graph TD
@@ -283,12 +283,12 @@ graph TD
 ---
 
 ## Topic 7: Bernoulli Distribution - Complete Analysis
-### From Images 1-6: Detailed Bernoulli Study
+### Detailed Bernoulli Study: 
 
 **Definition:** Models any single experiment with yes-no question
 **From your lecture:** Coin tossing example {H, T}
 
-### Parameters (Image 2)
+### Parameters
 - **0 ≤ p ≤ 1** (probability constraint)
 - **q = 1-p** (complement probability)
 - **k ∈ {0,1}** → 2 outcomes only
@@ -323,20 +323,20 @@ graph TD
     style L fill:#fff,color:#000
 ```
 
-### PMF Formula (Images 2-3)
+### PMF Formula
 **PMF = p^k × (1-p)^(1-k)    k ∈ {0,1}**
 
-#### Case Analysis from Your Lecture:
+#### Case Analysis :
 **If k = 1:** P(k=1) = p¹ × (1-p)⁰ = p
 **If k = 0:** P(k=0) = p⁰ × (1-p)¹ = (1-p) = q
 
-#### Simplified Form (Image 3):
+#### Simplified Form:
 ```
 PMF = { q = 1-p    if k = 0
       { p          if k = 1
 ```
 
-### Your Coin Toss Example (Image 1)
+### Your Coin Toss Example 
 ```
 P(H) = 0.5 = p
 P(T) = 0.5 = 1-p = q
@@ -376,10 +376,10 @@ flowchart TD
     style M fill:#fff,color:#000
 ```
 
-### Mean of Bernoulli Distribution (Image 4)
+### Mean of Bernoulli Distribution 
 **E(k) = Σ k × p(k)** from k=0 to 1
 
-**Calculation from your lecture:**
+**Calculation:**
 ```
 E(k) = 0×p(0) + 1×p(1)
      = 0×(1-p) + 1×p  
@@ -389,7 +389,7 @@ E(k) = 0×p(0) + 1×p(1)
 
 **Therefore: Mean = p**
 
-### Median of Bernoulli Distribution (Image 5)
+### Median of Bernoulli Distribution
 **From your lecture:**
 ```
 Median = { 0      if p < 1/2
@@ -397,7 +397,7 @@ Median = { 0      if p < 1/2
          { 1      if p > 1/2
 ```
 
-### Variance and Standard Deviation (Image 6)
+### Variance and Standard Deviation
 **Variance = p × (1-p) = pq**
 **Standard Deviation = √(pq)**
 
@@ -422,6 +422,140 @@ graph LR
     style H fill:#fff,color:#000
     style I fill:#fff,color:#000
 ```
+
+---
+
+## Topic 8: Binomial Distribution - Complete Analysis
+### Extension of Bernoulli to Multiple Trials: 
+
+**Definition:** Models the number of successes in n independent Bernoulli trials
+**Key Insight :** "For a single trial (n=1), the binomial distribution is a Bernoulli distribution"
+
+### Parameters from Your Screenshots
+- **n ∈ {0,1,2,...}** → number of trials
+- **p ∈ [0,1]** → success probability for each trial  
+- **q = 1-p** → failure probability
+- **k ∈ {0,1,2,...,n}** → number of successes
+
+```mermaid
+graph TD
+    A[Binomial Distribution] --> B[n Independent Trials]
+    B --> C[Each Trial: Bernoulli with probability p]
+    
+    C --> D[Success: probability p]
+    C --> E[Failure: probability q = 1-p]
+    
+    F[Support] --> G[k can be 0, 1, 2, up to n]
+    G --> H[Counts number of successes]
+    
+    I[Special Case] --> J[When n = 1: Becomes Bernoulli]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffcccb,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff3e0,color:#000
+    style J fill:#fff,color:#000
+```
+
+### PMF Formula 
+**Pr(K, n, p) = C(n,k) × p^k × (1-p)^(n-k)**
+
+Where C(n,k) is the binomial coefficient:
+**C(n,k) = n! / [k!(n-k)!]**
+
+#### Components Breakdown:
+- **C(n,k)**: Number of ways to choose k successes from n trials
+- **p^k**: Probability of k successes
+- **(1-p)^(n-k)**: Probability of (n-k) failures
+
+### Example Applications from Your Lecture
+1. **Discrete Random Variable**: Every experiment outcome is binary
+2. **Experiment is performed for n trials**
+3. **Real Example**: Tossing a coin 10 times 
+
+```mermaid
+flowchart TD
+    A[Binomial PMF Formula] --> B[C n choose k times p to k times 1-p to n-k]
+    
+    C[Binomial Coefficient] --> D[n factorial over k factorial times n-k factorial]
+    D --> E[Counts arrangements of successes]
+    
+    F[Example: Coin Toss 10 times] --> G[n equals 10, p equals 0.5]
+    G --> H[P of exactly 3 heads equals C 10,3 times 0.5 to 3 times 0.5 to 7]
+    
+    I[Your Lecture Insight] --> J[n equals 1: Binomial becomes Bernoulli]
+    J --> K[Foundation for binomial test significance]
+    
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#e1f5fe,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff3e0,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#fff,color:#000
+```
+
+### Statistical Properties 
+**Mean = np**
+**Variance = npq**  
+**Standard Deviation = √(npq)**
+
+#### Derivation Logic:
+- Mean: Expected number of successes = n × probability per trial
+- Variance: n × variance per trial = n × p(1-p)
+- Standard Deviation: Square root of variance
+
+### Connection to Statistical Testing
+**The binomial distribution is the basis for the popular binomial test of statistical significance:**
+
+This connects your probability theory to practical hypothesis testing applications.
+
+```mermaid
+graph LR
+    A[Binomial Properties] --> B[Mean equals np]
+    A --> C[Variance equals npq]
+    A --> D[Std Dev equals square root npq]
+    
+    E[Statistical Application] --> F[Binomial Test of Significance]
+    F --> G[Tests if observed successes differ from expected]
+    
+    H[Example Calculation] --> I[10 coin tosses, p equals 0.5]
+    I --> J[Mean equals 10 times 0.5 equals 5]
+    I --> K[Variance equals 10 times 0.5 times 0.5 equals 2.5]
+    I --> L[Std Dev equals square root 2.5 equals 1.58]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#e1f5fe,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+### Relationship Summary: Bernoulli → Binomial
+
+| Distribution | Trials | Outcomes | PMF | Example |
+|-------------|--------|-----------|-----|---------|
+| Bernoulli | n = 1 | k ∈ {0,1} | p^k(1-p)^(1-k) | Single coin toss |
+| Binomial | n ≥ 1 | k ∈ {0,1,...,n} | C(n,k)p^k(1-p)^(n-k) | 10 coin tosses |
+
+**Key Insight:** Bernoulli is the special case of Binomial when n = 1
+
+---
 
 ---
 
