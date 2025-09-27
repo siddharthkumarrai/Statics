@@ -72,7 +72,7 @@ graph LR
 
 **Rolling a dice:** Rolling a dice {1, 2, 3, 4, 5, 6}
 
-### Key Calculations from Your Lecture
+### Key Calculations
 ```
 P(1) = 1/6, P(2) = 1/6, P(3) = 1/6
 P(4) = 1/6, P(5) = 1/6, P(6) = 1/6
@@ -115,7 +115,7 @@ graph TD
 
 **Definition:** F(x) = P(X ≤ x)
 
-### Key Insights from Your Lecture
+### Key Insights
 - **Left side:** PDF (bell curve)
 - **Right side:** CDF (S-shaped curve)
 - **Critical relationship:** "Probability Density = Gradient of Cumulative Curve"
@@ -252,7 +252,7 @@ graph TD
     style I fill:#fce4ec,color:#000
 ```
 
-### Distribution Details from Your Lecture
+### Distribution Details 
 
 **1. Normal/Gaussian Distribution (PDF)**
 - Bell-shaped curve (shown in your images)
@@ -262,7 +262,7 @@ graph TD
 **2. Bernoulli Distribution (PMF) - DETAILED ANALYSIS**
 - Binary outcomes only: Success/Failure, Yes/No, 1/0
 - Single trial with two possible outcomes
-- **From your lecture images:** Coin tossing example {H, T}
+- **Coin tossing example {H, T}:** 
 
 **3. Uniform Distribution (PMF)**
 - All outcomes equally likely
@@ -286,7 +286,7 @@ graph TD
 ### Detailed Bernoulli Study: 
 
 **Definition:** Models any single experiment with yes-no question
-**From your lecture:** Coin tossing example {H, T}
+**Coin tossing example {H, T}** 
 
 ### Parameters
 - **0 ≤ p ≤ 1** (probability constraint)
@@ -474,7 +474,7 @@ Where C(n,k) is the binomial coefficient:
 - **p^k**: Probability of k successes
 - **(1-p)^(n-k)**: Probability of (n-k) failures
 
-### Example Applications from Your Lecture
+### Example Applications 
 1. **Discrete Random Variable**: Every experiment outcome is binary
 2. **Experiment is performed for n trials**
 3. **Real Example**: Tossing a coin 10 times 
@@ -554,7 +554,7 @@ graph LR
 
 **Definition:** Models the number of events occurring in a fixed time interval when events happen independently at a constant average rate.
 
-**From your lecture:** Discrete Random Variable (PMF) that describes the number of events occurring in a fixed time interval.
+**Discrete Random Variable (PMF) that describes the number of events occurring in a fixed time interval.** 
 
 ### Real-World Examples from Your Class
 - **Number of people visiting hospital every hour**
@@ -589,7 +589,7 @@ graph TD
 - **k ∈ {0, 1, 2, 3, ...}**: Actual number of events observed
 - **Time interval T**: Fixed period of observation
 
-### PMF Formula from Your Lecture
+### PMF Formula
 **P(x = k) = (e^(-λ) × λ^k) / k!**
 
 Where:
@@ -718,7 +718,7 @@ flowchart TD
 
 **Definition:** A continuous probability distribution for real-valued random variables, characterized by its bell-shaped curve.
 
-**From your lecture:** "In statistics, a normal distribution or Gaussian distribution is a type of continuous probability distribution for a real-valued random variable."
+**In statistics, a normal distribution or Gaussian distribution is a type of continuous probability distribution for a real-valued random variable.** 
 
 ### Key Visual Characteristics from Your Class
 - **Bell-shaped curve** (symmetric around the mean)
