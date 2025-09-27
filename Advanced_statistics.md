@@ -902,7 +902,7 @@ The Normal Distribution is fundamental to statistics because:
 
 This distribution serves as the cornerstone for statistical inference and hypothesis testing in your coursework.
 ---
-## Topic 10: Uniform Distribution - Complete Analysis
+## Topic 11: Uniform Distribution - Complete Analysis
 
 ### Definition and Types
 
