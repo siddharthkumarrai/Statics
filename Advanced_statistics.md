@@ -547,6 +547,172 @@ graph LR
     style K fill:#fff,color:#000
     style L fill:#fff,color:#000
 ```
+---
+
+## Topic 9: Poisson Distribution - Complete Analysis
+### Models Count of Events in Fixed Time Intervals
+
+**Definition:** Models the number of events occurring in a fixed time interval when events happen independently at a constant average rate.
+
+**From your lecture:** Discrete Random Variable (PMF) that describes the number of events occurring in a fixed time interval.
+
+### Real-World Examples from Your Class
+- **Number of people visiting hospital every hour**
+- **Number of people visiting banks every hour**  
+- **Any counting process in fixed time periods**
+
+```mermaid
+graph TD
+    A[Poisson Distribution] --> B[Discrete Random Variable]
+    B --> C[Counts Events in Fixed Time]
+    
+    C --> D[Hospital Visits per Hour]
+    C --> E[Bank Visits per Hour]
+    C --> F[Phone Calls per Minute]
+    
+    G[Key Parameter] --> H[λ lambda: Expected Rate]
+    H --> I[λ = Expected Number of Events per Time Interval]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#f3e5f5,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#fff,color:#000
+```
+
+### Parameters and Support
+- **λ (lambda) ≥ 0**: Expected number of events in time interval
+- **k ∈ {0, 1, 2, 3, ...}**: Actual number of events observed
+- **Time interval T**: Fixed period of observation
+
+### PMF Formula from Your Lecture
+**P(x = k) = (e^(-λ) × λ^k) / k!**
+
+Where:
+- **e**: Mathematical constant ≈ 2.718
+- **λ**: Expected rate parameter
+- **k**: Number of events
+- **k!**: Factorial of k
+
+```mermaid
+flowchart TD
+    A[Poisson PMF Formula] --> B[P of X equals k equals e to minus λ times λ to k over k factorial]
+    
+    C[Components] --> D[e to minus λ: Base probability]
+    C --> E[λ to k: Rate factor]
+    C --> F[k factorial: Arrangement factor]
+    
+    G[Example Calculation] --> H[λ = 3, k = 5]
+    H --> I[P of X equals 5 equals e to minus 3 times 3 to 5 over 5 factorial]
+    I --> J[Equals 0.0498 times 243 over 120]
+    J --> K[Equals 0.101 or about 10.1%]
+    
+    style A fill:#f3e5f5,color:#000
+    style B fill:#fff,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#e1f5fe,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#c8e6c9,color:#000
+```
+
+### Worked Example from Your Class
+**Given: λ = 3 (expected 3 events per hour)**
+**Find: P(X = 5) - probability of exactly 5 events**
+
+**Calculation:**
+```
+P(X = 5) = (e^(-3) × 3^5) / 5!
+         = (e^(-3) × 243) / 120
+         = (0.0498 × 243) / 120
+         = 12.10 / 120
+         = 0.101 = 10.1%
+```
+
+### Statistical Properties
+**Mean = λ**
+**Variance = λ**  
+**Standard Deviation = √λ**
+
+**Key Insight:** For Poisson distribution, mean equals variance!
+
+```mermaid
+graph LR
+    A[Poisson Properties] --> B[Mean equals λ]
+    A --> C[Variance equals λ] 
+    A --> D[Std Dev equals √λ]
+    
+    E[Unique Feature] --> F[Mean equals Variance]
+    F --> G[This identifies Poisson distribution]
+    
+    H[Example λ = 3] --> I[Mean = 3]
+    H --> J[Variance = 3]
+    H --> K[Std Dev = √3 ≈ 1.73]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#e1f5fe,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+### Conditions for Poisson Distribution
+1. **Events occur independently**
+2. **Average rate (λ) remains constant**
+3. **Two events cannot occur simultaneously**
+4. **Events are rare relative to observation period**
+
+### PMF Visualization Characteristics
+- **Shape**: Right-skewed for small λ, approaches normal for large λ
+- **Support**: Discrete values {0, 1, 2, 3, ...}
+- **Peak**: Typically at or near λ
+- **Tail**: Long right tail for rare events
+
+```mermaid
+flowchart TD
+    A[Poisson Applications] --> B[Rare Events Modeling]
+    B --> C[Hospital Emergency Arrivals]
+    B --> D[Website Traffic Spikes]
+    B --> E[Equipment Failures]
+    B --> F[Natural Disasters]
+    
+    G[Why Poisson Works] --> H[Events are Independent]
+    G --> I[Rate is Constant]
+    G --> J[Events are Rare]
+    
+    K[Your Examples] --> L[Hospital visits λ = 5 per hour]
+    K --> M[Bank customers λ = 8 per hour]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#f3e5f5,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff3e0,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+---
 ### Relationship Summary: Bernoulli → Binomial
 
 | Distribution | Trials | Outcomes | PMF | Example |
