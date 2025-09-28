@@ -256,7 +256,7 @@ graph TD
 
 **1. Normal/Gaussian Distribution (PDF)**
 - Bell-shaped curve (shown in your images)
-- For continuous variables like height
+- For continuous variables like height 
 - Most common in nature
 
 **2. Bernoulli Distribution (PMF) - DETAILED ANALYSIS**
