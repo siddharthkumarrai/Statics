@@ -3939,6 +3939,425 @@ flowchart TD
 
 The Chi-Square test provides a powerful method for testing whether observed categorical data matches theoretical expectations, making it essential for validating models and theories across many fields of study.
 ________________
+________________
+# F-Distribution and F-Test (Variance Ratio Test) - Complete Analysis
+
+## Definition and Core Purpose
+
+In probability theory and statistics, the **F-distribution** or **F-ratio**, also known as **Snedecor's F distribution** or the **Fisher–Snedecor distribution** (after Ronald Fisher and George W. Snedecor) is a continuous probability distribution that arises frequently as the null distribution of a test statistic, most notably in the **analysis of variance (ANOVA)** and other **F-tests**.
+
+### Key Characteristics
+- **Continuous probability distribution**
+- **Used as null distribution for test statistics**
+- **Primary application:** Analysis of variance (ANOVA)
+- **Named after:** Ronald Fisher and George W. Snedecor
+
+```mermaid
+graph TD
+    A["F-Distribution"] --> B["Fisher-Snedecor Distribution"]
+    
+    C["Key Properties"] --> D["Continuous probability distribution"]
+    C --> E["Null distribution for test statistics"]
+    C --> F["Used in ANOVA and F-tests"]
+    
+    G["Historical Background"] --> H["Named after Ronald Fisher"]
+    G --> I["Named after George W. Snedecor"]
+    
+    J["Primary Applications"] --> K["Analysis of Variance (ANOVA)"]
+    J --> L["Variance ratio testing"]
+    J --> M["Comparing population variances"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff9c4,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Mathematical Foundation
+
+### Parameters and Support
+- **Parameters:** d₁, d₂ > 0 (degrees of freedom)
+- **Support:** x ∈ [0, +∞)
+
+### Probability Density Function (PDF)
+The PDF involves the **Beta function**:
+
+```
+f(x; d₁, d₂) = [(d₁/2)^(d₁/2) × (d₂/2)^(d₂/2)] / [B(d₁/2, d₂/2)] × [x^((d₁-2)/2)] / [(d₁x + d₂)^((d₁+d₂)/2)]
+```
+
+### Beta Function
+```
+B(m,n) = [(m-1)!(n-1)!] / [(m+n-1)!] = [m+n choose m] / [mn]
+```
+
+Where B(m,n) represents the Beta function used in the F-distribution formula.
+
+```mermaid
+flowchart TD
+    A["F-Distribution Mathematical Components"] --> B["Two Degrees of Freedom: d₁, d₂"]
+    
+    C["PDF Formula"] --> D["Involves Beta function"]
+    C --> E["Complex mathematical expression"]
+    C --> F["Depends on both d₁ and d₂"]
+    
+    G["Distribution Shape"] --> H["Right-skewed"]
+    G --> I["Always positive values"]
+    G --> J["Asymptotic behavior"]
+    
+    K["Key Parameters"] --> L["d₁: Numerator degrees of freedom"]
+    K --> M["d₂: Denominator degrees of freedom"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#ffab91,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## F-Distribution as Ratio of Chi-Square Distributions
+
+### Mathematical Relationship
+The F-distribution with d₁ and d₂ degrees of freedom is the distribution of:
+
+```
+X = (S₁/d₁) / (S₂/d₂)
+```
+
+Where:
+- **S₁** = Independent random variable (Chi-square distribution)
+- **S₂** = Independent random variable (Chi-square distribution)  
+- **(S₁) d₁** = Degree of freedom
+- **(S₂) d₂** = Degree of freedom
+
+### Connection to Chi-Square
+- **S₁ and S₂** are independent random variables following chi-square distributions
+- **F-statistic** represents the ratio of two variance estimates
+- **Used for comparing variances** between populations
+
+```mermaid
+graph TD
+    A["F-Distribution Structure"] --> B["Ratio of Chi-Square Variables"]
+    
+    C["Components"] --> D["S₁: Chi-square with d₁ df"]
+    C --> E["S₂: Chi-square with d₂ df"]
+    C --> F["Independent variables"]
+    
+    G["F-Statistic"] --> H["F = (S₁/d₁) / (S₂/d₂)"]
+    
+    I["Purpose"] --> J["Compare two variances"]
+    I --> K["Test variance equality"]
+    I --> L["ANOVA applications"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff9c4,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## F-Test: Variance Ratio Test
+
+### Purpose
+The **F-Test** is a **Variance Ratio Test** used to compare the variances of two populations.
+
+### Example Problem
+The following data shows the number of bulbs produced daily for some days by two workers A and B:
+
+| Worker A | Worker B |
+|----------|----------|
+| 40 | 39 |
+| 30 | 38 |
+| 38 | 41 |
+| 41 | 33 |
+| 38 | 32 |
+| 35 | 39 |
+| - | 40 |
+| - | 34 |
+
+**Question:** Can we consider based on the data that Worker B is more stable and efficient?
+
+```mermaid
+flowchart TD
+    A["F-Test Application"] --> B["Worker Productivity Comparison"]
+    
+    C["Data Analysis"] --> D["Worker A: 6 observations"]
+    C --> E["Worker B: 8 observations"]
+    
+    F["Research Question"] --> G["Is Worker B more stable?"]
+    F --> H["Compare variance in performance"]
+    
+    I["Hypothesis"] --> J["H₀: σ₁² = σ₂² (equal variances)"]
+    I --> K["H₁: σ₁² ≠ σ₂² (unequal variances)"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff9c4,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#ffab91,color:#000
+```
+
+## Step-by-Step Solution
+
+### Step 1: State Hypotheses
+- **H₀:** σ₁² = σ₂² (variances are equal)
+- **H₁:** σ₁² ≠ σ₂² (variances are not equal)
+
+### Step 2: Calculate Sample Statistics
+
+**For Worker A:**
+```
+σ² = Σ(xᵢ - x̄)² / (n-1)
+```
+
+| xᵢ | x̄ | (xᵢ-x̄)² |
+|----|---|---------|
+| 40 | 37 | 9 |
+| 30 | 37 | 49 |
+| 38 | 37 | 1 |
+| 41 | 37 | 16 |
+| 38 | 37 | 1 |
+| 35 | 37 | 4 |
+
+**Calculations for A:**
+- x̄₁ = 37
+- Σ(x-x̄)² = 80
+- s₁² = 80/(6-1) = 80/5 = 16
+
+**For Worker B:**
+
+| xᵢ | x̄ | (xᵢ-x̄)² |
+|----|---|---------|
+| 39 | 37 | 4 |
+| 38 | 37 | 1 |
+| 41 | 37 | 16 |
+| 33 | 37 | 16 |
+| 32 | 37 | 25 |
+| 39 | 37 | 4 |
+| 40 | 37 | 9 |
+| 34 | 37 | 9 |
+
+**Calculations for B:**
+- x̄₂ = 37
+- Σ(x-x̄)² = 84
+- s₂² = 84/(8-1) = 84/7 = 12
+
+```mermaid
+graph TD
+    A["Variance Calculations"] --> B["Worker A Statistics"]
+    A --> C["Worker B Statistics"]
+    
+    D["Worker A Results"] --> E["Mean: x̄₁ = 37"]
+    D --> F["Variance: s₁² = 16"]
+    D --> G["Sample size: n₁ = 6"]
+    
+    H["Worker B Results"] --> I["Mean: x̄₂ = 37"]
+    H --> J["Variance: s₂² = 12"]
+    H --> K["Sample size: n₂ = 8"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#ffab91,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff3e0,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+### Step 3: Calculate F-Statistic
+```
+F = s₁²/s₂² = 16/12 = 1.33
+```
+
+### Step 4: Determine Degrees of Freedom and Decision Rule
+- **df₁ = 6 - 1 = 5** (numerator degrees of freedom)
+- **df₂ = 8 - 1 = 7** (denominator degrees of freedom)
+- **α = 0.05** (significance level)
+
+**Critical Value from F-table:** CV = 3.97
+
+**Decision Rule:**
+- If F-test is greater than 3.97, reject the null hypothesis
+- If F-test ≤ 3.97, we fail to reject the null hypothesis
+
+### Step 5: Make Decision
+- **F = 1.33 < 3.97**
+- **Decision: We fail to reject the null hypothesis**
+
+**Conclusion:** Worker B is not significantly more efficient when compared to Worker A.
+
+```mermaid
+flowchart TD
+    A["F-Test Decision Process"] --> B["Calculate F-statistic: 1.33"]
+    
+    C["Critical Value"] --> D["F-table with df₁=5, df₂=7"]
+    C --> E["CV = 3.97 at α=0.05"]
+    
+    F["Decision Comparison"] --> G["1.33 < 3.97"]
+    F --> H["Fail to reject H₀"]
+    
+    I["Statistical Conclusion"] --> J["No significant difference in variances"]
+    I --> K["Worker B not significantly more stable"]
+    
+    L["Practical Interpretation"] --> M["Both workers have similar variability"]
+    L --> N["No evidence of superior efficiency"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#fff9c4,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+```
+
+## Python Implementation
+
+From the screenshot showing Python code for F-test calculation:
+
+```python
+# Evidence to say that the two population variances are not equal.
+worker1 = [18, 19, 22, 25, 27, 28, 41, 45, 51, 55]
+worker2 = [14, 15, 15, 17, 18, 22, 25, 25, 27, 34]
+
+## Calculating Ftest
+import numpy as np
+f_test = np.var(worker1)/np.var(worker2)
+
+## Degree Of freedom  
+df1 = len(worker1) - 1
+df2 = len(worker2) - 1
+```
+
+**Result:** f_test = 4.387122002085506
+
+This demonstrates the computational approach to F-testing using Python's NumPy library.
+
+## Key Applications and Uses
+
+### Primary Applications
+1. **ANOVA (Analysis of Variance):** Testing equality of means across multiple groups
+2. **Variance Comparison:** Comparing variability between two populations  
+3. **Quality Control:** Assessing consistency in manufacturing processes
+4. **Regression Analysis:** Testing overall model significance
+5. **Experimental Design:** Comparing treatment effects
+
+### When to Use F-Test
+- **Comparing two population variances**
+- **Testing homogeneity of variances** (assumption for other tests)
+- **ANOVA procedures** for multiple group comparisons
+- **Regression model testing**
+
+### Assumptions
+1. **Normal distribution** of underlying populations
+2. **Independent observations**
+3. **Random sampling** from populations
+4. **Equal population variances** (for some applications)
+
+```mermaid
+graph TD
+    A["F-Test Applications Summary"] --> B["Variance Ratio Testing"]
+    
+    C["Key Uses"] --> D["Compare population variances"]
+    C --> E["ANOVA applications"]
+    C --> F["Quality control analysis"]
+    C --> G["Regression model testing"]
+    
+    H["Requirements"] --> I["Normal distributions"]
+    H --> J["Independent observations"]
+    H --> K["Random sampling"]
+    
+    L["Decision Process"] --> M["Calculate F-statistic"]
+    L --> N["Compare with critical value"]
+    L --> O["Make statistical conclusion"]
+    
+    P["Practical Benefits"] --> Q["Objective variance comparison"]
+    P --> R["Statistical rigor"]
+    P --> S["Quantified decision-making"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff9c4,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffab91,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+    style P fill:#c8e6c9,color:#000
+    style Q fill:#fff,color:#000
+    style R fill:#fff,color:#000
+    style S fill:#fff,color:#000
+```
+
+## Summary and Key Takeaways
+
+### F-Distribution Characteristics
+- **Continuous probability distribution**
+- **Right-skewed with positive support**
+- **Defined by two degrees of freedom parameters**
+- **Arises from ratio of chi-square distributions**
+
+### F-Test Process
+1. **State hypotheses** about variance equality
+2. **Calculate sample variances**
+3. **Compute F-statistic** (ratio of variances)
+4. **Determine degrees of freedom**
+5. **Compare with critical value**
+6. **Make statistical decision**
+
+### Practical Importance
+The F-distribution and F-test provide essential tools for comparing variability between groups, forming the foundation for ANOVA and many other advanced statistical procedures. They enable researchers and analysts to make objective, quantitative decisions about population characteristics based on sample data.
+
+The F-test's ability to compare variances makes it invaluable in quality control, experimental design, and any situation where consistency and variability are important factors in decision-making.
+________________
 ---
 
 ## Programming Implementation
