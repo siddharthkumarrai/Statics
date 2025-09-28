@@ -2869,7 +2869,372 @@ graph TD
 
 The Student t-distribution provides a robust framework for hypothesis testing in real-world scenarios where population parameters are typically unknown, making it one of the most practically useful statistical tools for researchers and analysts.
 ________________
+________________
+# Type I & Type II Errors and Confidence Intervals - Complete Analysis
 
+## Type I and Type II Errors
+
+### Definition Framework
+
+In hypothesis testing, there are two fundamental realities and two possible decisions, creating four possible outcomes.
+
+**Reality:**
+- **Null Hypothesis is True** OR **Null Hypothesis is False**
+
+**Decision:** 
+- **Null Hypothesis is True** OR **Null Hypothesis is False**
+
+### The Four Outcomes
+
+**Outcome 1:** We reject the Null Hypothesis when in reality it is False → **Good** ✓
+
+**Outcome 2:** We reject the Null Hypothesis when in reality it is True → **Type I Error** ✗
+
+**Outcome 3:** We retain the Null Hypothesis when in reality it is False → **Type II Error** ✗
+
+**Outcome 4:** We retain the Null Hypothesis when in reality it is True → **Good** ✓
+
+```mermaid
+graph TD
+    A["Hypothesis Testing Outcomes"] --> B["Four Possible Scenarios"]
+    
+    C["Reality vs Decision Matrix"] --> D["H₀ True, Reject H₀ → Type I Error"]
+    C --> E["H₀ True, Accept H₀ → Correct Decision"]
+    C --> F["H₀ False, Reject H₀ → Correct Decision"]
+    C --> G["H₀ False, Accept H₀ → Type II Error"]
+    
+    H["Error Types"] --> I["Type I: False Positive (α)"]
+    H --> J["Type II: False Negative (β)"]
+    
+    K["Correct Decisions"] --> L["True Positive: Correctly reject false H₀"]
+    K --> M["True Negative: Correctly accept true H₀"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#ffab91,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#ffab91,color:#000
+    style H fill:#fff3e0,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#c8e6c9,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Error Types Detailed Analysis
+
+### Type I Error (α - Alpha)
+- **Definition:** Rejecting a true null hypothesis
+- **Also called:** False Positive
+- **Probability:** α (significance level)
+- **Example:** Concluding a drug is effective when it actually isn't
+
+### Type II Error (β - Beta) 
+- **Definition:** Accepting a false null hypothesis
+- **Also called:** False Negative  
+- **Probability:** β (varies with effect size and sample size)
+- **Example:** Concluding a drug is ineffective when it actually works
+
+### Relationship Between Errors
+- **Trade-off exists:** Reducing α increases β, and vice versa
+- **Sample size impact:** Larger samples reduce both α and β
+- **Effect size impact:** Larger effects reduce β for fixed α
+
+```mermaid
+flowchart TD
+    A["Statistical Errors Relationship"] --> B["Type I Error (α)"]
+    A --> C["Type II Error (β)"]
+    
+    B --> D["Significance Level"]
+    B --> E["False Positive Rate"]
+    B --> F["Researcher Controls"]
+    
+    C --> G["Depends on Effect Size"]
+    C --> H["False Negative Rate"]
+    C --> I["Power = 1 - β"]
+    
+    J["Error Control"] --> K["Increase Sample Size"]
+    J --> L["Choose Appropriate α"]
+    J --> M["Consider Effect Size"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffab91,color:#000
+    style C fill:#ffab91,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#c8e6c9,color:#000
+    style J fill:#fff3e0,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Confidence Intervals and Margin of Error
+
+### Definition and Purpose
+
+**Point Estimate:** A value of any statistic that estimates the value of an unknown population parameter is called Point Estimate.
+
+**Example:** x̄ → μ (sample mean estimates population mean)
+- x̄ = 2.15, μ = 3
+
+### Confidence Interval Formula
+
+We construct a confidence interval to help estimate what the actual value of the unknown population mean is.
+
+**Confidence Interval = Point Estimate ± Margin of Error**
+
+### Z-Test Confidence Interval
+
+**Formula:**
+```
+x̄ ± Z_{α/2} × (σ/√n)
+```
+
+Where:
+- x̄ = sample mean
+- Z_{α/2} = critical Z-value
+- σ = population standard deviation  
+- n = sample size
+- α = significance level
+
+**For α = 0.05:**
+- Z_{0.05/2} = Z_{0.025} = 1.96
+
+```mermaid
+graph TD
+    A["Confidence Interval Components"] --> B["Point Estimate (x̄)"]
+    A --> C["Margin of Error"]
+    
+    D["Margin of Error Formula"] --> E["Z_{α/2} × (σ/√n)"]
+    
+    F["Confidence Level Examples"] --> G["90% CI: Z = 1.645"]
+    F --> H["95% CI: Z = 1.96"] 
+    F --> I["99% CI: Z = 2.576"]
+    
+    J["Interval Interpretation"] --> K["Range of plausible values"]
+    J --> L["Level of certainty about estimate"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Worked Example: CAT Exam Scores
+
+### Problem Statement
+In the verbal section of CAT exam, the standard deviation is known to be 100. A sample of 25 test takers has a mean of 520. Construct a 95% C.I about the mean.
+
+### Given Information
+- Population standard deviation (σ) = 100
+- Sample size (n) = 25  
+- Sample mean (x̄) = 520
+- Confidence level = 95%
+- α = 0.05
+
+### Step-by-Step Solution
+
+**Step 1: Identify the Formula**
+```
+x̄ ± Z_{α/2} × (σ/√n)
+```
+
+**Step 2: Find Critical Value**
+For 95% confidence level:
+- α = 0.05
+- α/2 = 0.025
+- Z_{0.025} = 1.96
+
+**Step 3: Calculate Margin of Error**
+```
+Margin of Error = Z_{α/2} × (σ/√n)
+                = 1.96 × (100/√25)
+                = 1.96 × (100/5)
+                = 1.96 × 20
+                = 39.2
+```
+
+**Step 4: Construct Confidence Interval**
+```
+Lower C.I = x̄ - Margin of Error = 520 - 39.2 = 480.8
+Upper C.I = x̄ + Margin of Error = 520 + 39.2 = 559.2
+```
+
+**Step 5: Final Answer**
+**95% Confidence Interval: [480.8, 559.2]**
+
+**Interpretation:** I am 95% confident that the mean CAT score lies between 480.8 and 559.2.
+
+```mermaid
+flowchart TD
+    A["CAT Exam Example"] --> B["Given: σ=100, n=25, x̄=520"]
+    B --> C["95% Confidence Level"]
+    
+    D["Calculation Steps"] --> E["Find Z_{α/2} = 1.96"]
+    D --> F["Calculate Margin of Error = 39.2"]
+    D --> G["Construct Interval: 520 ± 39.2"]
+    
+    H["Result"] --> I["Lower Bound: 480.8"]
+    H --> J["Upper Bound: 559.2"]
+    H --> K["Interval: [480.8, 559.2]"]
+    
+    L["Interpretation"] --> M["95% confident μ ∈ [480.8, 559.2]"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#fff,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffab91,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Visual Representation of Confidence Intervals
+
+### Normal Distribution with 95% Confidence Interval
+
+The confidence interval captures the middle 95% of the distribution, with 2.5% in each tail.
+
+**Distribution characteristics:**
+- Center at μ = 160 (example)
+- 95% of area between critical values
+- Critical values at ±1.96 standard errors from mean
+
+```mermaid
+graph TD
+    A["95% Confidence Interval Visualization"] --> B["Normal Distribution"]
+    
+    C["Central Area"] --> D["95% of distribution"]
+    C --> E["Between μ ± 1.96σ/√n"]
+    
+    F["Tail Areas"] --> G["2.5% in each tail"]
+    F --> H["Beyond ±1.96 from center"]
+    
+    I["Confidence Interpretation"] --> J["95% chance interval contains μ"]
+    I --> K["Not: 95% chance μ is in this interval"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#f3e5f5,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Key Relationships and Concepts
+
+### Confidence Level vs Significance Level
+- **Confidence Level = 1 - α**
+- **95% Confidence = 0.05 Significance Level**
+- **99% Confidence = 0.01 Significance Level**
+
+### Factors Affecting Interval Width
+1. **Confidence Level:** Higher confidence → Wider interval
+2. **Sample Size:** Larger sample → Narrower interval  
+3. **Population Variability:** Higher σ → Wider interval
+
+### Common Critical Values
+| Confidence Level | α | α/2 | Z_{α/2} |
+|------------------|---|-----|---------|
+| 90% | 0.10 | 0.05 | 1.645 |
+| 95% | 0.05 | 0.025 | 1.96 |
+| 99% | 0.01 | 0.005 | 2.576 |
+
+## Practical Applications
+
+### When to Use Confidence Intervals
+1. **Parameter estimation:** Estimating population means, proportions
+2. **Quality control:** Manufacturing tolerance limits  
+3. **Medical research:** Treatment effect estimation
+4. **Market research:** Consumer behavior metrics
+5. **Opinion polling:** Political preference estimation
+
+### Advantages of Confidence Intervals
+- **Provides range of plausible values**
+- **Shows precision of estimate**
+- **More informative than point estimates alone**
+- **Directly related to hypothesis testing**
+
+### Common Misinterpretations
+1. **Incorrect:** "95% probability μ is in this interval"
+2. **Correct:** "95% confidence this method captures μ"
+3. **Incorrect:** "95% of sample values in this interval"
+4. **Correct:** "Interval estimates population parameter"
+
+```mermaid
+graph TD
+    A["Confidence Intervals Summary"] --> B["Estimation Tool"]
+    
+    C["Formula Structure"] --> D["Point Estimate ± Margin of Error"]
+    
+    E["Key Components"] --> F["Critical Value (Z_{α/2})"]
+    E --> G["Standard Error (σ/√n)"]
+    E --> H["Sample Statistic (x̄)"]
+    
+    I["Interpretation"] --> J["Range of plausible parameter values"]
+    I --> K["Confidence in estimation method"]
+    
+    L["Applications"] --> M["Parameter estimation"]
+    L --> N["Hypothesis testing complement"]
+    L --> O["Quality control limits"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#c8e6c9,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffab91,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+```
+
+## Integration with Hypothesis Testing
+
+### Relationship to Hypothesis Testing
+- **If hypothesized value falls outside CI → Reject H₀**
+- **If hypothesized value falls inside CI → Fail to reject H₀**
+- **95% CI corresponds to α = 0.05 test**
+
+### Complementary Information
+- **Hypothesis testing:** Yes/No decision about parameter value
+- **Confidence intervals:** Range of plausible parameter values
+- **Together:** Complete picture of statistical inference
+
+Type I and Type II errors represent the fundamental risks in statistical decision-making, while confidence intervals provide a framework for parameter estimation with quantified uncertainty. Understanding both concepts is essential for proper statistical inference and decision-making in research and practical applications.
+________________
 ---
 
 ## Programming Implementation
