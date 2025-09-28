@@ -3235,6 +3235,349 @@ graph TD
 
 Type I and Type II errors represent the fundamental risks in statistical decision-making, while confidence intervals provide a framework for parameter estimation with quantified uncertainty. Understanding both concepts is essential for proper statistical inference and decision-making in research and practical applications.
 ________________
+________________
+# Bayes Statistics (Bayes Theorem) - Complete Analysis
+
+## Definition and Core Concept
+
+**Bayesian statistics** is an approach to data analysis and parameter estimation based on **Bayes' theorem**.
+
+Bayes' theorem deals with **probability** in two fundamental categories:
+- **Independent Events**
+- **Dependent Events**
+
+```mermaid
+graph TD
+    A["Bayes Statistics"] --> B["Based on Bayes' Theorem"]
+    
+    C["Probability Types"] --> D["Independent Events"]
+    C --> E["Dependent Events"]
+    
+    F["Key Applications"] --> G["Parameter estimation"]
+    F --> H["Data analysis"]
+    F --> I["Conditional probability"]
+    
+    J["Core Philosophy"] --> K["Update beliefs with new evidence"]
+    J --> L["Prior knowledge + New data = Posterior"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Independent Events
+
+### Definition
+Events where the occurrence of one event does not affect the probability of the other event.
+
+### Example 1: Rolling a Dice
+**Sample Space:** {1, 2, 3, 4, 5, 6}
+**Probabilities:** P(1) = 1/6, P(2) = 1/6, ... (all equal)
+
+### Example 2: Tossing a Coin
+**Probabilities:** P(H) = 0.5, P(T) = 0.5
+
+**Key Characteristic:** Each outcome is independent of previous outcomes.
+
+```mermaid
+flowchart TD
+    A["Independent Events"] --> B["Rolling Dice"]
+    A --> C["Tossing Coin"]
+    
+    D["Dice Characteristics"] --> E["6 equally likely outcomes"]
+    D --> F["Each roll independent"]
+    D --> G["P(any number) = 1/6"]
+    
+    H["Coin Characteristics"] --> I["2 equally likely outcomes"]
+    H --> J["Each toss independent"]
+    H --> K["P(H) = P(T) = 0.5"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff3e0,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Dependent Events
+
+### Definition
+Events where the occurrence of one event affects the probability of the other event.
+
+### Visual Example: Colored Balls
+**Container with:**
+- **3 Yellow balls**
+- **2 Red balls**
+
+**Probabilities:**
+- **P(Red) = 2/5**
+- **P(Yellow) = 3/4**
+
+**Key Insight:** Drawing one ball affects the probability of drawing the next ball (if not replaced).
+
+```mermaid
+graph TD
+    A["Dependent Events Example"] --> B["Container with Colored Balls"]
+    
+    C["Initial State"] --> D["3 Yellow balls"]
+    C --> E["2 Red balls"]
+    C --> F["Total = 5 balls"]
+    
+    G["Initial Probabilities"] --> H["P(Red) = 2/5"]
+    G --> I["P(Yellow) = 3/5"]
+    
+    J["Dependency"] --> K["First draw affects second draw"]
+    J --> L["Probabilities change after each draw"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff9c4,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#ffab91,color:#000
+    style I fill:#fff9c4,color:#000
+    style J fill:#c8e6c9,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Bayes' Theorem Formula
+
+### Basic Probability Relationships
+
+**For Independent Events:**
+```
+Pr(A and B) = Pr(B and A)
+Pr(A) × P(G/A) = Pr(B) × Pr(A/B)
+```
+
+### Joint Probability Example
+**From the colored balls example:**
+```
+Pr(R and Y) = P(R) × P(Y/R) = 2/5 × 3/4 = 6/20
+```
+
+### The Complete Bayes' Theorem
+
+**Forward Conditional Probability:**
+```
+P(B/A) = [Pr(B) × Pr(A/B)] / Pr(A)
+```
+
+**Reverse Conditional Probability:**
+```
+Pr(A/B) = [Pr(A) × Pr(B/A)] / Pr(B)
+```
+
+**Where:**
+- **A, B = events**
+- **P(A|B) = probability of A given B is true**  
+- **P(B|A) = probability of B given A is true**
+- **P(A), P(B) = the independent probability of A and B**
+
+```mermaid
+flowchart TD
+    A["Bayes' Theorem Structure"] --> B["P(B/A) = [P(B) × P(A/B)] / P(A)"]
+    
+    C["Components"] --> D["P(B/A): Conditional Probability"]
+    C --> E["P(B): Prior Probability"]
+    C --> F["P(A/B): Likelihood"]
+    C --> G["P(A): Marginal Probability"]
+    
+    H["Key Insight"] --> I["Updates prior beliefs with new evidence"]
+    H --> J["Reverses conditional probabilities"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff9c4,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+## Dataset Application
+
+### Real-World Context
+Bayes' theorem is particularly powerful when applied to datasets with multiple variables.
+
+**Example Dataset Structure:**
+| Size of House | No of Room | Location | Price |
+|---------------|------------|----------|-------|
+| x₁ | x₂ | x₃ | Y |
+
+### Bayesian Prediction Formula
+```
+Pr(Y/x₁,x₂,x₃) = [Pr(Y) × Pr(x₁,x₂,x₃/Y)] / Pr(x₁,x₂,x₃)
+```
+
+**Where:**
+- **Y** = target variable (Price)
+- **x₁, x₂, x₃** = feature variables (Size, Rooms, Location)
+- **Pr(Y/x₁,x₂,x₃)** = probability of Y given the features
+
+```mermaid
+graph TD
+    A["Bayesian Dataset Analysis"] --> B["Multiple Feature Variables"]
+    
+    C["Dataset Structure"] --> D["x₁: Size of House"]
+    C --> E["x₂: Number of Rooms"]
+    C --> F["x₃: Location"]
+    C --> G["Y: Price (Target)"]
+    
+    H["Prediction Formula"] --> I["P(Y|x₁,x₂,x₃)"]
+    H --> J["Uses all features simultaneously"]
+    
+    K["Applications"] --> L["House price prediction"]
+    K --> M["Medical diagnosis"]
+    K --> N["Classification problems"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#ffab91,color:#000
+    style H fill:#fff3e0,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+```
+
+## Key Terminology and Definitions
+
+### Conditional Probability Components
+- **P(A|B):** Probability of A given B is true
+- **P(B|A):** Probability of B given A is true  
+- **Prior Probability:** Initial belief before new evidence
+- **Posterior Probability:** Updated belief after new evidence
+- **Likelihood:** Probability of observing evidence given hypothesis
+
+### Event Independence
+- **Independent Events:** P(A|B) = P(A) - knowing B doesn't change probability of A
+- **Dependent Events:** P(A|B) ≠ P(A) - knowing B changes probability of A
+
+```mermaid
+flowchart TD
+    A["Bayesian Terminology"] --> B["Prior Probability"]
+    A --> C["Posterior Probability"]
+    A --> D["Likelihood"]
+    A --> E["Marginal Probability"]
+    
+    F["Event Types"] --> G["Independent: P(A|B) = P(A)"]
+    F --> H["Dependent: P(A|B) ≠ P(A)"]
+    
+    I["Practical Meaning"] --> J["Prior: What we believed before"]
+    I --> K["Posterior: What we believe after evidence"]
+    I --> L["Likelihood: How well evidence fits hypothesis"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#ffab91,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#fff9c4,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+
+## Practical Applications
+
+### Machine Learning and AI
+1. **Naive Bayes Classifier:** Text classification, spam detection
+2. **Bayesian Networks:** Medical diagnosis, risk assessment
+3. **Bayesian Optimization:** Hyperparameter tuning
+4. **A/B Testing:** Marketing campaign effectiveness
+
+### Statistical Inference
+1. **Parameter Estimation:** Updating beliefs about population parameters
+2. **Hypothesis Testing:** Bayesian alternative to frequentist methods
+3. **Predictive Modeling:** Incorporating prior knowledge into predictions
+
+### Real-World Examples
+1. **Medical Diagnosis:** P(Disease|Symptoms)
+2. **Financial Risk:** P(Default|Credit History)  
+3. **Quality Control:** P(Defective|Test Results)
+4. **Weather Forecasting:** P(Rain|Cloud Conditions)
+
+## Advantages of Bayesian Approach
+
+### Conceptual Benefits
+1. **Intuitive Interpretation:** Probabilities represent degrees of belief
+2. **Incorporates Prior Knowledge:** Uses existing information effectively
+3. **Uncertainty Quantification:** Provides full probability distributions
+4. **Sequential Learning:** Updates beliefs as new data arrives
+
+### Practical Benefits
+1. **Works with Small Samples:** Prior information compensates for limited data
+2. **Handles Missing Data:** Robust to incomplete information
+3. **Flexible Modeling:** Can incorporate complex relationships
+4. **Decision Making:** Provides framework for optimal decisions under uncertainty
+
+```mermaid
+graph TD
+    A["Bayes Statistics Summary"] --> B["Theorem Foundation"]
+    
+    C["Core Formula"] --> D["P(B|A) = P(B) × P(A|B) / P(A)"]
+    
+    E["Event Types"] --> F["Independent Events"]
+    E --> G["Dependent Events"]
+    
+    H["Applications"] --> I["Machine Learning"]
+    H --> J["Medical Diagnosis"]
+    H --> K["Predictive Modeling"]
+    
+    L["Key Benefits"] --> M["Incorporates prior knowledge"]
+    L --> N["Updates beliefs with evidence"]
+    L --> O["Quantifies uncertainty"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#ffab91,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#ffab91,color:#000
+    style M fill:#fff,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+```
+
+Bayes' theorem provides a mathematically rigorous framework for updating beliefs and making decisions under uncertainty, making it a cornerstone of modern statistical analysis and machine learning applications.
+________________
 ---
 
 ## Programming Implementation
