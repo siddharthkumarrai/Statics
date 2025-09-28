@@ -4358,6 +4358,365 @@ The F-distribution and F-test provide essential tools for comparing variability 
 
 The F-test's ability to compare variances makes it invaluable in quality control, experimental design, and any situation where consistency and variability are important factors in decision-making.
 ________________
+________________
+# Analysis of Variance (ANOVA) - Complete Analysis
+
+## Definition and Purpose
+
+**Definition:** ANOVA is a statistical method used to compare the means of 2 or more groups.
+
+### Basic Components:
+
+**ANOVA consists of:**
+1. **Factors (Variables)** - The categorical independent variables
+2. **Levels** - The different categories within each factor
+
+### Examples of Factor-Level Structure:
+
+**Factor = Medicines**
+- Levels = 5mg, 10mg, 20mg [Dosage]
+
+**Factor = Mode of Payment**  
+- Levels = GPay, PhonePE, IMPS, NEFT [Levels]
+
+```mermaid
+graph TD
+    A["ANOVA Structure"] --> B["Factors (Variables)"]
+    A --> C["Levels (Categories)"]
+    
+    D["Example 1: Medicine"] --> E["5mg"]
+    D --> F["10mg"] 
+    D --> G["20mg"]
+    
+    H["Example 2: Payment Mode"] --> I["GPay"]
+    H --> J["PhonePE"]
+    H --> K["IMPS"]
+    H --> L["NEFT"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#c8e6c9,color:#000
+    style H fill:#f3e5f5,color:#000
+    style I fill:#fff3e0,color:#000
+    style J fill:#fff3e0,color:#000
+    style K fill:#fff3e0,color:#000
+    style L fill:#fff3e0,color:#000
+```
+
+## Assumptions in ANOVA
+
+### Four Critical Assumptions:
+
+**① Normality of Sampling Distribution of Means**
+- The distribution of sample means is normally distributed
+
+**② Absence of Outliers**
+- Outlying scores need to be removed from dataset
+
+**③ Homogeneity of Variance**
+- Each one of the population has same variance
+- σ₁² = σ₂² = σ₃² = ... = σₖ²
+- Population variance in different levels of each independent variable are equal
+
+**④ Samples are Independent and Random**
+
+```mermaid
+flowchart TD
+    A["ANOVA Assumptions"] --> B["① Normality"]
+    A --> C["② No Outliers"] 
+    A --> D["③ Equal Variances"]
+    A --> E["④ Independence"]
+    
+    B --> F["Sample means normally distributed"]
+    C --> G["Remove outlying scores"]
+    D --> H["σ₁² = σ₂² = σ₃² = σₖ²"]
+    E --> I["Independent and random samples"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#ffecb3,color:#000
+    style D fill:#ffecb3,color:#000
+    style E fill:#ffecb3,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+```
+
+## Types of ANOVA
+
+### ① One-Way ANOVA
+- **Definition:** One factor with at least 2 levels; more levels are independent
+- **Example:** Doctor wants to test a new medication to decrease headache. They split the participant into 3 conditions [10mg, 20mg, 30mg]. Doctor ask the participants to rate the headache [1-10].
+
+**Data Structure:**
+```
+Medication → Factor
+
+10mg    20mg    30mg
+ 5       7       2
+ 9       8       7
+ -       -       -
+ -       -       -
+```
+
+### ② Repeated Measures ANOVA
+- **Definition:** One factor with at least 2 levels; levels are dependent
+- **Example:** Running → Factor
+
+**Data Structure:**
+```
+Running → Factor
+
+Day 1   Day 2   Day 3
+ 8       5       6
+ 7       4       3
+ -       -       -
+```
+
+**Key Point:** Same participants measured across different time points.
+
+### ③ Factorial ANOVA
+- **Definition:** Two or more factors (each of which with at least 2 levels); levels can be either independent and dependent
+- **Example:** Running → Factor with Gender factor
+
+**Data Structure:**
+```
+Running → Factor
+
+        Day 1   Day 2   Day 3
+Men      8       5       6
+         7       4       3
+         6       5       4
+Women    3       2       1
+```
+
+```mermaid
+graph TD
+    A["Types of ANOVA"] --> B["① One-Way ANOVA"]
+    A --> C["② Repeated Measures ANOVA"] 
+    A --> D["③ Factorial ANOVA"]
+    
+    B --> E["One factor, independent levels"]
+    B --> F["Medicine dosage example"]
+    
+    C --> G["One factor, dependent levels"]
+    C --> H["Same subjects over time"]
+    
+    D --> I["Multiple factors combined"]
+    D --> J["Gender × Time interaction"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#c8e6c9,color:#000
+    style C fill:#fff3e0,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#fff,color:#000
+    style F fill:#fff,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+## Hypothesis Testing in ANOVA
+
+### Hypotheses:
+
+**Null Hypothesis H₀:** μ₁ = μ₂ = μ₃ = ... = μₖ
+
+**Alternative Hypothesis H₁:** At least one of the means is not equal
+- μ₁ ≠ μ₂ ≠ μ₃ ≠ ... ≠ μₖ
+
+### Test Statistic:
+
+**F = Variation between Samples / Variation within Samples**
+
+## ANOVA Calculation Example
+
+### Example Problem:
+Doctors want to test a new medication which reduces headache. They split the participant into 3 conditions [15mg, 30mg, 45mg]. Later on the doctor ask the patient to rate the headache between [1-10]. Are there any differences between the 3 conditions using alpha = 0.05?
+
+### Data Table:
+| 15mg | 30mg | 45mg |
+|------|------|------|
+| 9    | 7    | 4    |
+| 8    | 6    | 3    |
+| 7    | 6    | 2    |
+| 8    | 7    | 3    |
+| 8    | 8    | 4    |
+| 9    | 7    | 3    |
+| 8    | 6    | 2    |
+
+### Step 1: Define Null and Alternative Hypotheses
+- **H₀:** μ₁₅ = μ₃₀ = μ₄₅
+- **H₁:** Not all μ's are equal
+
+### Step 2: State Significance Level
+- **α = 0.05** ⇒ **C.I = 0.95**
+
+### Step 3: Calculate Degrees of Freedom
+
+**Given:** N = 21, a = 3, n = 7
+
+- **df_between = a - 1 = 3 - 1 = 2**
+- **df_within = N - a = 21 - 3 = 18**  
+- **df_total = N - 1 = 21 - 1 = 20**
+
+### Step 4: Calculate Sample Statistics
+
+**Sample Data Analysis:**
+```
+Variance between Sample
+
+X₁      X₂      X₃      H₀: X̄₁ = X̄₂ = X̄₃
+1       6       5       H₁: At least one sample
+2       7       6           mean is not equal
+4       3       3
+5       2       2
+3       1       4
+
+ΣX₁ = 15   ΣX₂ = 19   ΣX₃ = 20
+X̄₁ = 3     X̄₂ = 19/5  X̄₃ = 4
+```
+
+### Step 5: Sum of Squares Calculations
+
+#### ① SS_between (Variation Between Samples):
+```
+SS_between = Σ(Σaᵢ)² / n - T² / N
+```
+
+**Calculation:**
+- 15mg = 9+8+7+8+8+9+8 = 57
+- 30mg = 7+6+6+7+8+7+6 = 47  
+- 45mg = 4+3+2+3+4+3+2 = 21
+
+```
+SS_between = (57² + 47² + 21²)/7 - (125)²/21
+```
+
+#### ② SS_within (Variation Within Samples):
+```
+SS_within = ΣY² - Σ(Σaᵢ)²/n
+```
+
+**Calculation:**
+```
+ΣY² = 9² + 8² + 7² + 8² + 8² + 9² + 8² + 7² + 6² + 6² + 7² + 8² + 7² + 6² + 4² + 3² + 2² + 3² + 4² + 3² + 2²
+    = 853
+
+SS_within = 853 - [(57² + 47² + 21²)/7]
+         = 853 - [(3249 + 2209 + 441)/7]  
+         = 853 - [5899/7]
+         = 10.29
+```
+
+#### ③ SS_total:
+```
+SS_total = ΣY² - T²/N
+         = 853 - (125)²/21 = 108.95
+```
+
+### Step 6: ANOVA Summary Table
+
+| Source  | SS    | df | MS    | F     |
+|---------|-------|----|-------|-------|
+| Between | 98.67 | 2  | 49.34 | 86.56 |
+| Within  | 10.29 | 18 | 0.57  |       |
+| Total   | 108.95| 20 |       |       |
+
+**Calculations:**
+```
+F = MS_between/MS_within = 49.34/0.57 = 86.56
+```
+
+### Step 7: Decision Rule
+
+**Critical Value = 3.5546**
+
+**If F is greater than 3.5546, reject the null hypothesis.**
+
+**Result:** 86.56 > 3.5546, **Reject the Null Hypothesis**
+
+```mermaid
+flowchart TD
+    A["ANOVA Calculation Process"] --> B["1. State Hypotheses"]
+    B --> C["2. Set Significance Level"]
+    C --> D["3. Calculate Degrees of Freedom"]
+    D --> E["4. Calculate Sum of Squares"]
+    E --> F["5. Create ANOVA Table"]
+    F --> G["6. Calculate F-statistic"]
+    G --> H["7. Make Decision"]
+    
+    I["Sample Data"] --> J["15mg, 30mg, 45mg groups"]
+    J --> K["n=7 per group, N=21 total"]
+    K --> L["SS_between = 98.67"]
+    K --> M["SS_within = 10.29"]
+    L --> N["F = 86.56"]
+    M --> N
+    N --> O["F > 3.5546: Reject H₀"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffecb3,color:#000
+    style G fill:#f3e5f5,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#ffecb3,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#c8e6c9,color:#000
+    style M fill:#fff3e0,color:#000
+    style N fill:#ffecb3,color:#000
+    style O fill:#f3e5f5,color:#000
+```
+
+## Summary
+
+ANOVA is a powerful statistical method for comparing multiple group means simultaneously. The procedure involves:
+
+1. **Setting up hypotheses** about population means
+2. **Checking assumptions** (normality, equal variances, independence, no outliers)
+3. **Calculating variation** between and within groups
+4. **Computing the F-statistic** as the ratio of between-group to within-group variation
+5. **Making a decision** based on comparison with critical values
+
+The medicine dosage example demonstrates that with F = 86.56 > 3.5546 (critical value), we reject the null hypothesis and conclude there are significant differences between the three dosage groups at α = 0.05 level.
+
+```mermaid
+flowchart TD
+    A["ANOVA Summary"] --> B["Purpose: Compare Multiple Means"]
+    
+    C["Three Main Types"] --> D["One-Way ANOVA"]
+    C --> E["Repeated Measures ANOVA"]  
+    C --> F["Factorial ANOVA"]
+    
+    G["Key Formula"] --> H["F = Variation Between / Variation Within"]
+    
+    I["Decision Process"] --> J["Calculate F-ratio"]
+    I --> K["Compare to Critical Value"]
+    I --> L["Accept or Reject H₀"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#f3e5f5,color:#000
+    style G fill:#ffecb3,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#c8e6c9,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+```
+______________________
 ---
 
 ## Programming Implementation
