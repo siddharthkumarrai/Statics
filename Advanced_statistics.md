@@ -3578,6 +3578,367 @@ graph TD
 
 Bayes' theorem provides a mathematically rigorous framework for updating beliefs and making decisions under uncertainty, making it a cornerstone of modern statistical analysis and machine learning applications.
 ________________
+________________
+# Chi-Square Test - Complete Analysis
+
+## Definition and Core Purpose
+
+**The Chi-Square Test for Goodness of Fit** tests claims about population proportions involving **categorical variables**.
+
+It is a **non-parametric test** that is performed on **categorical [ordinal, nominal] data**.
+
+### Example Application
+Testing whether there is a population of males who likes different color of bikes.
+
+```mermaid
+graph TD
+    A["Chi-Square Test"] --> B["Tests population proportions"]
+    A --> C["Uses categorical variables"]
+    
+    D["Test Characteristics"] --> E["Non-parametric"]
+    D --> F["Categorical data only"]
+    D --> G["Ordinal or nominal variables"]
+    
+    H["Purpose"] --> I["Goodness of fit testing"]
+    H --> J["Compare observed vs expected"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#ffab91,color:#000
+    style D fill:#f3e5f5,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+```
+
+## Initial Example: Bike Color Preferences
+
+### Sample Data vs Theory
+From the screenshots, we can see an example with bike color preferences:
+
+| Color | Theory | Sample |
+|-------|--------|--------|
+| Yellow Bike | 1/3 | 22 |
+| Orange Bike | 1/3 | 17 |
+| Red Bike | 1/3 | 59 |
+
+**Theory:** Categorical distribution - each color should be equally preferred (1/3 each)
+**Sample:** Observed categorical distribution shows different preferences
+
+```mermaid
+flowchart TD
+    A["Bike Color Example"] --> B["Three Categories"]
+    
+    C["Theoretical Distribution"] --> D["Yellow: 1/3"]
+    C --> E["Orange: 1/3"] 
+    C --> F["Red: 1/3"]
+    
+    G["Sample Observations"] --> H["Yellow: 22"]
+    G --> I["Orange: 17"]
+    G --> J["Red: 59"]
+    
+    K["Question"] --> L["Does sample match theory?"]
+    K --> M["Are preferences equally distributed?"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff9c4,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff9c4,color:#000
+    style I fill:#ffab91,color:#000
+    style J fill:#ffab91,color:#000
+    style K fill:#c8e6c9,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Worked Example: Student Handedness Study
+
+### Problem Statement
+In a student class of 100 students, 30 are right-handed. Does this class fit the theory that 12% of people are right-handed?
+
+### Given Information
+- Total students = 100
+- Right-handed students = 30  
+- Theory: 12% of people are right-handed
+- Expected right-handed = 12% × 100 = 12
+
+### Data Setup
+
+**Observed vs Expected:**
+
+| Category | Observed (O) | Expected (E) |
+|----------|--------------|--------------|
+| Right-handed | 30 | 12 |
+| Left-handed | 70 | 88 |
+| **Total** | 100 | 100 |
+
+### Theory: Categorical Distribution
+The theoretical distribution assumes 12% right-handed, 88% left-handed.
+
+```mermaid
+graph TD
+    A["Handedness Study Setup"] --> B["Sample: 100 students"]
+    
+    C["Observations"] --> D["Right-handed: 30"]
+    C --> E["Left-handed: 70"]
+    
+    F["Theory (12% right-handed)"] --> G["Expected right-handed: 12"]
+    F --> H["Expected left-handed: 88"]
+    
+    I["Question"] --> J["Does 30% match theoretical 12%?"]
+    I --> K["Significant difference?"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#c8e6c9,color:#000
+    style F fill:#fff9c4,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#ffab91,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+```
+
+## Complete Chi-Square Fitness of Good Example
+
+### Problem Setup
+**In 2010 Census** of the city, the weight of individuals in a small city were found to be the following:
+
+| Weight Category | 2010 Percentage |
+|----------------|-----------------|
+| <50kg | 20% |
+| 50-75kg | 30% |
+| >75kg | 50% |
+
+**In 2020, a sample of n=500 individuals were sampled. Below are the results:**
+
+| Weight Category | 2020 Observed |
+|----------------|---------------|
+| <50kg | 140 |
+| 50-75kg | 160 |
+| >75kg | 200 |
+
+**Question:** Using α=0.05, would you conclude the population distribution of weights has changed in the last 10 years?
+
+### Step-by-Step Solution
+
+**Step 1: State Hypotheses**
+- **H₀:** The data meets the expectation (distribution unchanged)
+- **H₁:** The data does not meet the expectation (distribution changed)
+
+**Step 2: Significance Level**
+- **α = 0.05**
+- **C.I = 95%**
+
+**Step 3: Degrees of Freedom**
+- **df = k - 1 = 3 - 1 = 2** (where k = number of categories)
+
+**Step 4: Calculate Expected Values**
+
+| Weight Category | 2010% | Expected (2020) |
+|----------------|--------|-----------------|
+| <50kg | 20% | 0.2×500 = 100 |
+| 50-75kg | 30% | 0.3×500 = 150 |
+| >75kg | 50% | 0.5×500 = 250 |
+
+```mermaid
+flowchart TD
+    A["Census Weight Study"] --> B["2010 vs 2020 Comparison"]
+    
+    C["2010 Census Distribution"] --> D["<50kg: 20%"]
+    C --> E["50-75kg: 30%"]
+    C --> F[">75kg: 50%"]
+    
+    G["2020 Sample (n=500)"] --> H["<50kg: 140 observed"]
+    G --> I["50-75kg: 160 observed"]
+    G --> J[">75kg: 200 observed"]
+    
+    K["Expected Values"] --> L["<50kg: 100 expected"]
+    K --> M["50-75kg: 150 expected"]
+    K --> N[">75kg: 250 expected"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#c8e6c9,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#ffab91,color:#000
+    style G fill:#fff9c4,color:#000
+    style H fill:#c8e6c9,color:#000
+    style I fill:#fff3e0,color:#000
+    style J fill:#ffab91,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#c8e6c9,color:#000
+    style M fill:#fff3e0,color:#000
+    style N fill:#ffab91,color:#000
+```
+
+**Step 5: Calculate Chi-Square Test Statistic**
+
+**Formula:**
+```
+χ² = Σ (O - E)²/E
+```
+
+**Calculations:**
+```
+χ² = (140-100)²/100 + (160-150)²/150 + (200-250)²/250
+
+χ² = (40)²/100 + (10)²/150 + (-50)²/250
+
+χ² = 1600/100 + 100/150 + 2500/250
+
+χ² = 16 + 0.66 + 10
+
+χ² = 26.66
+```
+
+**Step 6: Decision Boundary**
+Using Chi-Square table with df = 2 and α = 0.05:
+- **Critical value = 5.99**
+- **Rejection area:** If χ² > 5.99, reject H₀
+- **Decision rule:** If χ² is greater than 5.99, reject H₀; else, we fail to reject the null hypothesis
+
+**Step 7: Final Decision**
+- **χ² = 26.66 > 5.99**
+- **Decision: Reject the Null Hypothesis**
+
+**Conclusion:** The weights of 2020 population are different from those expected on the 2010 population.
+
+```mermaid
+graph TD
+    A["Chi-Square Calculation Results"] --> B["χ² = 26.66"]
+    
+    C["Critical Value"] --> D["5.99 (df=2, α=0.05)"]
+    
+    E["Decision Rule"] --> F["26.66 > 5.99"]
+    E --> G["Reject H₀"]
+    
+    H["Conclusion"] --> I["Population distribution changed"]
+    H --> J["Significant difference from 2010"]
+    
+    K["Statistical Evidence"] --> L["Strong evidence against H₀"]
+    K --> M["Population weights shifted significantly"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#ffab91,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#ffab91,color:#000
+    style H fill:#fff9c4,color:#000
+    style I fill:#fff,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff,color:#000
+```
+
+## Chi-Square Test Formula and Components
+
+### Test Statistic Formula
+```
+χ² = Σ (O - E)²/E
+```
+
+**Where:**
+- **O = Observed frequency**
+- **E = Expected frequency**
+- **Σ = Sum across all categories**
+
+### Key Requirements
+1. **Categories must be mutually exclusive**
+2. **Expected frequency ≥ 5 for each category**
+3. **Data must be counts/frequencies, not percentages**
+4. **Sample must be random**
+
+### Degrees of Freedom
+- **df = k - 1** (where k = number of categories)
+- **For goodness of fit test**
+
+## Decision Process Summary
+
+### Four-Step Hypothesis Testing Process
+
+**Step 1: Hypotheses**
+- H₀: Observed distribution matches expected distribution
+- H₁: Observed distribution does not match expected distribution
+
+**Step 2: Significance Level**
+- Choose α (commonly 0.05)
+
+**Step 3: Test Statistic and Degrees of Freedom**
+- Calculate χ² = Σ(O-E)²/E
+- df = k - 1
+
+**Step 4: Decision**
+- Compare χ² with critical value from Chi-Square table
+- If χ² > critical value: Reject H₀
+- If χ² ≤ critical value: Fail to reject H₀
+
+```mermaid
+flowchart TD
+    A["Chi-Square Test Summary"] --> B["Tests categorical data"]
+    
+    C["Formula"] --> D["χ² = Σ(O-E)²/E"]
+    
+    E["Requirements"] --> F["Expected frequency ≥ 5"]
+    E --> G["Categories mutually exclusive"]
+    E --> H["Random sampling"]
+    
+    I["Decision Process"] --> J["Compare with critical value"]
+    I --> K["Use Chi-Square distribution"]
+    I --> L["Consider degrees of freedom"]
+    
+    M["Applications"] --> N["Goodness of fit testing"]
+    M --> O["Distribution comparison"]
+    M --> P["Categorical data analysis"]
+    
+    style A fill:#e1f5fe,color:#000
+    style B fill:#ffecb3,color:#000
+    style C fill:#f3e5f5,color:#000
+    style D fill:#fff,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#c8e6c9,color:#000
+    style G fill:#fff,color:#000
+    style H fill:#fff,color:#000
+    style I fill:#ffab91,color:#000
+    style J fill:#fff,color:#000
+    style K fill:#fff,color:#000
+    style L fill:#fff,color:#000
+    style M fill:#fff9c4,color:#000
+    style N fill:#fff,color:#000
+    style O fill:#fff,color:#000
+    style P fill:#fff,color:#000
+```
+
+## Practical Applications
+
+### Common Use Cases
+1. **Market Research:** Testing consumer preference distributions
+2. **Quality Control:** Checking if defect rates match specifications
+3. **Genetics:** Testing inheritance patterns against expected ratios
+4. **Social Sciences:** Comparing demographic distributions over time
+5. **Medicine:** Testing treatment effectiveness across categories
+
+### When to Use Chi-Square Test
+- **Categorical data** (nominal or ordinal)
+- **Testing goodness of fit** to a theoretical distribution
+- **Comparing observed vs expected frequencies**
+- **Non-parametric testing** (no distribution assumptions)
+
+The Chi-Square test provides a powerful method for testing whether observed categorical data matches theoretical expectations, making it essential for validating models and theories across many fields of study.
+________________
 ---
 
 ## Programming Implementation
